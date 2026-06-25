@@ -18,45 +18,118 @@ export default function Home() {
       {/* Hero */}
       <section className="hero">
         <div className="container hero-inner">
-          <Reveal>
-            <span className="pill">
-              <span className="pill-dot" /> Trusted by students across Ethiopia
-            </span>
-          </Reveal>
-          <Reveal delay={60}>
-            <h1>
-              From the classroom to a <span className="grad-text">global scholarship</span>
-            </h1>
-          </Reveal>
-          <Reveal delay={120}>
-            <p className="hero-sub">
-              Expert tutoring and scholarship guidance that helps Ethiopian students win
-              admissions and funding at world-class universities in Canada, the UK, the USA and Europe.
-            </p>
-          </Reveal>
-          <Reveal delay={180}>
-            <div className="hero-ctas">
-              <Link href="/contact" className="btn btn-primary btn-lg">
-                Start your journey
-              </Link>
-              <Link href="/services" className="btn btn-ghost btn-lg">
-                Explore services
-              </Link>
-            </div>
-          </Reveal>
           
-          <Reveal delay={220}>
-            <div style={{ marginTop: '1.5rem' }}>
-              <AppButtons variant="dark" center />
+          {/* 2-COLUMN SPLIT CONTAINER FOR HERO */}
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: 'row', 
+            alignItems: 'center', 
+            justifyContent: 'space-between', 
+            gap: '4rem',
+            flexWrap: 'wrap', // Automatically wraps on mobile/small screens
+            textAlign: 'left'
+          }}>
+            
+            {/* LEFT COLUMN: All Hero Content */}
+            <div style={{ flex: '1 1 500px' }}>
+              <Reveal>
+                <span className="pill">
+                  <span className="pill-dot" /> Trusted by students across Ethiopia
+                </span>
+              </Reveal>
+              <Reveal delay={60}>
+                <h1>
+                  From the classroom to a <span className="grad-text">global scholarship</span>
+                </h1>
+              </Reveal>
+              <Reveal delay={120}>
+                <p className="hero-sub">
+                  Expert tutoring and scholarship guidance that helps Ethiopian students win
+                  admissions and funding at world-class universities in Canada, the UK, the USA and Europe.
+                </p>
+              </Reveal>
+              <Reveal delay={180}>
+                <div className="hero-ctas">
+                  <Link href="/contact" className="btn btn-primary btn-lg">
+                    Start your journey
+                  </Link>
+                  <Link href="/services" className="btn btn-ghost btn-lg">
+                    Explore services
+                  </Link>
+                </div>
+              </Reveal>
+
+              <Reveal delay={260}>
+                <p className="hero-note" style={{ margin: '1rem 0' }}>Free first consultation · No obligation</p>
+              </Reveal>
+              
+              <Reveal delay={220}>
+                <div style={{ marginTop: '1.5rem' }}>
+                  <p style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', fontWeight: 600, color: 'var(--muted)' }}>
+                    Mobile apps launching soon
+                  </p>
+                  <AppButtons variant="dark" />
+                </div>
+              </Reveal>
             </div>
-          </Reveal>
 
-          <Reveal delay={260}>
-            <p className="hero-note">Free first consultation · No obligation</p>
-          </Reveal>
+            {/* RIGHT COLUMN: Telegram Card Component */}
+            <div>
+              <Reveal delay={280}>
+                <a 
+                  href="https://t.me/Tegegnpathway" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="tg-card"
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column', // Stacks content cleanly vertically inside the card
+                    gap: '1.5rem',
+                    background: '#f4f9ff',
+                    border: '1px solid #e1eefc',
+                    borderRadius: '24px',
+                    padding: '2.5rem 2rem',
+                    maxWidth: '420px',
+                    textDecoration: 'none',
+                    color: 'inherit',
+                    boxShadow: '0 10px 30px rgba(46, 166, 218, 0.05)',
+                  }}
+                >
+                  {/* Telegram Brand Header Icon */}
+                  <div style={{
+                    background: '#2ea6da',
+                    borderRadius: '16px',
+                    width: '56px',
+                    height: '56px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 8px 16px rgba(46, 166, 218, 0.2)'
+                  }}>
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="22" y1="2" x2="11" y2="13"></line>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                  </div>
 
+                  {/* Card Messaging Context */}
+                  <div>
+                    <span style={{ color: '#2ea6da', textTransform: 'uppercase', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.05em' }}>Telegram Channel</span>
+                    <h4 style={{ margin: '0.5rem 0', fontSize: '1.5rem', fontWeight: 700, lineHeight: '1.25' }}>Join our 20,000+ Telegram community</h4>
+                    <p style={{ margin: '0 0 1.25rem 0', fontSize: '0.95rem', color: 'var(--muted)', lineHeight: '1.4' }}>Daily scholarship alerts, deadlines & fully-funded opportunities — free.</p>
+                    <span style={{ color: '#2ea6da', fontWeight: 600, fontSize: '1rem', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                      @Tegegnpathway →
+                    </span>
+                  </div>
+                </a>
+              </Reveal>
+            </div>
+
+          </div>
+
+          {/* Placement Logos Footer (Spans below both columns) */}
           <Reveal delay={300}>
-            <div className="logos">
+            <div className="logos" style={{ marginTop: '5rem' }}>
               <p className="logos-label">Students placed at</p>
               <div className="logos-row">
                 {placements.map((p) => (
@@ -249,7 +322,7 @@ export default function Home() {
                     <li key={f}>{f}</li>
                   ))}
                 </ul>
-                <Link href="/contact" className={`btn ${plan.featured ? 'btn-primary' : 'btn-ghost'} btn-block`}>
+                <Link href="/contact" className={`btn ${plan.featured ? 'btn-primary' : 'btn-block'} btn-block`}>
                   Get started
                 </Link>
               </Reveal>
