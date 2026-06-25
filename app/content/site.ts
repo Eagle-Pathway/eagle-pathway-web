@@ -5,7 +5,7 @@ export const site = {
   name: "Eagle Pathway",
   tagline: "From the classroom to a global scholarship.",
   email: "info@eaglepathway.com",
-  phone: "+251 912 345 678",
+  phone: "+251 93 250 8910",
   location: "Addis Ababa, Ethiopia",
   // Native student & tutor apps — not published yet.
   app: {

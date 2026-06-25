@@ -153,7 +153,7 @@ export default function ContactPage() {
                     <option value="canada">Canada</option>
                     <option value="uk">United Kingdom</option>
                     <option value="usa">United States</option>
-                    <option value="europe">Europe</option>
+                    <option value="eu">EU (Europe)</option>
                     <option value="australia">Australia</option>
                     <option value="undecided">Not sure yet</option>
                   </select>

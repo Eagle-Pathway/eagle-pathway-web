@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Heart } from 'lucide-react';
 import { nav, site } from '@/app/content/site';
 
 export default function Footer() {
@@ -58,7 +59,9 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} {site.name}. All rights reserved.</span>
-          <span>Made in Addis Ababa 🇪🇹</span>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+            Made with <Heart size={14} fill="#ef4444" stroke="#ef4444" /> by Eagle Pathway Tech
+          </span>
         </div>
       </div>
     </footer>
