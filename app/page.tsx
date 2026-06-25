@@ -48,7 +48,13 @@ export default function Home() {
             <p className="hero-note">Free first consultation · No obligation</p>
           </Reveal>
 
-          <Reveal delay={300}>
+          <Reveal delay={280}>
+            <div style={{ marginTop: '2rem' }}>
+              <AppButtons variant="dark" center />
+            </div>
+          </Reveal>
+
+          <Reveal delay={340}>
             <div className="logos">
               <p className="logos-label">Students placed at</p>
               <div className="logos-row">
