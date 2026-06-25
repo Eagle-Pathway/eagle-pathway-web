@@ -1,84 +1,133 @@
-'use client';
-
+import type { Metadata } from 'next';
 import Link from 'next/link';
+import Reveal from '../components/Reveal';
+import { team, stats, site } from '../content/site';
+
+export const metadata: Metadata = {
+  title: 'About | Eagle Pathway',
+  description:
+    'Eagle Pathway combines Ethiopian education realities with global admissions expertise to help students study abroad.',
+};
+
+const values = [
+  {
+    title: 'Honesty over hype',
+    description:
+      'We never promise outcomes we cannot control. We focus on the work that genuinely improves your chances.',
+  },
+  {
+    title: 'Local + global',
+    description:
+      'We understand the Ethiopian classroom and the expectations of admissions offices abroad — and bridge the two.',
+  },
+  {
+    title: 'Accountability',
+    description:
+      'Every plan has owners, milestones and weekly tracking, so progress is visible and momentum never stalls.',
+  },
+];
 
 export default function AboutPage() {
-  const values = [
-    { icon: '📈', title: 'Data-Driven', description: 'We track outcomes and continuously improve our methods based on what works.' },
-    { icon: '🤝', title: 'Partnership', description: 'We work alongside families as partners, not just consultants.' },
-    { icon: '🌍', title: 'Global Vision', description: 'Deep knowledge of international admissions combined with local context.' },
-  ];
-
-  const milestones = [
-    { year: '2023', title: 'Foundation', description: 'Started with a handful of students in Addis Ababa' },
-    { year: '2024', title: 'Remote Expansion', description: 'Launched virtual tutoring and advisory sessions' },
-    { year: '2025', title: 'Full Service Launch', description: 'Expanded to end-to-end application support' },
-    { year: '2026', title: 'Scholarship Milestone', description: 'Crossed $100K in total scholarship value secured' },
-  ];
-
   return (
-    <div className="page-layout">
-      <nav className="navbar">
+    <>
+      <section className="page-head">
         <div className="container">
-          <div className="nav-grid">
-            <Link href="/" className="logo-group">
-              <div className="logo-icon">🦅</div>
-              <span className="logo-text">Eagle Pathway</span>
-            </Link>
-            <ul className="nav-links">
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/#services">Services</Link></li>
-              <li><Link href="/#pricing">Pricing</Link></li>
-              <li><Link href="/contact">Contact</Link></li>
-            </ul>
-            <div className="nav-cta">
-              <Link href="/login" className="btn btn-outline">Client Portal</Link>
-            </div>
+          <Reveal>
+            <span className="eyebrow">About us</span>
+            <h1>Opening doors to global education</h1>
+            <p>
+              Eagle Pathway is an Ethiopian education and scholarship consultancy on a mission to
+              make world-class universities accessible to every capable student at home.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Mission */}
+      <section className="section">
+        <div className="container">
+          <div className="split">
+            <Reveal>
+              <span className="eyebrow">Our mission</span>
+              <h2 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.6rem)' }}>
+                Talent is everywhere. Opportunity should be too.
+              </h2>
+              <p style={{ marginTop: '1rem', fontSize: '1.05rem', color: 'var(--muted)' }}>
+                Too many qualified Ethiopian students never apply abroad — not for lack of ability,
+                but because the process is opaque and overwhelming. We exist to change that.
+              </p>
+              <p style={{ marginTop: '1rem', color: 'var(--muted)' }}>
+                We combine personal tutoring, scholarship strategy and a purpose-built platform so
+                students and their families move forward with clarity and confidence — from the
+                first session to a funded offer.
+              </p>
+            </Reveal>
+            <Reveal delay={120}>
+              <div className="stats-band" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+                {stats.map((s) => (
+                  <div className="stat" key={s.label}>
+                    <strong>{s.value}</strong>
+                    <span>{s.label}</span>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
           </div>
         </div>
-      </nav>
+      </section>
 
-      <main style={{ padding: 'calc(var(--nav-height) + 3rem) 0 4rem', minHeight: '100vh' }}>
+      {/* Values */}
+      <section className="section section-soft">
         <div className="container">
-          <h1 style={{ fontFamily: 'var(--font-syne)', fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 800, color: 'var(--white)', textAlign: 'center', marginBottom: '0.75rem' }}>About Eagle Pathway</h1>
-          <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.6)', textAlign: 'center', maxWidth: 500, margin: '0 auto 3rem' }}>Helping Ethiopian students achieve their global education dreams since 2023.</p>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', marginBottom: '4rem' }}>
+          <Reveal className="section-head">
+            <span className="eyebrow">What we stand for</span>
+            <h2>Our values</h2>
+          </Reveal>
+          <div className="grid-3">
             {values.map((v, i) => (
-              <div key={i} style={{ background: '#111', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 'var(--radius-xl)', padding: '2rem', textAlign: 'center', transition: 'all var(--transition)' }}>
-                <span style={{ fontSize: '2.5rem', display: 'block', marginBottom: '1rem' }}>{v.icon}</span>
-                <h3 style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: '1.1rem', color: 'var(--white)', marginBottom: '0.5rem' }}>{v.title}</h3>
-                <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)' }}>{v.description}</p>
-              </div>
+              <Reveal key={v.title} className="card" delay={i * 70}>
+                <h3>{v.title}</h3>
+                <p>{v.description}</p>
+              </Reveal>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div style={{ maxWidth: 700, margin: '0 auto' }}>
-            <h2 style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: '1.75rem', color: 'var(--white)', textAlign: 'center', marginBottom: '2rem' }}>Our Journey</h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              {milestones.map((m, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem', padding: '1.25rem', background: '#111', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 'var(--radius-lg)' }}>
-                  <span style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: '1.1rem', color: 'var(--gold)', minWidth: 60 }}>{m.year}</span>
-                  <div>
-                    <h3 style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, color: 'var(--white)', marginBottom: '0.25rem' }}>{m.title}</h3>
-                    <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)' }}>{m.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+      {/* Team */}
+      <section className="section">
+        <div className="container">
+          <Reveal className="section-head">
+            <span className="eyebrow">The team</span>
+            <h2>Advisors in your corner</h2>
+            <p>Educators and admissions specialists who have walked this path before.</p>
+          </Reveal>
+          <div className="grid-3">
+            {team.map((member, i) => (
+              <Reveal key={member.name} className="team-card" delay={i * 70}>
+                <div className="avatar">{member.initials}</div>
+                <h3>{member.name}</h3>
+                <div className="role">{member.role}</div>
+                <p>{member.bio}</p>
+              </Reveal>
+            ))}
           </div>
         </div>
-      </main>
+      </section>
 
-      <footer className="footer">
+      {/* CTA */}
+      <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
-          <Link href="/" className="logo-group" style={{ justifyContent: 'center', marginBottom: '0.75rem' }}>
-            <div className="logo-icon">🦅</div>
-            <span className="logo-text">Eagle Pathway</span>
-          </Link>
-          <p>© {new Date().getFullYear()} Eagle Pathway Ethiopia. All rights reserved.</p>
+          <Reveal className="cta">
+            <h2>Let’s build your pathway</h2>
+            <p>Book a free consultation with an advisor and take the first concrete step.</p>
+            <div className="hero-ctas">
+              <Link href="/contact" className="btn btn-light btn-lg">Book a consultation</Link>
+              <a href={`mailto:${site.email}`} className="btn btn-light btn-lg">Email us</a>
+            </div>
+          </Reveal>
         </div>
-      </footer>
-    </div>
+      </section>
+    </>
   );
 }
