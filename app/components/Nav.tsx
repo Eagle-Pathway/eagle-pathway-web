@@ -52,6 +52,9 @@ export default function Nav() {
 
       {open && (
         <div className="mobile-menu">
+          <Link href="/services" onClick={() => setOpen(false)}>
+            Services
+          </Link>
           {nav.map((item) => (
             <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>
               {item.label}
