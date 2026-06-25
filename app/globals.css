@@ -779,15 +779,18 @@ img { max-width: 100%; display: block; }
   border-radius: var(--radius-xl);
   padding: clamp(3rem, 6vw, 5rem) 2rem;
   text-align: center;
-  background: linear-gradient(130deg, #4f46e5 0%, #6d28d9 55%, #7c3aed 100%);
+  background: linear-gradient(130deg, #52516d 0%, #132a65 55%, #40374f 100%);
   color: #fff;
 }
 .cta::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.18), transparent 45%);
+  background: radial-gradient(circle at 80% 10%, rgba(0, 166, 255, 0.204), transparent 45%);
   pointer-events: none;
+}
+.cta .hero-ctas {
+  justify-content: center;
 }
 .cta h2 { color: #fff; font-size: clamp(2rem, 4.5vw, 3.2rem); position: relative; }
 .cta p { color: rgba(255, 255, 255, 0.85); margin: 1rem auto 0; max-width: 520px; position: relative; }
