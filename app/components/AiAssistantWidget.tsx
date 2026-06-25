@@ -1,12 +1,14 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Bot, Loader2 } from 'lucide-react';
+import { MessageCircle, X, Send, Sparkles, Loader2 } from 'lucide-react';
 
 interface Message {
   role: 'user' | 'assistant' | 'system';
   content: string;
 }
+
+const ADMIN_API_URL = 'https://eagle-pathway-79kn.vercel.app/api/assistant';
 
 export default function AiAssistantWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,12 +17,8 @@ export default function AiAssistantWidget() {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   useEffect(() => {
-    scrollToBottom();
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -33,21 +31,18 @@ export default function AiAssistantWidget() {
     setIsLoading(true);
 
     try {
-      const adminApiUrl = 'https://eagle-pathway-79kn.vercel.app/api/assistant';
-      
-      const response = await fetch(adminApiUrl, {
+      const response = await fetch(ADMIN_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: [...messages, userMessage] }),
       });
 
-      if (!response.ok) throw new Error('Network response was not ok');
-      if (!response.body) throw new Error('No response body');
+      if (!response.ok || !response.body) throw new Error('Network response was not ok');
 
       const reader = response.body.getReader();
       const decoder = new TextDecoder('utf-8');
       let buffer = '';
-      
+
       setMessages((prev) => [...prev, { role: 'assistant', content: '' }]);
 
       while (true) {
@@ -56,14 +51,12 @@ export default function AiAssistantWidget() {
 
         buffer += decoder.decode(value, { stream: true });
         const lines = buffer.split('\n');
-        
-        // Keep the last partial line in the buffer
         buffer = lines.pop() || '';
 
         for (const line of lines) {
           const trimmed = line.trim();
           if (!trimmed || !trimmed.startsWith('data: ')) continue;
-          
+
           const dataStr = trimmed.slice(6);
           if (dataStr === '[DONE]') continue;
 
@@ -72,19 +65,16 @@ export default function AiAssistantWidget() {
             const content = data.choices?.[0]?.delta?.content;
             if (content) {
               setMessages((prev) => {
-                const newMessages = [...prev];
-                const lastMessage = newMessages[newMessages.length - 1];
-                if (lastMessage && lastMessage.role === 'assistant') {
-                  return [
-                    ...newMessages.slice(0, -1),
-                    { ...lastMessage, content: lastMessage.content + content }
-                  ];
+                const next = [...prev];
+                const last = next[next.length - 1];
+                if (last && last.role === 'assistant') {
+                  return [...next.slice(0, -1), { ...last, content: last.content + content }];
                 }
-                return newMessages;
+                return next;
               });
             }
-          } catch (e) {
-            console.error('Error parsing JSON line:', e);
+          } catch {
+            /* ignore partial json */
           }
         }
       }
@@ -100,79 +90,142 @@ export default function AiAssistantWidget() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div style={{ position: 'fixed', bottom: 24, right: 24, zIndex: 200, display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
       {isOpen && (
-        <div className="bg-white dark:bg-gray-900 w-[350px] h-[500px] mb-4 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800 flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 fade-in duration-300">
-          <div className="bg-blue-600 text-white p-4 flex justify-between items-center">
-            <div className="flex items-center gap-2">
-              <Bot className="w-5 h-5" />
-              <h3 className="font-semibold">Eagle AI Guide</h3>
+        <div
+          style={{
+            width: 360,
+            maxWidth: 'calc(100vw - 48px)',
+            height: 520,
+            maxHeight: 'calc(100vh - 120px)',
+            marginBottom: 16,
+            background: '#fff',
+            borderRadius: 20,
+            boxShadow: '0 30px 60px -15px rgba(15,23,42,0.3)',
+            border: '1px solid #e6e8ef',
+            display: 'flex',
+            flexDirection: 'column',
+            overflow: 'hidden',
+          }}
+        >
+          <div
+            style={{
+              padding: '16px 18px',
+              background: 'linear-gradient(120deg, #4f46e5, #7c3aed)',
+              color: '#fff',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 600 }}>
+              <Sparkles size={18} /> Eagle AI Guide
             </div>
-            <button 
+            <button
               onClick={() => setIsOpen(false)}
-              className="text-white/80 hover:text-white transition-colors"
+              aria-label="Close chat"
+              style={{ background: 'none', border: 0, color: 'rgba(255,255,255,0.85)', cursor: 'pointer', display: 'flex' }}
             >
-              <X className="w-5 h-5" />
+              <X size={20} />
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-gray-900/50">
+          <div style={{ flex: 1, overflowY: 'auto', padding: 16, display: 'flex', flexDirection: 'column', gap: 12, background: '#f7f8fc' }}>
             {messages.length === 0 && (
-              <div className="text-center text-gray-500 dark:text-gray-400 mt-10">
-                <Bot className="w-10 h-10 mx-auto mb-3 opacity-50" />
-                <p className="text-sm">Hi! I&apos;m here to help you learn about Eagle Pathway. Ask me anything!</p>
+              <div style={{ textAlign: 'center', color: '#64748b', marginTop: 36 }}>
+                <Sparkles size={36} style={{ margin: '0 auto 12px', opacity: 0.5 }} />
+                <p style={{ fontSize: 14 }}>Hi! Ask me anything about scholarships, tutoring or how Eagle Pathway works.</p>
               </div>
             )}
-            
+
             {messages.map((msg, index) => (
-              <div 
-                key={index} 
-                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
-              >
-                <div 
-                  className={`max-w-[85%] rounded-2xl p-3 flex gap-2 ${
-                    msg.role === 'user' 
-                      ? 'bg-blue-600 text-white rounded-tr-sm' 
-                      : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-100 rounded-tl-sm'
-                  }`}
+              <div key={index} style={{ display: 'flex', justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start' }}>
+                <div
+                  style={{
+                    maxWidth: '85%',
+                    borderRadius: 16,
+                    padding: '10px 13px',
+                    fontSize: 14,
+                    lineHeight: 1.5,
+                    whiteSpace: 'pre-wrap',
+                    background: msg.role === 'user' ? '#4f46e5' : '#fff',
+                    color: msg.role === 'user' ? '#fff' : '#0f172a',
+                    border: msg.role === 'user' ? 'none' : '1px solid #e6e8ef',
+                    borderTopRightRadius: msg.role === 'user' ? 4 : 16,
+                    borderTopLeftRadius: msg.role === 'user' ? 16 : 4,
+                  }}
                 >
-                  {msg.role === 'assistant' && <Bot className="w-4 h-4 mt-1 shrink-0 opacity-70" />}
-                  <p className="text-sm whitespace-pre-wrap leading-relaxed">{msg.content}</p>
+                  {msg.content}
                 </div>
               </div>
             ))}
             <div ref={messagesEndRef} />
           </div>
 
-          <div className="p-3 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
-            <form onSubmit={handleSubmit} className="flex gap-2">
-              <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask me about scholarships..."
-                className="flex-1 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white border-transparent rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500 dark:placeholder-gray-400"
-                disabled={isLoading}
-              />
-              <button
-                type="submit"
-                disabled={!input.trim() || isLoading}
-                className="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors"
-              >
-                {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4 -ml-0.5" />}
-              </button>
-            </form>
-          </div>
+          <form
+            onSubmit={handleSubmit}
+            style={{ padding: 12, background: '#fff', borderTop: '1px solid #e6e8ef', display: 'flex', gap: 8 }}
+          >
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Ask about scholarships..."
+              disabled={isLoading}
+              style={{
+                flex: 1,
+                background: '#f1f3f9',
+                border: '1px solid transparent',
+                borderRadius: 999,
+                padding: '10px 16px',
+                fontSize: 14,
+                color: '#0f172a',
+                outline: 'none',
+              }}
+            />
+            <button
+              type="submit"
+              disabled={!input.trim() || isLoading}
+              aria-label="Send message"
+              style={{
+                background: !input.trim() || isLoading ? '#a5b4fc' : '#4f46e5',
+                color: '#fff',
+                width: 42,
+                height: 42,
+                borderRadius: '50%',
+                border: 0,
+                display: 'grid',
+                placeItems: 'center',
+                cursor: !input.trim() || isLoading ? 'default' : 'pointer',
+                flexShrink: 0,
+              }}
+            >
+              {isLoading ? <Loader2 size={18} className="spin" /> : <Send size={18} />}
+            </button>
+          </form>
         </div>
       )}
 
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`${
-          isOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'
-        } transition-all duration-300 bg-blue-600 hover:bg-blue-700 text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center hover:shadow-2xl hover:-translate-y-1`}
+        onClick={() => setIsOpen((v) => !v)}
+        aria-label={isOpen ? 'Hide assistant' : 'Open assistant'}
+        style={{
+          background: 'linear-gradient(120deg, #4f46e5, #7c3aed)',
+          color: '#fff',
+          width: 58,
+          height: 58,
+          borderRadius: '50%',
+          border: 0,
+          boxShadow: '0 12px 28px -8px rgba(79,70,229,0.7)',
+          display: 'grid',
+          placeItems: 'center',
+          cursor: 'pointer',
+          transform: isOpen ? 'scale(0)' : 'scale(1)',
+          opacity: isOpen ? 0 : 1,
+          transition: 'all 0.25s ease',
+        }}
       >
-        <MessageCircle className="w-6 h-6" />
+        <MessageCircle size={26} />
       </button>
     </div>
   );
