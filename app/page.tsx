@@ -44,17 +44,18 @@ export default function Home() {
               </Link>
             </div>
           </Reveal>
-          <Reveal delay={240}>
-            <p className="hero-note">Free first consultation · No obligation</p>
-          </Reveal>
-
-          <Reveal delay={280}>
-            <div style={{ marginTop: '2rem' }}>
+          
+          <Reveal delay={220}>
+            <div style={{ marginTop: '1.5rem' }}>
               <AppButtons variant="dark" center />
             </div>
           </Reveal>
 
-          <Reveal delay={340}>
+          <Reveal delay={260}>
+            <p className="hero-note">Free first consultation · No obligation</p>
+          </Reveal>
+
+          <Reveal delay={300}>
             <div className="logos">
               <p className="logos-label">Students placed at</p>
               <div className="logos-row">

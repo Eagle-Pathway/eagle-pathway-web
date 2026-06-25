@@ -239,7 +239,7 @@ img { max-width: 100%; display: block; }
 .hero {
   position: relative;
   overflow: hidden;
-  padding: clamp(4rem, 9vw, 7rem) 0 5rem;
+  padding: clamp(3rem, 7vw, 5.5rem) 0 4rem;
 }
 .hero::before {
   content: "";
