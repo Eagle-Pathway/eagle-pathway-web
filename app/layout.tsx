@@ -1,29 +1,56 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Inter, Sora } from 'next/font/google';
+import './globals.css';
+import Nav from './components/Nav';
+import Footer from './components/Footer';
+import AiAssistantWidget from './components/AiAssistantWidget';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const sora = Sora({
+  subsets: ['latin'],
+  weight: ['600', '700', '800'],
+  variable: '--font-display',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
-  title: "Eagle Pathway | Ethiopia's Premier Education & Scholarship Consultancy",
-  description: "From Classroom to International Scholarship. We provide expert tutoring and scholarship guidance to help Ethiopian students secure their future abroad.",
-  keywords: ["Scholarship Ethiopia", "Tutoring Addis Ababa", "International Education", "Eagle Pathway", "Study Abroad"],
+  title: 'Eagle Pathway | Scholarships & Tutoring for Ethiopian Students',
+  description:
+    'From the classroom to a global scholarship. Expert tutoring and scholarship guidance helping Ethiopian students secure admissions and funding at world-class universities.',
+  keywords: [
+    'Scholarship Ethiopia',
+    'Tutoring Addis Ababa',
+    'International Education',
+    'Eagle Pathway',
+    'Study Abroad',
+    'SAT IELTS prep',
+  ],
   openGraph: {
-    title: "Eagle Pathway - Secure Your Future Abroad",
-    description: "Expert guidance for international scholarships and premium tutoring services.",
-    type: "website",
-    locale: "en_US",
-    url: "https://eagle-pathway.com",
-    siteName: "Eagle Pathway",
-  }
+    title: 'Eagle Pathway — Secure Your Future Abroad',
+    description:
+      'Expert tutoring and scholarship guidance for Ethiopian students aiming for world-class universities.',
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://eagle-pathway.com',
+    siteName: 'Eagle Pathway',
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${sora.variable}`}>
       <body>
-        {children}
+        <Nav />
+        <main>{children}</main>
+        <Footer />
+        <AiAssistantWidget />
       </body>
     </html>
   );
