@@ -1,54 +1,42 @@
 import Link from 'next/link';
 import Reveal from './components/Reveal';
 import Icon from './components/Icon';
-import AppButtons from './components/AppButtons';
-import {
-  stats,
-  placements,
-  features,
-  steps,
-  audiences,
-  pricing,
-  testimonials,
-} from './content/site';
+import Section from './components/Section';
+import SectionHeader from './components/SectionHeader';
+import TelegramCard from './components/TelegramCard';
+import PlacementLogos from './components/PlacementLogos';
+import HeroVisual from './components/HeroVisual';
+import CaseStudyCard from './components/CaseStudyCard';
+import TrustStrip from './components/TrustStrip';
+import { stats, features, testimonials } from './content/site';
 
 export default function Home() {
+  const topFeatures = features.slice(0, 3);
+  const featuredStory = testimonials[0];
+
   return (
     <>
-      {/* Hero */}
       <section className="hero">
         <div className="container hero-inner">
-          
-          {/* 2-COLUMN SPLIT CONTAINER FOR HERO */}
-          <div style={{ 
-            display: 'flex', 
-            flexDirection: 'row', 
-            alignItems: 'center', 
-            justifyContent: 'space-between', 
-            gap: '4rem',
-            flexWrap: 'wrap', // Automatically wraps on mobile/small screens
-            textAlign: 'left'
-          }}>
-            
-            {/* LEFT COLUMN: All Hero Content */}
-            <div style={{ flex: '1 1 500px' }}>
+          <div className="hero-layout">
+            <div className="hero-content">
               <Reveal>
                 <span className="pill">
                   <span className="pill-dot" /> Trusted by students across Ethiopia
                 </span>
               </Reveal>
-              <Reveal delay={60}>
+              <Reveal delay={40}>
                 <h1>
-                  From the classroom to a <span className="grad-text">global scholarship</span>
+                  From the classroom to a <span className="accent-text">global scholarship</span>
                 </h1>
               </Reveal>
-              <Reveal delay={120}>
+              <Reveal delay={80}>
                 <p className="hero-sub">
                   Expert tutoring and scholarship guidance that helps Ethiopian students win
                   admissions and funding at world-class universities in Canada, the UK, the USA and Europe.
                 </p>
               </Reveal>
-              <Reveal delay={180}>
+              <Reveal delay={120}>
                 <div className="hero-ctas">
                   <Link href="/contact" className="btn btn-primary btn-lg">
                     Start your journey
@@ -57,295 +45,115 @@ export default function Home() {
                     Explore services
                   </Link>
                 </div>
-              </Reveal>
-
-              <Reveal delay={260}>
-                <p className="hero-note" style={{ margin: '1rem 0' }}>Free first consultation · No obligation</p>
-              </Reveal>
-              
-              <Reveal delay={220}>
-                <div style={{ marginTop: '1.5rem' }}>
-                  <p style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', fontWeight: 600, color: 'var(--muted)' }}>
-                    Mobile apps launching soon
-                  </p>
-                  <AppButtons variant="dark" />
-                </div>
+                <p className="hero-note">Free first consultation · No obligation</p>
               </Reveal>
             </div>
 
-            {/* RIGHT COLUMN: Telegram Card Component */}
-            <div>
-              <Reveal delay={280}>
-                <a 
-                  href="https://t.me/Tegegnpathway" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="tg-card"
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column', // Stacks content cleanly vertically inside the card
-                    gap: '1.5rem',
-                    background: '#f4f9ff',
-                    border: '1px solid #e1eefc',
-                    borderRadius: '24px',
-                    padding: '2.5rem 2rem',
-                    maxWidth: '420px',
-                    textDecoration: 'none',
-                    color: 'inherit',
-                    boxShadow: '0 10px 30px rgba(46, 166, 218, 0.05)',
-                  }}
-                >
-                  {/* Telegram Brand Header Icon */}
-                  <div style={{
-                    background: '#2ea6da',
-                    borderRadius: '16px',
-                    width: '56px',
-                    height: '56px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 8px 16px rgba(46, 166, 218, 0.2)'
-                  }}>
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="22" y1="2" x2="11" y2="13"></line>
-                      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
-                  </div>
-
-                  {/* Card Messaging Context */}
-                  <div>
-                    <span style={{ color: '#2ea6da', textTransform: 'uppercase', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.05em' }}>Telegram Channel</span>
-                    <h4 style={{ margin: '0.5rem 0', fontSize: '1.5rem', fontWeight: 700, lineHeight: '1.25' }}>Join our 20,000+ Telegram community</h4>
-                    <p style={{ margin: '0 0 1.25rem 0', fontSize: '0.95rem', color: 'var(--muted)', lineHeight: '1.4' }}>Daily scholarship alerts, deadlines & fully-funded opportunities — free.</p>
-                    <span style={{ color: '#2ea6da', fontWeight: 600, fontSize: '1rem', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                      @Tegegnpathway →
-                    </span>
-                  </div>
-                </a>
-              </Reveal>
-            </div>
-
+            <Reveal delay={100}>
+              <HeroVisual />
+            </Reveal>
           </div>
 
-          {/* Placement Logos Footer (Spans below both columns) */}
-          <Reveal delay={300}>
-            <div className="logos" style={{ marginTop: '5rem' }}>
-              <p className="logos-label">Students placed at</p>
-              <div className="logos-row">
-                {placements.map((p) => (
-                  <span key={p}>{p}</span>
-                ))}
-              </div>
-            </div>
+          <Reveal delay={160}>
+            <PlacementLogos />
           </Reveal>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="section" style={{ paddingTop: 0 }}>
-        <div className="container">
+      <Section tight>
+        <Reveal>
+          <div className="stats-band">
+            {stats.map((s) => (
+              <div className="stat" key={s.label}>
+                <strong>{s.value}</strong>
+                <span>{s.label}</span>
+                {'detail' in s && s.detail && <small>{s.detail}</small>}
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </Section>
+
+      <Section soft>
+        <Reveal className="section-head">
+          <SectionHeader
+            eyebrow="What we do"
+            title="Three pillars of your pathway"
+            description="Tutoring, strategy and application support — coordinated by one team that tracks your progress every week."
+          />
+        </Reveal>
+        <div className="grid-3">
+          {topFeatures.map((f, i) => (
+            <Reveal key={f.title} className="card" delay={i * 50}>
+              <div className="card-icon">
+                <Icon name={f.icon} />
+              </div>
+              <h3>{f.title}</h3>
+              <p>{f.description}</p>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal delay={120}>
+          <p className="section-cta-link">
+            <Link href="/services">See all services →</Link>
+          </p>
+        </Reveal>
+      </Section>
+
+      <Section>
+        <Reveal className="section-head">
+          <SectionHeader
+            eyebrow="Success stories"
+            title="Results students feel"
+            description="Real outcomes from structured guidance — not promises."
+          />
+        </Reveal>
+        <div className="case-study-grid">
           <Reveal>
-            <div className="stats-band">
-              {stats.map((s) => (
-                <div className="stat" key={s.label}>
-                  <strong>{s.value}</strong>
-                  <span>{s.label}</span>
-                </div>
-              ))}
-            </div>
+            <CaseStudyCard story={featuredStory} featured />
           </Reveal>
-        </div>
-      </section>
-
-      {/* Features */}
-      <section className="section section-soft">
-        <div className="container">
-          <Reveal className="section-head">
-            <span className="eyebrow">What we do</span>
-            <h2>Everything you need, in one pathway</h2>
-            <p>Tutoring, strategy and application support — coordinated by one team that tracks your progress every week.</p>
-          </Reveal>
-          <div className="grid-3">
-            {features.map((f, i) => (
-              <Reveal key={f.title} className="card" delay={i * 60}>
-                <div className="card-icon">
-                  <Icon name={f.icon} />
-                </div>
-                <h3>{f.title}</h3>
-                <p>{f.description}</p>
+          <div className="case-study-stack">
+            {testimonials.slice(1).map((t, i) => (
+              <Reveal key={t.name} delay={(i + 1) * 60}>
+                <CaseStudyCard story={t} />
               </Reveal>
             ))}
           </div>
         </div>
-      </section>
+        <Reveal delay={100}>
+          <p className="section-cta-link">
+            <Link href="/results">View all results →</Link>
+          </p>
+        </Reveal>
+      </Section>
 
-      {/* Split: platform */}
-      <section className="section">
-        <div className="container">
-          <div className="split">
-            <Reveal>
-              <span className="eyebrow">The app</span>
-              <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)' }}>
-                An app that keeps you moving every day
-              </h2>
-              <p style={{ marginTop: '1rem', fontSize: '1.05rem', color: 'var(--muted)' }}>
-                Your roadmap, tasks, sessions and advisor messages in one place, right on your
-                phone. Students and parents always know the current stage and what comes next.
-              </p>
-              <ul className="check-list">
-                <li>Shared roadmap with milestones and owners</li>
-                <li>Weekly progress updates for students and families</li>
-                <li>Built-in AI study guide for instant help</li>
-                <li>Message your advisor and join sessions anywhere</li>
-              </ul>
-              <div style={{ marginTop: '2rem' }}>
-                <AppButtons variant="dark" />
-              </div>
-            </Reveal>
-
-            <Reveal delay={120}>
-              <div className="visual-card">
-                <div className="visual-row">
-                  <span className="dot"><Icon name="strategy" size={18} /></span>
-                  <div>
-                    <b>Application roadmap</b>
-                    <small>Week 4 of 8 · On track</small>
-                  </div>
-                  <span className="tag">Active</span>
-                </div>
-                <div className="visual-row">
-                  <span className="dot"><Icon name="documents" size={18} /></span>
-                  <div>
-                    <b>SOP draft reviewed</b>
-                    <small>Advisor feedback ready</small>
-                  </div>
-                  <span className="tag">Done</span>
-                </div>
-                <div className="visual-row">
-                  <span className="dot"><Icon name="tutoring" size={18} /></span>
-                  <div>
-                    <b>IELTS session</b>
-                    <small>Thursday · 5:00 PM</small>
-                  </div>
-                  <span className="tag" style={{ background: '#e0e7ff', color: '#4338ca' }}>Soon</span>
-                </div>
-                <div className="visual-row">
-                  <span className="dot"><Icon name="ai" size={18} /></span>
-                  <div>
-                    <b>Eagle AI Guide</b>
-                    <small>“Help me outline my essay”</small>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* How it works */}
-      <section className="section section-soft">
-        <div className="container">
-          <Reveal className="section-head">
-            <span className="eyebrow">How it works</span>
-            <h2>A clear path, from week one</h2>
-            <p>No guesswork. Every engagement follows a structured plan with milestones and weekly tracking.</p>
+      <Section soft>
+        <div className="split">
+          <Reveal>
+            <SectionHeader
+              eyebrow="Community"
+              title="20,000+ students follow our Telegram"
+              description="Daily scholarship alerts, deadlines and fully-funded opportunities — free for everyone."
+              align="left"
+            />
+            <TrustStrip />
           </Reveal>
-          <div className="steps">
-            {steps.map((step, i) => (
-              <Reveal key={step.title} className="step" delay={i * 80}>
-                <span className="step-num">{i + 1}</span>
-                <span className="step-week">{step.week}</span>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Audiences */}
-      <section className="section">
-        <div className="container">
-          <Reveal className="section-head">
-            <span className="eyebrow">Who we help</span>
-            <h2>Built around your goals</h2>
-          </Reveal>
-          <div className="grid-3">
-            {audiences.map((a, i) => (
-              <Reveal key={a.title} className="audience-card" delay={i * 70}>
-                <h3>{a.title}</h3>
-                <p>{a.description}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="section section-soft">
-        <div className="container">
-          <Reveal className="section-head">
-            <span className="eyebrow">Success stories</span>
-            <h2>Results students feel</h2>
-          </Reveal>
-          <div className="grid-3">
-            {testimonials.map((t, i) => (
-              <Reveal key={t.name} className="quote" delay={i * 70}>
-                <span className="stars">★★★★★</span>
-                <p>“{t.quote}”</p>
-                <div className="who">
-                  <b>{t.name}</b>
-                  <small>{t.detail}</small>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing teaser */}
-      <section className="section">
-        <div className="container">
-          <Reveal className="section-head">
-            <span className="eyebrow">Plans</span>
-            <h2>Choose the support that fits</h2>
-            <p>Transparent packages with no surprises. Talk to us to find your fit.</p>
-          </Reveal>
-          <div className="price-grid">
-            {pricing.map((plan, i) => (
-              <Reveal key={plan.name} className={`price-card ${plan.featured ? 'featured' : ''}`} delay={i * 70}>
-                {plan.featured && <span className="price-badge">Most chosen</span>}
-                <h3>{plan.name}</h3>
-                <p className="desc">{plan.description}</p>
-                <ul className="price-features">
-                  {plan.features.map((f) => (
-                    <li key={f}>{f}</li>
-                  ))}
-                </ul>
-                <Link href="/contact" className={`btn ${plan.featured ? 'btn-primary' : 'btn-block'} btn-block`}>
-                  Get started
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="section" style={{ paddingTop: 0 }}>
-        <div className="container">
-          <Reveal className="cta">
-            <h2>Ready to write your success story?</h2>
-            <p>Book a free consultation and get a structured pathway within your first week.</p>
-            <div className="hero-ctas">
-              <Link href="/contact" className="btn btn-light btn-lg">Start your journey</Link>
-            </div>
-            <div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'center' }}>
-              <AppButtons variant="light" center />
-            </div>
+          <Reveal delay={80}>
+            <TelegramCard />
           </Reveal>
         </div>
-      </section>
+      </Section>
+
+      <Section tight>
+        <Reveal className="cta">
+          <h2>Ready to write your success story?</h2>
+          <p>Book a free consultation and get a structured pathway within your first week.</p>
+          <div className="hero-ctas">
+            <Link href="/contact" className="btn btn-light btn-lg">Start your journey</Link>
+            <Link href="/how-it-works" className="btn btn-light btn-lg">See how it works</Link>
+          </div>
+        </Reveal>
+      </Section>
     </>
   );
 }

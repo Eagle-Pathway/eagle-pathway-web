@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Sparkles, Loader2 } from 'lucide-react';
+import Image from 'next/image';
+import { MessageCircle, X, Send, Loader2 } from 'lucide-react';
 
 interface Message {
   role: 'user' | 'assistant' | 'system';
@@ -90,115 +91,54 @@ export default function AiAssistantWidget() {
   };
 
   return (
-    <div style={{ position: 'fixed', bottom: 24, right: 24, zIndex: 200, display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+    <div className="assistant-root">
       {isOpen && (
-        <div
-          style={{
-            width: 360,
-            maxWidth: 'calc(100vw - 48px)',
-            height: 520,
-            maxHeight: 'calc(100vh - 120px)',
-            marginBottom: 16,
-            background: '#fff',
-            borderRadius: 20,
-            boxShadow: '0 30px 60px -15px rgba(15,23,42,0.3)',
-            border: '1px solid #e6e8ef',
-            display: 'flex',
-            flexDirection: 'column',
-            overflow: 'hidden',
-          }}
-        >
-          <div
-            style={{
-              padding: '16px 18px',
-              background: 'linear-gradient(120deg, #4f46e5, #7c3aed)',
-              color: '#fff',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 600 }}>
-              <Sparkles size={18} /> Eagle AI Guide
+        <div className="assistant-panel">
+          <div className="assistant-header">
+            <div className="assistant-title">
+              <Image src="/icon.png" alt="" width={22} height={22} className="assistant-logo" />
+              Pathway Advisor
             </div>
             <button
+              type="button"
               onClick={() => setIsOpen(false)}
               aria-label="Close chat"
-              style={{ background: 'none', border: 0, color: 'rgba(255,255,255,0.85)', cursor: 'pointer', display: 'flex' }}
+              className="assistant-close"
             >
               <X size={20} />
             </button>
           </div>
 
-          <div style={{ flex: 1, overflowY: 'auto', padding: 16, display: 'flex', flexDirection: 'column', gap: 12, background: '#f7f8fc' }}>
+          <div className="assistant-messages">
             {messages.length === 0 && (
-              <div style={{ textAlign: 'center', color: '#64748b', marginTop: 36 }}>
-                <Sparkles size={36} style={{ margin: '0 auto 12px', opacity: 0.5 }} />
-                <p style={{ fontSize: 14 }}>Hi! Ask me anything about scholarships, tutoring or how Eagle Pathway works.</p>
+              <div className="assistant-empty">
+                <Image src="/icon.png" alt="" width={40} height={40} className="assistant-empty-icon" />
+                <p>Ask about scholarships, tutoring or how Eagle Pathway works.</p>
               </div>
             )}
 
             {messages.map((msg, index) => (
-              <div key={index} style={{ display: 'flex', justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start' }}>
-                <div
-                  style={{
-                    maxWidth: '85%',
-                    borderRadius: 16,
-                    padding: '10px 13px',
-                    fontSize: 14,
-                    lineHeight: 1.5,
-                    whiteSpace: 'pre-wrap',
-                    background: msg.role === 'user' ? '#4f46e5' : '#fff',
-                    color: msg.role === 'user' ? '#fff' : '#0f172a',
-                    border: msg.role === 'user' ? 'none' : '1px solid #e6e8ef',
-                    borderTopRightRadius: msg.role === 'user' ? 4 : 16,
-                    borderTopLeftRadius: msg.role === 'user' ? 16 : 4,
-                  }}
-                >
-                  {msg.content}
-                </div>
+              <div key={index} className={`assistant-bubble-row ${msg.role}`}>
+                <div className={`assistant-bubble ${msg.role}`}>{msg.content}</div>
               </div>
             ))}
             <div ref={messagesEndRef} />
           </div>
 
-          <form
-            onSubmit={handleSubmit}
-            style={{ padding: 12, background: '#fff', borderTop: '1px solid #e6e8ef', display: 'flex', gap: 8 }}
-          >
+          <form className="assistant-form" onSubmit={handleSubmit}>
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about scholarships..."
               disabled={isLoading}
-              style={{
-                flex: 1,
-                background: '#f1f3f9',
-                border: '1px solid transparent',
-                borderRadius: 999,
-                padding: '10px 16px',
-                fontSize: 14,
-                color: '#0f172a',
-                outline: 'none',
-              }}
+              className="assistant-input"
             />
             <button
               type="submit"
               disabled={!input.trim() || isLoading}
               aria-label="Send message"
-              style={{
-                background: !input.trim() || isLoading ? '#a5b4fc' : '#4f46e5',
-                color: '#fff',
-                width: 42,
-                height: 42,
-                borderRadius: '50%',
-                border: 0,
-                display: 'grid',
-                placeItems: 'center',
-                cursor: !input.trim() || isLoading ? 'default' : 'pointer',
-                flexShrink: 0,
-              }}
+              className="assistant-send"
             >
               {isLoading ? <Loader2 size={18} className="spin" /> : <Send size={18} />}
             </button>
@@ -207,23 +147,10 @@ export default function AiAssistantWidget() {
       )}
 
       <button
+        type="button"
         onClick={() => setIsOpen((v) => !v)}
         aria-label={isOpen ? 'Hide assistant' : 'Open assistant'}
-        style={{
-          background: 'linear-gradient(120deg, #4f46e5, #7c3aed)',
-          color: '#fff',
-          width: 58,
-          height: 58,
-          borderRadius: '50%',
-          border: 0,
-          boxShadow: '0 12px 28px -8px rgba(79,70,229,0.7)',
-          display: 'grid',
-          placeItems: 'center',
-          cursor: 'pointer',
-          transform: isOpen ? 'scale(0)' : 'scale(1)',
-          opacity: isOpen ? 0 : 1,
-          transition: 'all 0.25s ease',
-        }}
+        className={`assistant-toggle ${isOpen ? 'hidden' : ''}`}
       >
         <MessageCircle size={26} />
       </button>

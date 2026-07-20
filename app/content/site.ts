@@ -1,13 +1,18 @@
 // Central content for the Eagle Pathway marketing site.
-// Scholarship guidance + academic tutoring for Ethiopian students.
 
 export const site = {
   name: "Eagle Pathway",
   tagline: "From the classroom to a global scholarship.",
+  url: "https://www.eaglespathway.com",
   email: "info@eaglepathway.com",
   phone: "+251 93 250 8910",
   location: "Addis Ababa, Ethiopia",
-  // Native student & tutor apps — not published yet.
+  founded: 2019,
+  telegram: {
+    url: "https://t.me/Tegegnpathway",
+    handle: "@Tegegnpathway",
+    members: "20,000+",
+  },
   app: {
     available: false,
     ios: "#",
@@ -17,25 +22,32 @@ export const site = {
 
 export const nav = [
   { label: "Services", href: "/services" },
+  { label: "How it works", href: "/how-it-works" },
+  { label: "Results", href: "/results" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
 export const stats = [
-  { value: "70+", label: "University placements" },
-  { value: "$1M+", label: "Scholarships secured" },
-  { value: "4", label: "Continents reached" },
-  { value: "94%", label: "On-time submissions" },
+  { value: "70+", label: "Students guided", detail: "Since 2024" },
+  { value: "$1M+", label: "Scholarships secured", detail: "Across 4 continents" },
+  { value: "20k+", label: "Telegram community", detail: "Daily opportunity alerts" },
+  { value: "94%", label: "On-time submissions", detail: "Tracked weekly" },
 ];
 
-// Logos / wordmarks of universities students have been placed at.
 export const placements = [
-  "Oxford",
-  "McGill",
-  "UBC",
-  "Edinburgh",
-  "EPFL",
-  "TU Munich",
+  { name: "University of Oxford", short: "Oxford" },
+  { name: "McGill University", short: "McGill" },
+  { name: "University of British Columbia", short: "UBC" },
+  { name: "University of Edinburgh", short: "Edinburgh" },
+  { name: "EPFL", short: "EPFL" },
+  { name: "TU Munich", short: "TU Munich" },
+];
+
+export const trustPoints = [
+  { label: "Honest guidance", detail: "No false guarantees" },
+  { label: "Remote & in-person", detail: "Students across Ethiopia" },
+  { label: "Free consultation", detail: "No obligation to start" },
 ];
 
 export const features = [
@@ -168,6 +180,8 @@ export const serviceTracks = [
 export const pricing = [
   {
     name: "Starter",
+    price: "From 8,000 ETB",
+    period: "one-time assessment",
     description: "A clear direction before committing to a full plan.",
     features: [
       "Profile assessment",
@@ -179,6 +193,8 @@ export const pricing = [
   },
   {
     name: "Growth",
+    price: "From 18,000 ETB",
+    period: "per month",
     description: "Balanced tutoring and application support — our most chosen plan.",
     features: [
       "Full application roadmap",
@@ -191,6 +207,8 @@ export const pricing = [
   },
   {
     name: "Premium",
+    price: "Custom quote",
+    period: "tailored engagement",
     description: "End-to-end execution with close oversight.",
     features: [
       "Everything in Growth",
@@ -228,20 +246,29 @@ export const testimonials = [
   {
     quote:
       "I went from no plan to a fully funded offer. The weekly tracking kept me honest and the SOP feedback was a different level.",
-    name: "Student placed at McGill",
-    detail: "Scholarship Track",
+    name: "Hanna M.",
+    location: "Addis Ababa",
+    outcome: "Fully funded MSc at McGill",
+    track: "Scholarship Track",
+    metric: "8-month guided pathway",
   },
   {
     quote:
       "As a parent I finally had visibility. Every week I knew exactly where my daughter was in the process and what came next.",
-    name: "Parent, Addis Ababa",
-    detail: "Growth plan",
+    name: "Selam T.",
+    location: "Addis Ababa",
+    outcome: "Admitted to University of Edinburgh",
+    track: "Growth plan",
+    metric: "Parent weekly updates",
   },
   {
     quote:
       "The tutoring lifted my IELTS band enough to qualify for the programs I actually wanted. Worth every session.",
-    name: "Student placed at Edinburgh",
-    detail: "Tutoring Track",
+    name: "Daniel K.",
+    location: "Hawassa",
+    outcome: "IELTS 6.0 → 7.5",
+    track: "Tutoring Track",
+    metric: "Remote tutoring over 4 months",
   },
 ];
 

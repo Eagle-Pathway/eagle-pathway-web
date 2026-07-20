@@ -78,6 +78,8 @@ export default function ServicesPage() {
               <Reveal key={plan.name} className={`price-card ${plan.featured ? 'featured' : ''}`} delay={i * 70}>
                 {plan.featured && <span className="price-badge">Most chosen</span>}
                 <h3>{plan.name}</h3>
+                <p className="price-amount">{plan.price}</p>
+                <p className="price-period">{plan.period}</p>
                 <p className="desc">{plan.description}</p>
                 <ul className="price-features">
                   {plan.features.map((f) => (

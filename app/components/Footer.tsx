@@ -43,7 +43,9 @@ export default function Footer() {
             <ul>
               <li><Link href="/services">Tutoring</Link></li>
               <li><Link href="/services">Scholarships</Link></li>
-              <li><span style={{ color: 'var(--muted)' }}>Mobile app — coming soon</span></li>
+              <li><Link href="/how-it-works">How it works</Link></li>
+              <li><Link href="/results">Results</Link></li>
+              <li><a href={site.telegram.url} target="_blank" rel="noopener noreferrer">Telegram community</a></li>
             </ul>
           </div>
 

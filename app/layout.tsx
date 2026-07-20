@@ -4,6 +4,7 @@ import './globals.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import AiAssistantWidget from './components/AiAssistantWidget';
+import { site } from './content/site';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -19,8 +20,11 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.eaglespathway.com'),
-  title: 'Eagle Pathway | Scholarships & Tutoring for Ethiopian Students',
+  metadataBase: new URL(site.url),
+  title: {
+    default: 'Eagle Pathway | Scholarships & Tutoring for Ethiopian Students',
+    template: '%s | Eagle Pathway',
+  },
   description:
     'From the classroom to a global scholarship. Expert tutoring and scholarship guidance helping Ethiopian students secure admissions and funding at world-class universities.',
   keywords: [
@@ -41,9 +45,35 @@ export const metadata: Metadata = {
       'Expert tutoring and scholarship guidance for Ethiopian students aiming for world-class universities.',
     type: 'website',
     locale: 'en_US',
-    url: 'https://www.eaglespathway.com',
-    siteName: 'Eagle Pathway',
+    url: site.url,
+    siteName: site.name,
+    images: [{ url: '/logo.png', width: 1200, height: 630, alt: site.name }],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Eagle Pathway — Secure Your Future Abroad',
+    description:
+      'Expert tutoring and scholarship guidance for Ethiopian students aiming for world-class universities.',
+    images: ['/logo.png'],
+  },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  name: site.name,
+  url: site.url,
+  logo: `${site.url}/icon.png`,
+  description:
+    'Scholarship guidance and academic tutoring helping Ethiopian students secure admissions and funding at world-class universities.',
+  email: site.email,
+  telephone: site.phone,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Addis Ababa',
+    addressCountry: 'ET',
+  },
+  sameAs: [site.telegram.url],
 };
 
 export default function RootLayout({
@@ -52,6 +82,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${sora.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Nav />
         <main>{children}</main>
         <Footer />
