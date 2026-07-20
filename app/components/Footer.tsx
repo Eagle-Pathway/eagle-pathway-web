@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { Heart } from 'lucide-react';
 import { nav, site } from '@/app/content/site';
@@ -9,14 +10,13 @@ export default function Footer() {
         <div className="footer-grid">
           <div>
             <Link href="/" className="brand">
-              <span className="brand-mark" aria-hidden>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 11l9-7 9 7" />
-                  <path d="M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9" />
-                  <path d="M9 21v-6h6v6" />
-                </svg>
-              </span>
-              {site.name}
+              <Image
+                src="/logo.png"
+                alt={site.name}
+                width={200}
+                height={64}
+                className="brand-logo brand-logo-footer"
+              />
             </Link>
             <p>
               Scholarship guidance and academic tutoring helping Ethiopian students

@@ -140,15 +140,12 @@ img { max-width: 100%; display: block; }
   font-size: 1.15rem;
   color: var(--ink);
 }
-.brand-mark {
-  width: 32px;
-  height: 32px;
-  border-radius: 9px;
-  background: linear-gradient(135deg, var(--indigo-500), var(--violet));
-  display: grid;
-  place-items: center;
-  color: #fff;
-  box-shadow: 0 6px 16px -6px rgba(79, 70, 229, 0.7);
+.brand-logo {
+  height: 48px;
+  width: auto;
+}
+.brand-logo-footer {
+  height: 40px;
 }
 .nav-links {
   display: flex;

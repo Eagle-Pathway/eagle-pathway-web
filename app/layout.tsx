@@ -19,6 +19,7 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.eaglespathway.com'),
   title: 'Eagle Pathway | Scholarships & Tutoring for Ethiopian Students',
   description:
     'From the classroom to a global scholarship. Expert tutoring and scholarship guidance helping Ethiopian students secure admissions and funding at world-class universities.',
@@ -30,13 +31,17 @@ export const metadata: Metadata = {
     'Study Abroad',
     'SAT IELTS prep',
   ],
+  icons: {
+    icon: '/icon.png',
+    apple: '/icon.png',
+  },
   openGraph: {
     title: 'Eagle Pathway — Secure Your Future Abroad',
     description:
       'Expert tutoring and scholarship guidance for Ethiopian students aiming for world-class universities.',
     type: 'website',
     locale: 'en_US',
-    url: 'https://eagle-pathway.com',
+    url: 'https://www.eaglespathway.com',
     siteName: 'Eagle Pathway',
   },
 };
