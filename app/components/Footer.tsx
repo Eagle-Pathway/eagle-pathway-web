@@ -32,9 +32,6 @@ export default function Footer() {
                   <Link href={item.href}>{item.label}</Link>
                 </li>
               ))}
-              <li>
-                <Link href="/">Home</Link>
-              </li>
             </ul>
           </div>
 

@@ -21,10 +21,11 @@ export const site = {
 };
 
 export const nav = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "How it works", href: "/how-it-works" },
   { label: "Results", href: "/results" },
-  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -42,6 +43,8 @@ export const placements = [
   { name: "University of Edinburgh", short: "Edinburgh" },
   { name: "EPFL", short: "EPFL" },
   { name: "TU Munich", short: "TU Munich" },
+  { name: "Italy", short: "IYT" },
+  { name: "Erasmus Mundus", short: "Erasmus" },
 ];
 
 export const trustPoints = [
@@ -269,6 +272,15 @@ export const testimonials = [
     outcome: "IELTS 6.0 → 7.5",
     track: "Tutoring Track",
     metric: "Remote tutoring over 4 months",
+  },
+  {
+    quote:
+      "Eagle Pathway gave me the exact roadmap I needed to secure my visa and funding. I couldn't have done it without their guidance.",
+    name: "Amanuel B.",
+    location: "Dire Dawa",
+    outcome: "Admitted to UBC with funding",
+    track: "Scholarship Track",
+    metric: "Complete application support",
   },
 ];
 

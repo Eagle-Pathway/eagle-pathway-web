@@ -42,9 +42,6 @@ export default function Nav() {
         </nav>
 
         <div className="nav-right">
-          <Link className="btn btn-ghost" href="/services">
-            Services
-          </Link>
           <Link className="btn btn-primary" href="/contact">
             Get Started
           </Link>
@@ -60,10 +57,7 @@ export default function Nav() {
       </div>
 
       {open && (
-        <div className="mobile-menu">
-          <Link href="/services" onClick={() => setOpen(false)}>
-            Services
-          </Link>
+      <div className="mobile-menu">
           {nav.map((item) => (
             <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>
               {item.label}

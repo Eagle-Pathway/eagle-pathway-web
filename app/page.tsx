@@ -108,15 +108,15 @@ export default function Home() {
             description="Real outcomes from structured guidance — not promises."
           />
         </Reveal>
-        <div className="case-study-grid">
-          <Reveal>
-            <CaseStudyCard story={featuredStory} featured />
-          </Reveal>
-          <div className="case-study-stack">
-            {testimonials.slice(1).map((t, i) => (
-              <Reveal key={t.name} delay={(i + 1) * 60}>
-                <CaseStudyCard story={t} />
-              </Reveal>
+        <div className="testimonials-carousel-wrapper">
+          <div className="testimonials-marquee">
+            {testimonials.map((t, i) => (
+              <CaseStudyCard key={`m1-${i}`} story={t} />
+            ))}
+          </div>
+          <div className="testimonials-marquee" aria-hidden="true">
+            {testimonials.map((t, i) => (
+              <CaseStudyCard key={`m2-${i}`} story={t} />
             ))}
           </div>
         </div>
