@@ -16,6 +16,7 @@ export default function Footer() {
                 width={200}
                 height={64}
                 className="brand-logo brand-logo-footer"
+                priority
               />
             </Link>
             <p>
