@@ -1,8 +1,8 @@
 import ApplicationForm from '../components/ApplicationForm';
 
 export const metadata = {
-  title: 'Commitment Application Form | Eagle Pathway',
-  description: 'Apply for Eagle Pathway consultancy services.',
+  title: 'Get Started | Eagle Pathway',
+  description: 'Request your free consultation with Eagle Pathway. Tell us about your goals and we will reach out within 24 hours.',
 };
 
 export default function ApplyPage() {

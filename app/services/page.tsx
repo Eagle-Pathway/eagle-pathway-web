@@ -151,7 +151,7 @@ export default function ServicesPage() {
             <p>From university selection to scholarship applications and visa preparation, Eagle Pathway provides strategic guidance to help Ethiopian and African students achieve their international education goals.</p>
             <div className="svc-hero-ctas">
               <Link href="/contact" className="btn btn-primary btn-lg">Book Consultation</Link>
-              <Link href="/contact" className="btn btn-ghost btn-lg">Book Consultation</Link>
+              <Link href="/apply" className="btn btn-ghost btn-lg">Start Application</Link>
             </div>
             <div className="svc-trust-strip">
               {trustIndicators.map((indicator, i) => (
@@ -252,7 +252,7 @@ export default function ServicesPage() {
             <p>Get expert guidance and build a stronger path toward international education.</p>
             <div className="hero-ctas justify-center">
               <Link href="/contact" className="btn btn-primary btn-lg">Book Consultation</Link>
-              <Link href="/contact" className="btn btn-ghost btn-lg" style={{ background: '#fff' }}>Get Started</Link>
+              <Link href="/apply" className="btn btn-ghost btn-lg" style={{ background: '#fff' }}>Get Started</Link>
             </div>
           </Reveal>
         </div>

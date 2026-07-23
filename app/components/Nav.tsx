@@ -42,7 +42,7 @@ export default function Nav() {
         </nav>
 
         <div className="nav-right">
-          <Link className="btn btn-primary" href="/contact">
+          <Link className="btn btn-primary" href="/apply">
             Get Started
           </Link>
           <button
