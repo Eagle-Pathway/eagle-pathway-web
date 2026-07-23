@@ -15,7 +15,7 @@ export default function MentorshipCard({
   description,
   includes,
   ctaText,
-  ctaLink = '/apply',
+  ctaLink = '/contact',
   isPopular = false,
 }: MentorshipCardProps) {
   return (

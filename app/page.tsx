@@ -37,8 +37,8 @@ export default function Home() {
               </Reveal>
               <Reveal delay={120}>
                 <div className="hero-ctas">
-                  <Link href="/apply" className="btn btn-primary btn-lg">
-                    Start your journey
+                  <Link href="/contact" className="btn btn-primary btn-lg">
+                    Get Started
                   </Link>
                   <Link href="/services" className="btn btn-ghost btn-lg">
                     Explore services
@@ -148,7 +148,7 @@ export default function Home() {
           <h2>Ready to write your success story?</h2>
           <p>Book a free consultation and get a structured pathway within your first week.</p>
           <div className="hero-ctas">
-            <Link href="/apply" className="btn btn-light btn-lg">Start your journey</Link>
+            <Link href="/contact" className="btn btn-light btn-lg">Get Started</Link>
             <Link href="/how-it-works" className="btn btn-light btn-lg">See how it works</Link>
           </div>
         </Reveal>

@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Check } from 'lucide-react';
 import StepIndicator from './StepIndicator';
 import ServiceSelector from './ServiceSelector';
-import FileUpload from './FileUpload';
 import ReviewStep from './ReviewStep';
 
 type ConsultationData = {
@@ -29,11 +28,8 @@ type ConsultationData = {
   appliedBefore: string;
   appliedDetails: string;
   referral: string;
-  
+
   // Step 6
-  paymentReceipt: File | null;
-  
-  // Step 7
   agreements: {
     accurate: boolean;
     noGuarantee: boolean;
@@ -54,7 +50,6 @@ const initialData: ConsultationData = {
   appliedBefore: '',
   appliedDetails: '',
   referral: '',
-  paymentReceipt: null,
   agreements: {
     accurate: false,
     noGuarantee: false,
@@ -69,7 +64,7 @@ export default function ConsultationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const totalSteps = 8;
+  const totalSteps = 7;
 
   const updateData = (fields: Partial<ConsultationData>) => {
     setData((prev) => ({ ...prev, ...fields }));
@@ -102,9 +97,6 @@ export default function ConsultationForm() {
       }
     }
     else if (currentStep === 6) {
-      if (!data.paymentReceipt) newErrors.paymentReceipt = 'Payment receipt is required.';
-    }
-    else if (currentStep === 7) {
       if (!data.agreements.accurate || !data.agreements.noGuarantee || !data.agreements.terms) {
         newErrors.agreements = 'You must agree to all conditions to proceed.';
       }
@@ -130,17 +122,12 @@ export default function ConsultationForm() {
   };
 
   const submitConsultation = async () => {
-    if (!validateStep(8)) return;
+    if (!validateStep(7)) return;
     
     setIsSubmitting(true);
     
-    // Prepare payload
-    const payload = {
-      ...data,
-      paymentReceipt: data.paymentReceipt?.name || null // Just logging the name for now
-    };
-    
-    console.log('--- CONSULTATION SUBMITTED ---', payload);
+    const payload = { ...data };
+    console.log('--- FREE CONSULTATION SUBMITTED ---', payload);
     // TODO: backend integration with Supabase or Next.js API
     
     setTimeout(() => {
@@ -309,30 +296,6 @@ export default function ConsultationForm() {
         )}
 
         {step === 6 && (
-          <div className="consult-step">
-            <h2>Consultation Confirmation</h2>
-            <p className="step-desc">To confirm your consultation request.</p>
-
-            <div className="payment-info-box">
-              <div className="amount">Payment Required: <span>5000 ETB</span></div>
-              <div className="details">
-                <p><span>Payment Method:</span> Commercial Bank of Ethiopia</p>
-                <p><span>Account Holder:</span> Tadelech Eyasu</p>
-                <p><span>Account Number:</span> <strong>1000401380338</strong></p>
-              </div>
-            </div>
-
-            <div style={{ marginTop: '2rem' }}>
-              <FileUpload 
-                file={data.paymentReceipt} 
-                onFileSelect={(file) => updateData({ paymentReceipt: file })} 
-              />
-              {errors.paymentReceipt && <span className="error-text" style={{ display: 'block', marginTop: '0.5rem', textAlign: 'center' }}>{errors.paymentReceipt}</span>}
-            </div>
-          </div>
-        )}
-
-        {step === 7 && (
           <div className="consult-step">
             <h2>Agreement</h2>
             <p className="step-desc">Please review and agree to the following.</p>
