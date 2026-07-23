@@ -9,31 +9,34 @@ import ReviewStep from './ReviewStep';
 
 type ApplicationData = {
   // Step 1
+  eligibilityConfirmed: boolean;
+
+  // Step 2
   fullName: string;
   gender: string;
   phone: string;
   email: string;
   telegram: string;
   
-  // Step 2
+  // Step 3
   academicLevel: string;
   
-  // Step 3
+  // Step 4
   englishProof: string;
   
-  // Step 4
+  // Step 5
   services: string[];
   
-  // Step 5
+  // Step 6
   motivation: string;
   appliedBefore: string;
   appliedDetails: string;
   referral: string;
   
-  // Step 6
+  // Step 7
   paymentReceipt: File | null;
   
-  // Step 7
+  // Step 8
   agreements: {
     accurate: boolean;
     noGuarantee: boolean;
@@ -42,6 +45,7 @@ type ApplicationData = {
 };
 
 const initialData: ApplicationData = {
+  eligibilityConfirmed: false,
   fullName: '',
   gender: '',
   phone: '',
@@ -69,7 +73,7 @@ export default function ConsultationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const totalSteps = 8;
+  const totalSteps = 9;
 
   const updateData = (fields: Partial<ApplicationData>) => {
     setData((prev) => ({ ...prev, ...fields }));
@@ -80,32 +84,35 @@ export default function ConsultationForm() {
     const newErrors: Record<string, string> = {};
 
     if (currentStep === 1) {
+      if (!data.eligibilityConfirmed) newErrors.eligibilityConfirmed = 'You must confirm that you meet the eligibility requirements.';
+    }
+    else if (currentStep === 2) {
       if (!data.fullName.trim()) newErrors.fullName = 'Required';
       if (!data.gender) newErrors.gender = 'Required';
       if (!data.phone.trim()) newErrors.phone = 'Required';
       if (!data.email.trim() || !/^\S+@\S+\.\S+$/.test(data.email)) newErrors.email = 'Valid email required';
       if (!data.telegram.trim()) newErrors.telegram = 'Required';
     }
-    else if (currentStep === 2) {
+    else if (currentStep === 3) {
       if (!data.academicLevel) newErrors.academicLevel = 'Please select your academic level.';
     }
-    else if (currentStep === 3) {
+    else if (currentStep === 4) {
       if (!data.englishProof) newErrors.englishProof = 'Please select an option.';
     }
-    else if (currentStep === 4) {
+    else if (currentStep === 5) {
       if (data.services.length === 0) newErrors.services = 'Please select at least one service.';
     }
-    else if (currentStep === 5) {
+    else if (currentStep === 6) {
       if (data.appliedBefore === 'Yes' && !data.appliedDetails.trim()) {
         newErrors.appliedDetails = 'Please briefly describe your previous application.';
       }
     }
-    else if (currentStep === 6) {
+    else if (currentStep === 7) {
       if (!data.paymentReceipt) {
         newErrors.paymentReceipt = 'Payment receipt is required to proceed.';
       }
     }
-    else if (currentStep === 7) {
+    else if (currentStep === 8) {
       if (!data.agreements.accurate || !data.agreements.noGuarantee || !data.agreements.terms) {
         newErrors.agreements = 'You must agree to all conditions to proceed.';
       }
@@ -131,7 +138,7 @@ export default function ConsultationForm() {
   };
 
   const submitApplication = async () => {
-    if (!validateStep(8)) return;
+    if (!validateStep(9)) return;
     
     setIsSubmitting(true);
     
@@ -167,8 +174,81 @@ export default function ConsultationForm() {
 
       <div className="consult-card">
         {step === 1 && (
+          <div className="consult-step step-1">
+            <h2>Eligibility Confirmation</h2>
+            <p className="step-desc">All of the following requirements are mandatory.</p>
+            
+            <div style={{ fontSize: '0.95rem', lineHeight: 1.6, color: 'var(--ink)', marginBottom: '2rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <p>To qualify for Eagle Pathway’s consultancy support and Italian university admission, applicants must meet the following minimum requirements:</p>
+              
+              <div>
+                <h4 style={{ color: 'var(--navy)', marginBottom: '0.25rem' }}>1️⃣ Academic Qualifications</h4>
+                <ul style={{ listStyle: 'disc', marginLeft: '1.5rem', color: 'var(--muted)' }}>
+                  <li><strong>Master’s Applicants:</strong> Minimum CGPA of 3.00 / 4.00</li>
+                  <li><strong>Bachelor’s Applicants:</strong> Minimum 275 / 600 on Ethiopia’s Grade 12 National Exam</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 style={{ color: 'var(--navy)', marginBottom: '0.25rem' }}>2️⃣ English Language Proficiency</h4>
+                <ul style={{ listStyle: 'disc', marginLeft: '1.5rem', color: 'var(--muted)' }}>
+                  <li><strong>IELTS:</strong> 6.5 or above</li>
+                  <li><strong>TOEFL:</strong> 90 or above</li>
+                  <li><strong>Duolingo:</strong> 100 or above</li>
+                  <li><strong>Medium of instruction letter</strong></li>
+                </ul>
+                <p style={{ fontSize: '0.85rem', color: 'var(--muted)', marginTop: '0.25rem', fontStyle: 'italic' }}>
+                  (Any one of the above is accepted. Medium of instruction letter can be used temporarily for some universities.)
+                </p>
+              </div>
+
+              <div>
+                <h4 style={{ color: 'var(--navy)', marginBottom: '0.25rem' }}>3️⃣ Bank Statement Requirement</h4>
+                <p style={{ color: 'var(--muted)', marginBottom: '0.5rem' }}>A valid bank statement is mandatory, unless you qualify for a merit-based scholarship.</p>
+                <p style={{ color: 'var(--ink)', fontWeight: 500, fontSize: '0.9rem', marginBottom: '0.25rem' }}>Accepted bank accounts:</p>
+                <ul style={{ listStyle: 'disc', marginLeft: '1.5rem', color: 'var(--muted)' }}>
+                  <li>Applicant’s personal account</li>
+                  <li>Parent’s (Father or Mother) account</li>
+                  <li>Sibling’s account</li>
+                  <li>Banks located in Ethiopia or Italy only</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 style={{ color: 'var(--navy)', marginBottom: '0.25rem' }}>4️⃣ Required Documents</h4>
+                <p style={{ color: 'var(--ink)', fontWeight: 500, fontSize: '0.9rem', marginBottom: '0.25rem' }}>(Combine and Upload as One File later in the process)</p>
+                <ul style={{ listStyle: 'disc', marginLeft: '1.5rem', color: 'var(--muted)' }}>
+                  <li>Passport (valid for at least 1 year)</li>
+                  <li>Academic transcripts (Grade 11 &amp; 12 for Bachelor’s, or University transcript for Master’s)</li>
+                  <li>Degree certificate or temporary degree</li>
+                  <li>Medium of Instruction (English)</li>
+                  <li>Two recommendation letters</li>
+                  <li>CV &amp; Motivation Letter (prepared with your consultant)</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 style={{ color: 'var(--navy)', marginBottom: '0.25rem' }}>5️⃣ Commitment &amp; Readiness</h4>
+                <ul style={{ listStyle: 'disc', marginLeft: '1.5rem', color: 'var(--muted)' }}>
+                  <li>Applicants must be ready to start immediately.</li>
+                  <li>A commitment fee of <strong>5,000 ETB</strong> is required before review — this amount will be deducted from the total package fee.</li>
+                </ul>
+              </div>
+            </div>
+
+            <label style={{ display: 'flex', gap: '0.8rem', alignItems: 'flex-start', cursor: 'pointer', background: 'var(--bg-soft)', padding: '1.25rem', borderRadius: 'var(--radius)', border: '1px solid var(--line)' }}>
+              <input type="checkbox" checked={data.eligibilityConfirmed} onChange={(e) => updateData({ eligibilityConfirmed: e.target.checked })} style={{ marginTop: '0.2rem', width: '18px', height: '18px', accentColor: 'var(--orange)' }} />
+              <span style={{ fontSize: '0.95rem', color: 'var(--ink)', lineHeight: 1.5, fontWeight: 500 }}>
+                I have read and confirm that I meet all the above eligibility requirements to proceed.
+              </span>
+            </label>
+            {errors.eligibilityConfirmed && <span className="error-text" style={{ display: 'block', marginTop: '0.75rem', fontWeight: 500 }}>{errors.eligibilityConfirmed}</span>}
+          </div>
+        )}
+
+        {step === 2 && (
           <div className="consult-step">
-            <h2>Apply with Us</h2>
+            <h2>Personal Information</h2>
             <div className="field">
               <label>Full Name *</label>
               <input type="text" placeholder="Your full name" value={data.fullName} onChange={(e) => updateData({ fullName: e.target.value })} />
@@ -208,7 +288,7 @@ export default function ConsultationForm() {
           </div>
         )}
 
-        {step === 2 && (
+        {step === 3 && (
           <div className="consult-step">
             <h2>Academic Background</h2>
             <p className="step-desc">What is your current academic level?</p>
@@ -225,7 +305,7 @@ export default function ConsultationForm() {
           </div>
         )}
 
-        {step === 3 && (
+        {step === 4 && (
           <div className="consult-step">
             <h2>English Language Qualification</h2>
             <p className="step-desc">Do you have English proficiency proof?</p>
@@ -242,7 +322,7 @@ export default function ConsultationForm() {
           </div>
         )}
 
-        {step === 4 && (
+        {step === 5 && (
           <div className="consult-step">
             <h2>Consultancy Services</h2>
             <p className="step-desc">What support do you need? (Select all that apply)</p>
@@ -255,7 +335,7 @@ export default function ConsultationForm() {
           </div>
         )}
 
-        {step === 5 && (
+        {step === 6 && (
           <div className="consult-step">
             <h2>About Your Goal</h2>
             <p className="step-desc">Help us understand your context. (Optional)</p>
@@ -302,7 +382,7 @@ export default function ConsultationForm() {
           </div>
         )}
 
-        {step === 6 && (
+        {step === 7 && (
           <div className="consult-step">
             <h2>Payment Confirmation</h2>
             <p className="step-desc">Please upload your payment receipt to proceed.</p>
@@ -328,7 +408,7 @@ export default function ConsultationForm() {
           </div>
         )}
 
-        {step === 7 && (
+        {step === 8 && (
           <div className="consult-step">
             <h2>Agreement</h2>
             <p className="step-desc">Please review and agree to the following.</p>
@@ -365,7 +445,7 @@ export default function ConsultationForm() {
           </div>
         )}
 
-        {step === 8 && (
+        {step === 9 && (
           <div className="consult-step">
             <h2>Final Review</h2>
             <p className="step-desc">Check your information before submitting.</p>

@@ -1,6 +1,7 @@
 'use client';
 
 type ReviewData = {
+  eligibilityConfirmed: boolean;
   fullName: string;
   gender: string;
   phone: string;
