@@ -338,7 +338,7 @@ export default function AboutPage() {
               to global success.
             </p>
             <div className="hero-ctas">
-              <Link href="/apply" className="btn btn-light btn-lg">Get Started</Link>
+              <Link href="/getstarted" className="btn btn-light btn-lg">Get Started</Link>
               <a href={`mailto:${site.email}`} className="btn btn-light btn-lg">Email us</a>
             </div>
           </Reveal>

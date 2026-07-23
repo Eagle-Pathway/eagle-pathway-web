@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import ConsultationForm from '../components/contact-consultation/ConsultationForm';
 
 export const metadata: Metadata = {
-  title: 'Consultation Booking | Eagle Pathway',
-  description: 'Book your scholarship and university admission consultation with Eagle Pathway.',
+  title: 'Apply with Us | Eagle Pathway',
+  description: 'Apply for our consultancy services and secure your pathway to global education.',
 };
 
 export default function ContactPage() {
@@ -12,9 +12,9 @@ export default function ContactPage() {
       <section className="page-head">
         <div className="container">
           <span className="eyebrow">8 quick sections · takes about 5 minutes</span>
-          <h1>Book Your Scholarship Consultation</h1>
+          <h1>Apply with Us</h1>
           <p>
-            Get personalized guidance for studying abroad, university admissions, and fully funded scholarship opportunities.
+            Ready to take the next step? Fill out the form below and our team will get back to you with the next steps for your application.
           </p>
         </div>
       </section>

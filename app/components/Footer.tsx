@@ -40,7 +40,7 @@ export default function Footer() {
           <div>
             <h4>Product</h4>
             <ul>
-              <li><Link href="/apply">Get Started</Link></li>
+              <li><Link href="/getstarted">Get Started</Link></li>
               <li><Link href="/services">Tutoring</Link></li>
               <li><Link href="/services">Scholarships</Link></li>
               <li><Link href="/how-it-works">How it works</Link></li>

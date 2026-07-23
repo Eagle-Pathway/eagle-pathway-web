@@ -6,7 +6,7 @@ import StepIndicator from './StepIndicator';
 import ServiceSelector from './ServiceSelector';
 import ReviewStep from './ReviewStep';
 
-type ConsultationData = {
+type ApplicationData = {
   // Step 1
   fullName: string;
   gender: string;
@@ -28,7 +28,7 @@ type ConsultationData = {
   appliedBefore: string;
   appliedDetails: string;
   referral: string;
-
+  
   // Step 6
   agreements: {
     accurate: boolean;
@@ -37,7 +37,7 @@ type ConsultationData = {
   };
 };
 
-const initialData: ConsultationData = {
+const initialData: ApplicationData = {
   fullName: '',
   gender: '',
   phone: '',
@@ -59,14 +59,14 @@ const initialData: ConsultationData = {
 
 export default function ConsultationForm() {
   const [step, setStep] = useState(1);
-  const [data, setData] = useState<ConsultationData>(initialData);
+  const [data, setData] = useState<ApplicationData>(initialData);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   const totalSteps = 7;
 
-  const updateData = (fields: Partial<ConsultationData>) => {
+  const updateData = (fields: Partial<ApplicationData>) => {
     setData((prev) => ({ ...prev, ...fields }));
     if (Object.keys(errors).length > 0) setErrors({});
   };
@@ -91,7 +91,6 @@ export default function ConsultationForm() {
       if (data.services.length === 0) newErrors.services = 'Please select at least one service.';
     }
     else if (currentStep === 5) {
-      // All optional, but if appliedBefore is Yes, they should provide details
       if (data.appliedBefore === 'Yes' && !data.appliedDetails.trim()) {
         newErrors.appliedDetails = 'Please briefly describe your previous application.';
       }
@@ -121,14 +120,12 @@ export default function ConsultationForm() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const submitConsultation = async () => {
+  const submitApplication = async () => {
     if (!validateStep(7)) return;
     
     setIsSubmitting(true);
     
-    const payload = { ...data };
-    console.log('--- FREE CONSULTATION SUBMITTED ---', payload);
-    // TODO: backend integration with Supabase or Next.js API
+    console.log('--- APPLICATION SUBMITTED ---', data);
     
     setTimeout(() => {
       setIsSubmitting(false);
@@ -143,9 +140,9 @@ export default function ConsultationForm() {
         <div className="success-icon">
           <Check size={36} />
         </div>
-        <h2>Consultation Request Received</h2>
+        <h2>Application Received</h2>
         <p className="success-msg">
-          Thank you for contacting Eagle Pathway. Our team will review your request and contact you through Telegram, WhatsApp, or Email.
+          Thank you for applying with Eagle Pathway. Our team will review your application and contact you through Telegram, WhatsApp, or Email.
         </p>
         <div style={{ marginTop: '2rem' }}>
           <a href="#" className="btn btn-primary">Join Telegram Community</a>
@@ -161,7 +158,7 @@ export default function ConsultationForm() {
       <div className="consult-card">
         {step === 1 && (
           <div className="consult-step">
-            <h2>Personal Information</h2>
+            <h2>Apply with Us</h2>
             <div className="field">
               <label>Full Name *</label>
               <input type="text" placeholder="Your full name" value={data.fullName} onChange={(e) => updateData({ fullName: e.target.value })} />
@@ -332,7 +329,7 @@ export default function ConsultationForm() {
           </div>
         )}
 
-        {step === 8 && (
+        {step === 7 && (
           <div className="consult-step">
             <h2>Final Review</h2>
             <p className="step-desc">Check your information before submitting.</p>
@@ -346,14 +343,14 @@ export default function ConsultationForm() {
           {step > 1 ? (
             <button className="btn btn-ghost" onClick={prevStep} disabled={isSubmitting}>Previous</button>
           ) : (
-            <div></div> // Spacer for layout
+            <div></div>
           )}
 
           {step < totalSteps ? (
             <button className="btn btn-primary" onClick={nextStep}>Continue</button>
           ) : (
-            <button className="btn btn-primary" onClick={submitConsultation} disabled={isSubmitting}>
-              {isSubmitting ? 'Submitting...' : 'Submit Consultation Request'}
+            <button className="btn btn-primary" onClick={submitApplication} disabled={isSubmitting}>
+              {isSubmitting ? 'Submitting...' : 'Apply with Us'}
             </button>
           )}
         </div>
