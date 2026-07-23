@@ -13,6 +13,7 @@ type ReviewData = {
   appliedBefore: string;
   appliedDetails: string;
   referral: string;
+  paymentReceipt: File | null;
   agreements: {
     accurate: boolean;
     noGuarantee: boolean;
@@ -67,6 +68,14 @@ export default function ReviewStep({ data }: Props) {
           <div><label>Applied Before</label><p>{data.appliedBefore}</p></div>
           {data.appliedBefore === 'Yes' && <div><label>Details</label><p>{data.appliedDetails}</p></div>}
           <div><label>Referral Source</label><p>{data.referral}</p></div>
+        </div>
+      </div>
+
+      <div className="review-section">
+        <h3>5. Payment Confirmation</h3>
+        <div className="review-block">
+          <label>Receipt Uploaded</label>
+          <p>{data.paymentReceipt ? data.paymentReceipt.name : <span className="no-data" style={{ color: 'red' }}>Missing</span>}</p>
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Check } from 'lucide-react';
 import StepIndicator from './StepIndicator';
 import ServiceSelector from './ServiceSelector';
+import FileUpload from './FileUpload';
 import ReviewStep from './ReviewStep';
 
 type ApplicationData = {
@@ -30,6 +31,9 @@ type ApplicationData = {
   referral: string;
   
   // Step 6
+  paymentReceipt: File | null;
+  
+  // Step 7
   agreements: {
     accurate: boolean;
     noGuarantee: boolean;
@@ -50,6 +54,7 @@ const initialData: ApplicationData = {
   appliedBefore: '',
   appliedDetails: '',
   referral: '',
+  paymentReceipt: null,
   agreements: {
     accurate: false,
     noGuarantee: false,
@@ -64,7 +69,7 @@ export default function ConsultationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const totalSteps = 7;
+  const totalSteps = 8;
 
   const updateData = (fields: Partial<ApplicationData>) => {
     setData((prev) => ({ ...prev, ...fields }));
@@ -96,6 +101,11 @@ export default function ConsultationForm() {
       }
     }
     else if (currentStep === 6) {
+      if (!data.paymentReceipt) {
+        newErrors.paymentReceipt = 'Payment receipt is required to proceed.';
+      }
+    }
+    else if (currentStep === 7) {
       if (!data.agreements.accurate || !data.agreements.noGuarantee || !data.agreements.terms) {
         newErrors.agreements = 'You must agree to all conditions to proceed.';
       }
@@ -121,7 +131,7 @@ export default function ConsultationForm() {
   };
 
   const submitApplication = async () => {
-    if (!validateStep(7)) return;
+    if (!validateStep(8)) return;
     
     setIsSubmitting(true);
     
@@ -142,7 +152,7 @@ export default function ConsultationForm() {
         </div>
         <h2>Application Received</h2>
         <p className="success-msg">
-          Thank you for applying with Eagle Pathway. Our team will review your application and contact you through Telegram, WhatsApp, or Email.
+          Thank you for applying with Eagle Pathway. Our team will review your application and payment, and contact you through Telegram, WhatsApp, or Email.
         </p>
         <div style={{ marginTop: '2rem' }}>
           <a href="#" className="btn btn-primary">Join Telegram Community</a>
@@ -294,6 +304,32 @@ export default function ConsultationForm() {
 
         {step === 6 && (
           <div className="consult-step">
+            <h2>Payment Confirmation</h2>
+            <p className="step-desc">Please upload your payment receipt to proceed.</p>
+
+            <div className="payment-info-box" style={{ background: 'var(--bg-soft)', padding: '1.5rem', borderRadius: 'var(--radius)', border: '1px solid var(--line)', marginBottom: '2rem' }}>
+              <div className="amount" style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--navy)', marginBottom: '1rem', borderBottom: '1px solid var(--line)', paddingBottom: '0.75rem' }}>
+                Required First Payment: <span style={{ color: 'var(--orange)' }}>5000 ETB</span>
+              </div>
+              <div className="details" style={{ fontSize: '0.95rem', color: 'var(--ink)' }}>
+                <p style={{ marginBottom: '0.5rem' }}><span style={{ color: 'var(--muted)', width: '130px', display: 'inline-block' }}>Payment Method:</span> Commercial Bank of Ethiopia</p>
+                <p style={{ marginBottom: '0.5rem' }}><span style={{ color: 'var(--muted)', width: '130px', display: 'inline-block' }}>Account Holder:</span> Tadelech Eyasu</p>
+                <p><span style={{ color: 'var(--muted)', width: '130px', display: 'inline-block' }}>Account Number:</span> <strong style={{ fontSize: '1.1rem', letterSpacing: '0.5px' }}>1000401380338</strong></p>
+              </div>
+            </div>
+
+            <div style={{ marginTop: '1rem' }}>
+              <FileUpload 
+                file={data.paymentReceipt} 
+                onFileSelect={(file) => updateData({ paymentReceipt: file })} 
+              />
+              {errors.paymentReceipt && <span className="error-text" style={{ display: 'block', marginTop: '1rem', textAlign: 'center' }}>{errors.paymentReceipt}</span>}
+            </div>
+          </div>
+        )}
+
+        {step === 7 && (
+          <div className="consult-step">
             <h2>Agreement</h2>
             <p className="step-desc">Please review and agree to the following.</p>
 
@@ -329,7 +365,7 @@ export default function ConsultationForm() {
           </div>
         )}
 
-        {step === 7 && (
+        {step === 8 && (
           <div className="consult-step">
             <h2>Final Review</h2>
             <p className="step-desc">Check your information before submitting.</p>
