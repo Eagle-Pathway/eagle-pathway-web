@@ -12,7 +12,6 @@ import { stats, features, testimonials } from './content/site';
 
 export default function Home() {
   const topFeatures = features.slice(0, 3);
-  const featuredStory = testimonials[0];
 
   return (
     <>
@@ -38,7 +37,7 @@ export default function Home() {
               </Reveal>
               <Reveal delay={120}>
                 <div className="hero-ctas">
-                  <Link href="/contact" className="btn btn-primary btn-lg">
+                  <Link href="/apply" className="btn btn-primary btn-lg">
                     Start your journey
                   </Link>
                   <Link href="/services" className="btn btn-ghost btn-lg">
@@ -149,7 +148,7 @@ export default function Home() {
           <h2>Ready to write your success story?</h2>
           <p>Book a free consultation and get a structured pathway within your first week.</p>
           <div className="hero-ctas">
-            <Link href="/contact" className="btn btn-light btn-lg">Start your journey</Link>
+            <Link href="/apply" className="btn btn-light btn-lg">Start your journey</Link>
             <Link href="/how-it-works" className="btn btn-light btn-lg">See how it works</Link>
           </div>
         </Reveal>

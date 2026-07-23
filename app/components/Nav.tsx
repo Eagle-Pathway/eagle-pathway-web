@@ -42,8 +42,8 @@ export default function Nav() {
         </nav>
 
         <div className="nav-right">
-          <Link className="btn btn-primary" href="/contact">
-            Get Started
+          <Link className="btn btn-primary" href="/apply">
+            Apply
           </Link>
           <button
             className="nav-toggle"

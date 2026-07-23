@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Heart } from 'lucide-react';
 import { nav, site } from '@/app/content/site';
+import AppButtons from './AppButtons';
 
 export default function Footer() {
   return (
@@ -39,6 +40,7 @@ export default function Footer() {
           <div>
             <h4>Product</h4>
             <ul>
+              <li><Link href="/apply">Apply</Link></li>
               <li><Link href="/services">Tutoring</Link></li>
               <li><Link href="/services">Scholarships</Link></li>
               <li><Link href="/how-it-works">How it works</Link></li>
@@ -54,6 +56,9 @@ export default function Footer() {
               <li><a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a></li>
               <li>{site.location}</li>
             </ul>
+            <div style={{ marginTop: '2rem' }}>
+              <AppButtons />
+            </div>
           </div>
         </div>
 
