@@ -63,7 +63,7 @@ export default function Nav() {
               {item.label}
             </Link>
           ))}
-          <Link className="btn btn-primary" href="/contact" onClick={() => setOpen(false)}>
+          <Link className="btn btn-primary" href="/apply-with-us" onClick={() => setOpen(false)}>
             Get Started
           </Link>
         </div>

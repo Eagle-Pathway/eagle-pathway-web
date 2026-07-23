@@ -18,7 +18,7 @@ export default function ServiceCard({
   includes,
   bestFor,
   ctaText = 'Book Consultation',
-  ctaLink = '/contact',
+  ctaLink = '/apply-with-us',
 }: ServiceCardProps) {
   return (
     <div className="svc-card">

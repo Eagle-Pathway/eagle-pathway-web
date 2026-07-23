@@ -7,7 +7,7 @@ interface DestinationCardProps {
   link?: string;
 }
 
-export default function DestinationCard({ country, flag, description, link = '/contact' }: DestinationCardProps) {
+export default function DestinationCard({ country, flag, description, link = '/apply-with-us' }: DestinationCardProps) {
   return (
     <div className="dest-card">
       <div className="dest-header">
