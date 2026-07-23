@@ -3,7 +3,7 @@ import { Inter, Sora } from 'next/font/google';
 import './globals.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import AiAssistantWidget from './components/AiAssistantWidget';
+// import AiAssistantWidget from './components/AiAssistantWidget';
 import { site } from './content/site';
 
 const inter = Inter({
@@ -89,7 +89,7 @@ export default function RootLayout({
         <Nav />
         <main>{children}</main>
         <Footer />
-        <AiAssistantWidget />
+        {/* <AiAssistantWidget /> */}
       </body>
     </html>
   );
