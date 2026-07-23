@@ -26,6 +26,7 @@ export const nav = [
   { label: "Services", href: "/services" },
   { label: "How it works", href: "/how-it-works" },
   { label: "Results", href: "/results" },
+  { label: "Apply with Us", href: "/contact" },
 ];
 
 export const stats = [
