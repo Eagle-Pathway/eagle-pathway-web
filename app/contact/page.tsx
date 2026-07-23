@@ -172,7 +172,7 @@ export default function ContactPage() {
               </div>
 
               <button type="submit" className="btn btn-primary btn-block btn-lg" disabled={isSubmitting}>
-                {isSubmitting ? 'Sending…' : 'Request free consultation'}
+                {isSubmitting ? 'Sending…' : 'Book a Service'}
               </button>
 
               {status === 'success' && (
