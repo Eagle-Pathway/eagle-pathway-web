@@ -7,15 +7,38 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      firstName: formData.get('fullName')?.toString().split(' ')[0] || '',
+      lastName: formData.get('fullName')?.toString().split(' ').slice(1).join(' ') || '',
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      service: 'General Inquiry',
+      message: formData.get('message'),
+    };
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      
+      if (res.ok) {
+        setIsSuccess(true);
+      } else {
+        alert('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred.');
+    } finally {
       setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 1500);
+    }
   };
 
   if (isSuccess) {
@@ -37,23 +60,24 @@ export default function ContactForm() {
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
         <div className="field">
           <label>Full Name *</label>
-          <input type="text" placeholder="Your full name" required />
+          <input type="text" name="fullName" placeholder="Your full name" required />
         </div>
         
         <div className="field-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
           <div className="field">
             <label>Email Address *</label>
-            <input type="email" placeholder="you@email.com" required />
+            <input type="email" name="email" placeholder="you@email.com" required />
           </div>
           <div className="field">
             <label>Phone Number</label>
-            <input type="tel" placeholder="+251 9XX XXX XXX" />
+            <input type="tel" name="phone" placeholder="+251 9XX XXX XXX" />
           </div>
         </div>
 
         <div className="field">
           <label>Message *</label>
           <textarea 
+            name="message"
             placeholder="How can we help you today?" 
             rows={5} 
             required 
