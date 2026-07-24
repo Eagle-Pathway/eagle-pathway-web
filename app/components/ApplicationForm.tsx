@@ -97,20 +97,28 @@ export default function ApplicationForm() {
     if (!validateStep(6)) return;
 
     setIsSubmitting(true);
+    try {
+      const formData = new FormData();
+      formData.append('formType', 'Get Started (Free)');
+      formData.append('data', JSON.stringify(data));
 
-    // TODO: Connect to backend API (e.g. Supabase or Next.js API route)
-    // const formData = new FormData();
-    // formData.append('data', JSON.stringify(data));
-    // data.files.forEach(f => formData.append('files', f));
-    // await fetch('/api/apply', { method: 'POST', body: formData });
+      const res = await fetch('/api/apply', {
+        method: 'POST',
+        body: formData,
+      });
 
-    console.log('--- FORM SUBMITTED ---', data);
-
-    setTimeout(() => {
+      if (res.ok) {
+        setIsSuccess(true);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        alert('Failed to submit application. Please try again.');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred while submitting.');
+    } finally {
       setIsSubmitting(false);
-      setIsSuccess(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 1500);
+    }
   };
 
   if (isSuccess) {

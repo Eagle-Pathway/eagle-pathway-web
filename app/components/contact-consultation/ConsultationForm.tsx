@@ -142,27 +142,54 @@ export default function ConsultationForm() {
     
     setIsSubmitting(true);
     
-    console.log('--- APPLICATION SUBMITTED ---', data);
-    
-    setTimeout(() => {
+    try {
+      const formData = new FormData();
+      formData.append('formType', 'Apply with Us');
+      
+      const payload = { ...data };
+      if (payload.paymentReceipt) delete (payload as any).paymentReceipt;
+      
+      formData.append('data', JSON.stringify(payload));
+      
+      if (data.paymentReceipt) {
+        formData.append('receipt', data.paymentReceipt);
+      }
+
+      const res = await fetch('/api/apply', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (res.ok) {
+        setIsSuccess(true);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        alert('Failed to submit application. Please try again or contact us directly.');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred while submitting.');
+    } finally {
       setIsSubmitting(false);
-      setIsSuccess(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 1500);
+    }
   };
 
   if (isSuccess) {
     return (
-      <div className="consult-card success-card">
-        <div className="success-icon">
-          <Check size={36} />
+      <div className="consult-card success-card" style={{ textAlign: 'center', padding: '4rem 2rem' }}>
+        <div style={{ width: 64, height: 64, background: '#dcfce7', color: '#15803d', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem' }}>
+          <Check size={32} />
         </div>
-        <h2>Application Received</h2>
-        <p className="success-msg">
-          Thank you for applying with Eagle Pathway. Our team will review your application and payment, and contact you through Telegram, WhatsApp, or Email.
+        <h2 style={{ fontSize: '2rem', color: 'var(--navy)', marginBottom: '1rem' }}>Application Received!</h2>
+        <p style={{ color: 'var(--muted)', fontSize: '1.1rem', marginBottom: '2rem' }}>
+          Thank you for applying with Eagle Pathway. Our team will review your application and payment shortly.
         </p>
-        <div style={{ marginTop: '2rem' }}>
-          <a href="#" className="btn btn-primary">Join Telegram Community</a>
+        <div style={{ background: 'var(--bg-soft)', padding: '2rem', borderRadius: 'var(--radius-lg)', display: 'inline-block', textAlign: 'left' }}>
+          <p style={{ fontWeight: 600, color: 'var(--ink)', marginBottom: '0.5rem' }}>Next Step:</p>
+          <p style={{ color: 'var(--muted)' }}>Contact <strong>@italy_premiumservice</strong> on Telegram with:</p>
+          <div style={{ background: '#fff', padding: '1rem', border: '1px solid var(--line)', borderRadius: '8px', marginTop: '1rem', fontStyle: 'italic', color: 'var(--navy)' }}>
+            &quot;I have submitted my application and payment receipt — ready for my consultation.&quot;
+          </div>
         </div>
       </div>
     );

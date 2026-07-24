@@ -39,9 +39,9 @@ export default function FileUpload({ file, onFileSelect }: Props) {
   };
 
   const validateAndSelect = (selectedFile: File) => {
-    // Validate size (5MB = 5 * 1024 * 1024 bytes)
-    if (selectedFile.size > 5 * 1024 * 1024) {
-      alert("File size exceeds 5MB limit.");
+    // Validate size (4MB = 4 * 1024 * 1024 bytes)
+    if (selectedFile.size > 4 * 1024 * 1024) {
+      alert("File size exceeds 4MB limit.");
       return;
     }
     
@@ -80,7 +80,7 @@ export default function FileUpload({ file, onFileSelect }: Props) {
         >
           <UploadCloud size={42} color="var(--navy)" style={{ marginBottom: '1rem' }} />
           <p style={{ fontWeight: 600, color: 'var(--ink)', marginBottom: '0.25rem' }}>Click or drag to upload receipt</p>
-          <p style={{ fontSize: '0.85rem', color: 'var(--muted)' }}>PDF, PNG, or JPG (Max 5MB)</p>
+          <p style={{ fontSize: '0.85rem', color: 'var(--muted)' }}>PDF, PNG, or JPG (Max 4MB)</p>
           <input 
             type="file" 
             ref={fileInputRef} 
