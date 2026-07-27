@@ -146,8 +146,7 @@ export default function ConsultationForm() {
       const formData = new FormData();
       formData.append('formType', 'Apply with Us');
       
-      const payload = { ...data };
-      if (payload.paymentReceipt) delete (payload as any).paymentReceipt;
+      const { paymentReceipt, ...payload } = data;
       
       formData.append('data', JSON.stringify(payload));
       
