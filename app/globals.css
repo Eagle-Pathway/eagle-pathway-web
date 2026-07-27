@@ -1379,8 +1379,8 @@ img { max-width: 100%; display: block; }
 .form-status.err { color: #dc2626; }
 
 /* ---------- App store buttons ---------- */
-.app-area { display: flex; flex-direction: column; gap: 0.65rem; }
-.app-area.center { align-items: center; text-align: center; }
+.app-area { display: flex; flex-direction: column; gap: 0.65rem; width: 180px; }
+.app-area.center { align-items: center; text-align: center; width: auto; }
 .app-soon {
   display: inline-flex;
   align-items: center;
@@ -1398,8 +1398,8 @@ img { max-width: 100%; display: block; }
   animation: pulse-dot 2s ease-in-out infinite;
 }
 @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
-.app-btns { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-.app-area.center .app-btns { justify-content: center; }
+.app-btns { display: flex; flex-direction: column; gap: 0.5rem; width: 100%; }
+.app-area.center .app-btns { justify-content: center; flex-direction: row; width: auto; }
 .store-btn {
   display: inline-flex;
   align-items: center;
@@ -1408,7 +1408,9 @@ img { max-width: 100%; display: block; }
   border-radius: 10px;
   border: 1px solid;
   transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  width: 100%;
 }
+.app-area.center .store-btn { width: auto; }
 .store-btn.dark { background: var(--ink); color: #fff; border-color: var(--ink); }
 .store-btn.light { background: #fff; color: var(--ink); border-color: rgba(255, 255, 255, 0.45); }
 .store-btn:not(.is-soon):hover { transform: translateY(-2px); box-shadow: var(--shadow); }
@@ -2924,12 +2926,12 @@ height: 45px;
   .dest-grid { grid-template-columns: 1fr; }
 }
 
-
 /* ---------- Social Links ---------- */
 .social-links {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  width: 180px;
 }
 
 .social-icon {
