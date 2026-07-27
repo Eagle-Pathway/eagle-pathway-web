@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Icon from '../components/Icon';
 import ConsultationForm from '../components/contact-consultation/ConsultationForm';
 
 export const metadata: Metadata = {
@@ -32,21 +33,27 @@ export default function ContactPage() {
           </div>
           <div className="grid-3">
             <div className="svc-global-card">
-              <div className="svc-global-icon">🎯</div>
+              <div className="svc-global-icon">
+                <Icon name="target" size={32} />
+              </div>
               <h3>Experienced Guidance</h3>
               <p className="desc" style={{ fontSize: '0.9rem', color: 'var(--muted)' }}>
                 Work with consultants who have successfully navigated the international scholarship system and secured fully funded opportunities.
               </p>
             </div>
             <div className="svc-global-card">
-              <div className="svc-global-icon">🧩</div>
+              <div className="svc-global-icon">
+                <Icon name="puzzle" size={32} />
+              </div>
               <h3>Personalized Strategy</h3>
               <p className="desc" style={{ fontSize: '0.9rem', color: 'var(--muted)' }}>
                 No generic advice. We analyze your unique academic profile and build a tailored roadmap to maximize your chances of admission.
               </p>
             </div>
             <div className="svc-global-card">
-              <div className="svc-global-icon">🏆</div>
+              <div className="svc-global-icon">
+                <Icon name="award" size={32} />
+              </div>
               <h3>Scholarship-Focused Support</h3>
               <p className="desc" style={{ fontSize: '0.9rem', color: 'var(--muted)' }}>
                 Beyond admissions, we specialize in identifying and competing for merit-based scholarships, financial aid, and fellowships.

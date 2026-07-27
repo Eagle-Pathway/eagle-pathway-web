@@ -1,5 +1,5 @@
 import { stats } from '@/app/content/site';
-import { CheckCircle2, MessageCircle, ChevronRight } from 'lucide-react';
+import { CheckCircle2, MessageCircle, ChevronRight, GraduationCap, Globe } from 'lucide-react';
 
 export default function HeroVisual() {
   return (
@@ -9,7 +9,9 @@ export default function HeroVisual() {
       <div className="hero-visual-stats">
         {stats.slice(0, 2).map((s, idx) => (
           <div key={s.label} className={`hero-stat-chip chip-${idx}`}>
-            <div className="chip-icon">{idx === 0 ? '🎓' : '🌍'}</div>
+            <div className="chip-icon">
+              {idx === 0 ? <GraduationCap size={20} /> : <Globe size={20} />}
+            </div>
             <div className="chip-info">
               <strong>{s.value}</strong>
               <span>{s.label}</span>

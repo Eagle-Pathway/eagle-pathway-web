@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Reveal from '../components/Reveal';
+import Icon from '../components/Icon';
 import { stats } from '../content/site';
 
 export const metadata: Metadata = {
@@ -10,37 +11,37 @@ export const metadata: Metadata = {
 
 const coreValues = [
   {
-    icon: '🏆',
+    icon: 'trophy',
     title: 'Excellence',
     description: 'We hold ourselves to the highest standards in teaching, technology, and service.',
   },
   {
-    icon: '🤝',
+    icon: 'handshake',
     title: 'Integrity',
     description: 'We operate with honesty, transparency, and accountability in every engagement.',
   },
   {
-    icon: '💡',
+    icon: 'lightbulb',
     title: 'Innovation',
     description: 'We continuously develop modern, technology-powered educational solutions.',
   },
   {
-    icon: '🎓',
+    icon: 'graduation',
     title: 'Student First',
     description: 'Every decision we make begins with the success and wellbeing of our students.',
   },
   {
-    icon: '🌍',
+    icon: 'globe',
     title: 'Accessibility',
     description: 'We believe quality education should be within reach of every learner.',
   },
   {
-    icon: '📚',
+    icon: 'bookmarked',
     title: 'Lifelong Learning',
     description: 'We support growth that continues long after graduation.',
   },
   {
-    icon: '✈️',
+    icon: 'plane',
     title: 'Global Citizenship',
     description: 'We prepare students to thrive as responsible citizens of an interconnected world.',
   },
@@ -90,25 +91,25 @@ const divisions = [
 
 const techFeatures = [
   {
-    icon: '👤',
+    icon: 'user',
     title: 'Lifelong Student Profile',
     description:
       'Every learner creates one academic profile that evolves with them — from Kindergarten through university and beyond.',
   },
   {
-    icon: '🤖',
+    icon: 'bot',
     title: 'AI Learning Assistant',
     description:
       'Students can ask questions, receive explanations, generate quizzes, practise exams, improve essays, and summarise lessons on demand.',
   },
   {
-    icon: '🎯',
+    icon: 'target',
     title: 'Opportunity Matching',
     description:
       'An intelligent recommendation engine analyses each profile to surface the scholarships, programmes, and openings that fit best.',
   },
   {
-    icon: '📊',
+    icon: 'barChart',
     title: 'Student Dashboard',
     description:
       'Learners monitor progress, assignments, attendance, assessments, certificates, and achievements in one place.',
@@ -257,7 +258,9 @@ export default function AboutPage() {
           <div className="grid-2" style={{ gap: '1.5rem' }}>
             {techFeatures.map((feat, i) => (
               <Reveal key={feat.title} className="card" delay={i * 70}>
-                <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{feat.icon}</div>
+                <div style={{ marginBottom: '1rem', color: 'var(--navy)' }}>
+                  <Icon name={feat.icon} size={32} />
+                </div>
                 <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>{feat.title}</h3>
                 <p style={{ color: 'var(--muted)', fontSize: '0.95rem' }}>{feat.description}</p>
               </Reveal>
@@ -277,7 +280,9 @@ export default function AboutPage() {
             {coreValues.map((v, i) => (
               <Reveal key={v.title} delay={i * 50}>
                 <div className="card" style={{ textAlign: 'center', height: '100%' }}>
-                <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{v.icon}</div>
+                <div style={{ marginBottom: '0.75rem', color: 'var(--navy)' }}>
+                  <Icon name={v.icon} size={32} />
+                </div>
                 <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>{v.title}</h3>
                 <p style={{ color: 'var(--muted)', fontSize: '0.88rem' }}>{v.description}</p>
                 </div>

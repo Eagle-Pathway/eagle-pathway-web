@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Reveal from '../components/Reveal';
+import Icon from '../components/Icon';
 import ServiceCard from '../components/services/ServiceCard';
 import DestinationCard from '../components/services/DestinationCard';
 import MentorshipCard from '../components/services/MentorshipCard';
@@ -18,7 +19,7 @@ export default function ServicesPage() {
   const services = [
     {
       title: 'University & Scholarship Strategy Consultation',
-      icon: '🎯',
+      icon: 'target',
       description: 'A personalized consultation where we analyze your academic background, goals, and opportunities to create a clear study-abroad strategy.',
       includes: ['Profile evaluation', 'Suitable countries analysis', 'Scholarship direction', 'Application roadmap'],
       bestFor: "Students who don't know where to start.",
@@ -26,7 +27,7 @@ export default function ServicesPage() {
     },
     {
       title: 'University Research & Selection',
-      icon: '🏛️',
+      icon: 'building',
       description: 'We research universities that match your academic profile, intended field, budget, and scholarship opportunities.',
       includes: ['University shortlist', 'Program matching', 'Admission requirements', 'Scholarship opportunities'],
       bestFor: 'Students struggling to choose universities.',
@@ -34,7 +35,7 @@ export default function ServicesPage() {
     },
     {
       title: 'Application Document Support',
-      icon: '📄',
+      icon: 'fileEdit',
       description: 'Professional support preparing competitive application documents.',
       includes: ['CV improvement', 'Motivation letter', 'Personal statement', 'Recommendation letter guidance'],
       bestFor: 'Students who want stronger applications.',
@@ -42,7 +43,7 @@ export default function ServicesPage() {
     },
     {
       title: 'One-to-One Mentorship',
-      icon: '👤',
+      icon: 'user',
       description: 'Personal guidance throughout your complete application journey.',
       includes: ['Weekly meetings', 'Application planning', 'Progress tracking', 'Strategy adjustments'],
       bestFor: 'Students who want personal support.',
@@ -50,7 +51,7 @@ export default function ServicesPage() {
     },
     {
       title: 'Full Application Management',
-      icon: '⭐',
+      icon: 'star',
       description: 'Complete support from university selection until submission.',
       includes: ['University applications', 'Scholarship applications', 'Document preparation', 'Deadline management', 'Final review'],
       bestFor: 'Students who want a done-with-you experience.',
@@ -58,7 +59,7 @@ export default function ServicesPage() {
     },
     {
       title: 'Embassy & Visa Preparation',
-      icon: '✈️',
+      icon: 'plane',
       description: 'Prepare confidently for your student visa process.',
       includes: ['Interview preparation', 'Common questions', 'Document checklist', 'Mock interviews'],
       bestFor: 'Students preparing for departure.',
@@ -66,21 +67,21 @@ export default function ServicesPage() {
     },
     {
       title: 'English Test Preparation',
-      icon: '📝',
+      icon: 'penTool',
       description: 'Improve your English test performance with structured preparation.',
       includes: ['IELTS preparation', 'TOEFL preparation', 'Duolingo preparation', 'Practice strategy'],
       ctaText: 'Book Consultation',
     },
     {
       title: 'Recommendation Letter Writing',
-      icon: '✍️',
+      icon: 'fileEdit',
       description: 'Transform your achievements and experiences into strong recommendation letters aligned with university expectations.',
       includes: ['Content strategy', 'Professional structure', 'University-focused writing'],
       ctaText: 'Book Consultation',
     },
     {
       title: 'High School Scholarship Guidance',
-      icon: '🎓',
+      icon: 'graduation',
       description: 'Support for students targeting international high school scholarships.',
       includes: ['Profile building', 'Leadership development', 'Essay preparation', 'Interview preparation'],
       ctaText: 'Book Consultation',
@@ -177,7 +178,7 @@ export default function ServicesPage() {
           <div className="svc-grid">
             {services.map((svc, i) => (
               <Reveal key={i} delay={i * 50}>
-                <ServiceCard {...svc} />
+                <ServiceCard {...svc} icon={<Icon name={svc.icon} size={24} />} />
               </Reveal>
             ))}
           </div>
