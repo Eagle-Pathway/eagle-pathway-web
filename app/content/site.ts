@@ -13,6 +13,13 @@ export const site = {
     handle: "@Tegegnpathway",
     members: "20,000+",
   },
+  socials: {
+    facebook: "https://www.facebook.com/tegegnpathway",
+    tiktok: "https://www.tiktok.com/@tegegnpathway",
+    instagram: "https://www.instagram.com/tegegnpathway/",
+    youtube: "https://www.youtube.com/@TegegnPathways",
+    telegram: "https://t.me/Tegegnpathway",
+  },
   app: {
     available: false,
     ios: "#",
