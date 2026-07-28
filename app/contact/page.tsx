@@ -37,7 +37,7 @@ export default function ContactPage() {
           <span className="eyebrow">Get in touch</span>
           <h1>Contact Us</h1>
           <p>
-            Have a question or need more information? We're here to help you on your global education journey.
+            Have a question or need more information? We&apos;re here to help you on your global education journey.
           </p>
         </div>
       </section>
@@ -108,7 +108,7 @@ export default function ContactPage() {
             <div className="contact-form-col">
               <div className="contact-form-header">
                 <h3>Send a Message</h3>
-                <p>Fill out the form below and we'll get back to you shortly.</p>
+                <p>Fill out the form below and we&apos;ll get back to you shortly.</p>
               </div>
               <ContactForm />
             </div>
