@@ -34,6 +34,7 @@ export default function Footer() {
                   <Link href={item.href}>{item.label}</Link>
                 </li>
               ))}
+              <li><Link href="/privacy">Privacy Policy</Link></li>
             </ul>
           </div>
 
@@ -124,9 +125,12 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} {site.name}. All rights reserved.</span>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-            Made with <Heart size={14} fill="#ef4444" stroke="#ef4444" /> by Eagle Pathway Tech
-          </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+            <Link href="/privacy" style={{ fontSize: '0.85rem', color: 'var(--muted)' }}>Privacy Policy</Link>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+              Made with <Heart size={14} fill="#ef4444" stroke="#ef4444" /> by Eagle Pathway Tech
+            </span>
+          </div>
         </div>
       </div>
     </footer>
