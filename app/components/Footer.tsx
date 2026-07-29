@@ -29,12 +29,12 @@ export default function Footer() {
           <div>
             <h4>Company</h4>
             <ul>
-              {nav.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href}>{item.label}</Link>
-                </li>
-              ))}
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/about">About</Link></li>
+              <li><Link href="/contact">Contact</Link></li>
+              <li><Link href="/apply-with-us">Apply with Us</Link></li>
               <li><Link href="/privacy">Privacy Policy</Link></li>
+              <li><a href={site.telegram.url} target="_blank" rel="noopener noreferrer">Telegram community</a></li>
             </ul>
           </div>
 
@@ -42,11 +42,11 @@ export default function Footer() {
             <h4>Product</h4>
             <ul>
               <li><Link href="/getstarted">Get Started</Link></li>
+              <li><Link href="/services">Services</Link></li>
               <li><Link href="/services">Tutoring</Link></li>
               <li><Link href="/services">Scholarships</Link></li>
               <li><Link href="/how-it-works">How it works</Link></li>
               <li><Link href="/results">Results</Link></li>
-              <li><a href={site.telegram.url} target="_blank" rel="noopener noreferrer">Telegram community</a></li>
             </ul>
           </div>
 

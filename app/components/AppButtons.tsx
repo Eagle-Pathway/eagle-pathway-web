@@ -30,11 +30,11 @@ export default function AppButtons({ variant = 'dark', center = false }: Props) 
   ];
 
   return (
-    <div className={`app-area ${center ? 'center' : ''}`}>
-      <span className={`app-soon ${variant === 'light' ? 'on-dark' : ''}`}>
+    <div className={`app-area ${center ? 'center' : ''}`} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: 'auto', flexWrap: 'wrap', gap: '1rem' }}>
+      <span className={`app-soon ${variant === 'light' ? 'on-dark' : ''}`} style={{ whiteSpace: 'nowrap', marginBottom: 0 }}>
         <span className="app-soon-dot" /> Mobile apps launching soon
       </span>
-      <div className="app-btns">
+      <div className="app-btns" style={{ display: 'flex', flexDirection: 'row', gap: '0.75rem' }}>
         {stores.map((s) =>
           soon ? (
             <span key={s.key} className={`store-btn ${variant} is-soon`} aria-disabled title="Coming soon">
