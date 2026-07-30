@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Check } from 'lucide-react';
 import StepIndicator from './StepIndicator';
 import ServiceSelector from './ServiceSelector';
@@ -10,6 +10,9 @@ import ReviewStep from './ReviewStep';
 type ApplicationData = {
   // Step 1
   eligibilityConfirmed: boolean;
+
+  // Step 2
+  selectedScholarships: string[];
 
   // Step 2
   fullName: string;
@@ -46,6 +49,7 @@ type ApplicationData = {
 
 const initialData: ApplicationData = {
   eligibilityConfirmed: false,
+  selectedScholarships: [],
   fullName: '',
   gender: '',
   phone: '',
@@ -73,7 +77,31 @@ export default function ConsultationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const totalSteps = 9;
+  const [scholarships, setScholarships] = useState<any[]>([]);
+  const [loadingScholarships, setLoadingScholarships] = useState(true);
+  const [expandedScholarshipId, setExpandedScholarshipId] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function loadScholarships() {
+      try {
+        const { supabase } = await import('@/app/lib/supabase');
+        const { data, error } = await supabase
+          .from('scholarships')
+          .select('*')
+          .eq('is_active', true)
+          .eq('source_status', 'verified');
+        if (!error && data) {
+          setScholarships(data);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+      setLoadingScholarships(false);
+    }
+    loadScholarships();
+  }, []);
+
+  const totalSteps = 10;
 
   const updateData = (fields: Partial<ApplicationData>) => {
     setData((prev) => ({ ...prev, ...fields }));
@@ -87,6 +115,9 @@ export default function ConsultationForm() {
       if (!data.eligibilityConfirmed) newErrors.eligibilityConfirmed = 'You must confirm that you meet the eligibility requirements.';
     }
     else if (currentStep === 2) {
+      if (!data.selectedScholarships || data.selectedScholarships.length === 0) newErrors.selectedScholarships = 'Please select at least one option to proceed.';
+    }
+    else if (currentStep === 9) {
       if (!data.fullName.trim()) newErrors.fullName = 'Required';
       if (!data.gender) newErrors.gender = 'Required';
       if (!data.phone.trim()) newErrors.phone = 'Required';
@@ -138,7 +169,7 @@ export default function ConsultationForm() {
   };
 
   const submitApplication = async () => {
-    if (!validateStep(9)) return;
+    if (!validateStep(10)) return;
     
     setIsSubmitting(true);
     
@@ -273,6 +304,246 @@ export default function ConsultationForm() {
         )}
 
         {step === 2 && (
+          <div className="consult-step step-2 animate-in">
+            <h2>Active Scholarships</h2>
+            <p className="step-desc">Which opportunity are you applying for?</p>
+            
+            {loadingScholarships ? (
+              <div style={{ textAlign: 'center', padding: '2rem' }}>Loading active scholarships...</div>
+            ) : (
+              <div className="radio-list" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <label 
+                  onClick={() => {
+                    const current = data.selectedScholarships || [];
+                    const hasGeneral = current.includes('General Consultation / Not Sure Yet');
+                    const updated = hasGeneral 
+                      ? current.filter(item => item !== 'General Consultation / Not Sure Yet')
+                      : [...current, 'General Consultation / Not Sure Yet'];
+                    updateData({ selectedScholarships: updated });
+                  }}
+                  className={`radio-item ${(data.selectedScholarships || []).includes('General Consultation / Not Sure Yet') ? 'selected' : ''}`} 
+                  style={{ display: 'flex', alignItems: 'flex-start', padding: '1rem', border: '1px solid var(--line)', borderRadius: '8px', cursor: 'pointer' }}
+                >
+                  <input 
+                    type="checkbox" 
+                    checked={(data.selectedScholarships || []).includes('General Consultation / Not Sure Yet')} 
+                    readOnly
+                    style={{ marginTop: '0.25rem', marginRight: '1rem', accentColor: 'var(--orange)' }}
+                  />
+                  <div>
+                    <h4 style={{ margin: 0, color: 'var(--navy)', fontSize: '1.05rem' }}>General Consultation</h4>
+                    <p style={{ margin: '0.25rem 0 0', fontSize: '0.85rem', color: 'var(--muted)' }}>I want general university admission or scholarship support, but I haven't chosen a specific one yet.</p>
+                  </div>
+                </label>
+
+                {scholarships.map((s) => {
+                  const currentSelected = data.selectedScholarships || [];
+                  const isSelected = currentSelected.includes(s.name);
+                  const isExpanded = expandedScholarshipId === s.id;
+
+                  const toggleSelection = () => {
+                    const updated = isSelected 
+                      ? currentSelected.filter(item => item !== s.name)
+                      : [...currentSelected, s.name];
+                    updateData({ selectedScholarships: updated });
+                  };
+
+                  return (
+                    <div 
+                      key={s.id} 
+                      onClick={toggleSelection}
+                      className={`radio-item ${isSelected ? 'selected' : ''}`} 
+                      style={{ 
+                        display: 'flex', 
+                        flexDirection: 'column',
+                        padding: '1.25rem', 
+                        border: isSelected ? '2px solid var(--orange)' : '1px solid var(--line)', 
+                        borderRadius: '12px', 
+                        cursor: 'pointer',
+                        background: isSelected ? 'rgba(255,107,0,0.03)' : '#fff',
+                        transition: 'all 0.2s ease'
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'flex-start', width: '100%' }}>
+                        <input 
+                          type="checkbox" 
+                          checked={isSelected} 
+                          readOnly
+                          style={{ marginTop: '0.25rem', marginRight: '1rem', accentColor: 'var(--orange)' }}
+                        />
+                        <div style={{ flex: 1 }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem' }}>
+                            <h4 style={{ margin: 0, color: 'var(--navy)', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                              <span>{s.country_flag}</span> {s.name}
+                            </h4>
+                            {s.deadline && (
+                              <span style={{ fontSize: '0.8rem', color: 'var(--orange)', fontWeight: 600, background: 'rgba(255,107,0,0.1)', padding: '2px 8px', borderRadius: '12px' }}>
+                                Deadline: {new Date(s.deadline).toLocaleDateString()}
+                              </span>
+                            )}
+                          </div>
+
+                          <p style={{ margin: '0.25rem 0 0', fontSize: '0.9rem', color: 'var(--ink)', fontWeight: 500 }}>
+                            {s.organization} • {s.country}
+                          </p>
+
+                          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.5rem', marginTop: '0.5rem' }}>
+                            {s.degree_levels?.map((level: string) => (
+                              <span key={level} style={{ fontSize: '0.75rem', fontWeight: 600, background: 'var(--bg-soft)', color: 'var(--navy)', padding: '2px 8px', borderRadius: '4px', textTransform: 'uppercase' }}>
+                                {level}
+                              </span>
+                            ))}
+                            {s.funding_details && (
+                              <span style={{ fontSize: '0.85rem', color: 'var(--orange)', fontWeight: 600 }}>
+                                • {s.funding_details}
+                              </span>
+                            )}
+                          </div>
+
+                          {/* Toggle Button for Details */}
+                          <div style={{ marginTop: '0.75rem', paddingTop: '0.5rem' }}>
+                            <button 
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setExpandedScholarshipId(isExpanded ? null : s.id);
+                              }}
+                              style={{
+                                background: 'none',
+                                border: 'none',
+                                color: 'var(--navy)',
+                                fontSize: '0.85rem',
+                                fontWeight: 600,
+                                cursor: 'pointer',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '0.35rem',
+                                padding: 0,
+                                textDecoration: 'underline'
+                              }}
+                            >
+                              {isExpanded ? 'Hide Details ▲' : 'View Full Details & Requirements ▼'}
+                            </button>
+                          </div>
+
+                          {/* Expanded Details Panel */}
+                          {isExpanded && (
+                            <div 
+                              onClick={(e) => e.stopPropagation()} 
+                              style={{
+                                marginTop: '0.85rem',
+                                padding: '1rem',
+                                background: '#f8fafc',
+                                borderRadius: '8px',
+                                border: '1px solid #e2e8f0',
+                                fontSize: '0.88rem',
+                                color: 'var(--ink)',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.85rem'
+                              }}
+                            >
+                              {s.description && (
+                                <div>
+                                  <strong style={{ color: 'var(--navy)', display: 'block', marginBottom: '0.35rem' }}>Overview & Description:</strong>
+                                  <p style={{ margin: 0, whiteSpace: 'pre-line', color: '#475569', fontSize: '0.85rem', lineHeight: 1.6 }}>
+                                    {s.description}
+                                  </p>
+                                </div>
+                              )}
+
+                              {s.requirements && s.requirements.length > 0 && (
+                                <div>
+                                  <strong style={{ color: 'var(--navy)', display: 'block', marginBottom: '0.35rem' }}>Requirements:</strong>
+                                  <ul style={{ margin: 0, paddingLeft: '1.2rem', color: '#475569', fontSize: '0.85rem', lineHeight: 1.6 }}>
+                                    {Array.isArray(s.requirements) ? (
+                                      s.requirements.map((req: string, idx: number) => <li key={idx}>{req}</li>)
+                                    ) : (
+                                      <li>{String(s.requirements)}</li>
+                                    )}
+                                  </ul>
+                                </div>
+                              )}
+
+                              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '0.75rem', background: '#fff', padding: '0.85rem', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+                                {s.funding_type && (
+                                  <div>
+                                    <span style={{ color: '#94a3b8', fontSize: '0.75rem', display: 'block' }}>Funding Type</span>
+                                    <strong style={{ fontSize: '0.85rem', color: '#1e293b', textTransform: 'capitalize' }}>{s.funding_type.replace('_', ' ')}</strong>
+                                  </div>
+                                )}
+                                {s.min_gpa && (
+                                  <div>
+                                    <span style={{ color: '#94a3b8', fontSize: '0.75rem', display: 'block' }}>Min GPA</span>
+                                    <strong style={{ fontSize: '0.85rem', color: '#1e293b' }}>{s.min_gpa} / 4.0</strong>
+                                  </div>
+                                )}
+                                {s.requires_ielts !== undefined && (
+                                  <div>
+                                    <span style={{ color: '#94a3b8', fontSize: '0.75rem', display: 'block' }}>IELTS Required</span>
+                                    <strong style={{ fontSize: '0.85rem', color: '#1e293b' }}>{s.requires_ielts ? 'Yes' : 'No / MOI Allowed'}</strong>
+                                  </div>
+                                )}
+                                {s.accepts_english_medium !== undefined && (
+                                  <div>
+                                    <span style={{ color: '#94a3b8', fontSize: '0.75rem', display: 'block' }}>Medium of Instruction</span>
+                                    <strong style={{ fontSize: '0.85rem', color: '#1e293b' }}>{s.accepts_english_medium ? 'Accepted' : 'Not Accepted'}</strong>
+                                  </div>
+                                )}
+                              </div>
+
+                              {s.fields_of_study && s.fields_of_study.length > 0 && (
+                                <div>
+                                  <span style={{ color: '#64748b', fontSize: '0.75rem', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>Fields of Study:</span>
+                                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
+                                    {s.fields_of_study.map((field: string) => (
+                                      <span key={field} style={{ background: '#fff', border: '1px solid #cbd5e1', padding: '2px 8px', borderRadius: '4px', fontSize: '0.75rem', textTransform: 'capitalize' }}>
+                                        {field}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+
+                              {s.target_departments && s.target_departments.length > 0 && (
+                                <div>
+                                  <span style={{ color: '#64748b', fontSize: '0.75rem', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>Target Departments:</span>
+                                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
+                                    {s.target_departments.map((dept: string) => (
+                                      <span key={dept} style={{ background: '#fff', border: '1px solid #cbd5e1', padding: '2px 8px', borderRadius: '4px', fontSize: '0.75rem' }}>
+                                        {dept}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+
+                              {s.website_url && (
+                                <div style={{ marginTop: '0.25rem' }}>
+                                  <a 
+                                    href={s.website_url} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    style={{ color: 'var(--orange)', textDecoration: 'underline', fontSize: '0.82rem', fontWeight: 600 }}
+                                  >
+                                    Visit Official Scholarship Portal ↗
+                                  </a>
+                                </div>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            {errors.selectedScholarships && <span className="error-text" style={{ display: 'block', marginTop: '1rem' }}>{errors.selectedScholarships}</span>}
+          </div>
+        )}
+
+        {step === 3 && (
           <div className="consult-step">
             <h2>Personal Information</h2>
             <div className="field">
@@ -314,7 +585,7 @@ export default function ConsultationForm() {
           </div>
         )}
 
-        {step === 3 && (
+        {step === 4 && (
           <div className="consult-step">
             <h2>Academic Background</h2>
             <p className="step-desc">What is your current academic level?</p>
@@ -331,7 +602,7 @@ export default function ConsultationForm() {
           </div>
         )}
 
-        {step === 4 && (
+        {step === 5 && (
           <div className="consult-step">
             <h2>English Language Qualification</h2>
             <p className="step-desc">Do you have English proficiency proof?</p>
@@ -348,7 +619,7 @@ export default function ConsultationForm() {
           </div>
         )}
 
-        {step === 5 && (
+        {step === 6 && (
           <div className="consult-step">
             <h2>Consultancy Services</h2>
             <p className="step-desc">What support do you need? (Select all that apply)</p>
@@ -361,7 +632,7 @@ export default function ConsultationForm() {
           </div>
         )}
 
-        {step === 6 && (
+        {step === 7 && (
           <div className="consult-step">
             <h2>About Your Goal</h2>
             <p className="step-desc">Help us understand your context. (Optional)</p>
@@ -408,7 +679,7 @@ export default function ConsultationForm() {
           </div>
         )}
 
-        {step === 7 && (
+        {step === 8 && (
           <div className="consult-step">
             <h2>Payment Confirmation</h2>
             <p className="step-desc">Please upload your payment receipt to proceed.</p>
@@ -434,7 +705,7 @@ export default function ConsultationForm() {
           </div>
         )}
 
-        {step === 8 && (
+        {step === 9 && (
           <div className="consult-step">
             <h2>Agreement</h2>
             <p className="step-desc">Please review and agree to the following.</p>
@@ -471,7 +742,7 @@ export default function ConsultationForm() {
           </div>
         )}
 
-        {step === 9 && (
+        {step === 10 && (
           <div className="consult-step">
             <h2>Final Review</h2>
             <p className="step-desc">Check your information before submitting.</p>

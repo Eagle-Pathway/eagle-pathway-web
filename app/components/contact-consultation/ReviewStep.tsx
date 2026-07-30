@@ -2,6 +2,7 @@
 
 type ReviewData = {
   eligibilityConfirmed: boolean;
+  selectedScholarships: string[];
   fullName: string;
   gender: string;
   phone: string;
@@ -30,7 +31,21 @@ export default function ReviewStep({ data }: Props) {
   return (
     <div className="consult-review-step">
       <div className="review-section">
-        <h3>1. Personal Information</h3>
+        <h3>1. Scholarship / Opportunity</h3>
+        <div className="review-block">
+          <label>Selected Option</label>
+          <div className="review-tags">
+          {data.selectedScholarships && data.selectedScholarships.length > 0 ? (
+            data.selectedScholarships.map(s => <span key={s} className="review-tag" style={{ background: 'rgba(255,107,0,0.1)', color: 'var(--orange)', fontWeight: 600 }}>{s}</span>)
+          ) : (
+            <p className="no-data">None selected</p>
+          )}
+        </div>
+        </div>
+      </div>
+
+      <div className="review-section">
+        <h3>2. Personal Information</h3>
         <div className="review-grid">
           <div><label>Full Name</label><p>{data.fullName}</p></div>
           <div><label>Gender</label><p>{data.gender}</p></div>
@@ -41,7 +56,7 @@ export default function ReviewStep({ data }: Props) {
       </div>
 
       <div className="review-section">
-        <h3>2. Academic Background</h3>
+        <h3>3. Academic Background</h3>
         <div className="review-grid">
           <div><label>Current Level</label><p>{data.academicLevel}</p></div>
           <div><label>English Proof</label><p>{data.englishProof}</p></div>
@@ -49,7 +64,7 @@ export default function ReviewStep({ data }: Props) {
       </div>
 
       <div className="review-section">
-        <h3>3. Selected Services</h3>
+        <h3>4. Selected Services</h3>
         <div className="review-tags">
           {data.services.length > 0 ? (
             data.services.map(s => <span key={s} className="review-tag">{s}</span>)
@@ -60,7 +75,7 @@ export default function ReviewStep({ data }: Props) {
       </div>
 
       <div className="review-section">
-        <h3>4. Goal &amp; Context</h3>
+        <h3>5. Goal &amp; Context</h3>
         <div className="review-block">
           <label>Motivation</label>
           <p>{data.motivation || <span className="no-data">Not provided</span>}</p>
@@ -73,7 +88,7 @@ export default function ReviewStep({ data }: Props) {
       </div>
 
       <div className="review-section">
-        <h3>5. Payment Confirmation</h3>
+        <h3>6. Payment Confirmation</h3>
         <div className="review-block">
           <label>Receipt Uploaded</label>
           <p>{data.paymentReceipt ? data.paymentReceipt.name : <span className="no-data" style={{ color: 'red' }}>Missing</span>}</p>
