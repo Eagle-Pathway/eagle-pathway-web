@@ -89,7 +89,7 @@ export default function ConsultationForm() {
           .from('scholarships')
           .select('*')
           .eq('is_active', true)
-          .eq('source_status', 'verified');
+          .order('created_at', { ascending: false });
         if (!error && data) {
           setScholarships(data);
         }
