@@ -257,8 +257,26 @@ export default function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={700}>
+            <div className="content-block" style={{ marginBottom: '3rem' }}>
+              <h2>13. Data Collection & Security</h2>
+              <p>
+                The Eagle Pathway app collects User Names, Email Addresses, and Phone Numbers for account management and app functionality. All user data is securely encrypted in transit (using HTTPS) to protect your personal information.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={750}>
+            <div className="content-block" style={{ marginBottom: '3rem' }}>
+              <h2>14. Account & Data Deletion</h2>
+              <p>
+                Users can permanently delete their account and all associated data directly inside the Eagle Pathway mobile app by navigating to <strong>Settings &rarr; Delete Account</strong>. Alternatively, users may request account and data deletion by emailing us at <a href="mailto:support@eaglepathway.com" style={{ color: 'var(--orange)', textDecoration: 'underline' }}>support@eaglepathway.com</a>.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={800}>
             <div className="content-block">
-              <h2>13. Contact Us</h2>
+              <h2>15. Contact Us</h2>
               <ul style={{ listStyleType: 'none', padding: 0, marginTop: '1.5rem', display: 'grid', gap: '1rem' }}>
                 <li><strong>Head Office:</strong> {site.location}</li>
                 <li><strong>Phone:</strong> <a href={`tel:${site.phone}`} style={{ color: 'var(--orange)', textDecoration: 'underline' }}>{site.phone}</a></li>
