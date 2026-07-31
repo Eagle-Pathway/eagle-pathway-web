@@ -4,7 +4,7 @@ export const site = {
   name: "Eagle Pathway",
   tagline: "From the classroom to a global scholarship.",
   url: "https://www.eaglespathway.com",
-  email: "info@eaglepathway.com",
+  email: "info@eaglespathway.com",
   phone: "+4915215828900",
   location: "Addis Ababa, Ethiopia",
   founded: 2019,

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const TO = process.env.CONTACT_TO_EMAIL || 'info@eaglepathway.com';
+const TO = process.env.CONTACT_TO_EMAIL || 'info@eaglespathway.com';
 const FROM = process.env.CONTACT_FROM_EMAIL || 'Eagle Pathway <onboarding@resend.dev>';
 
 function escapeHtml(value: string) {
