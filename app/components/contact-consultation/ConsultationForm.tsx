@@ -118,33 +118,33 @@ export default function ConsultationForm() {
     else if (currentStep === 2) {
       if (!data.selectedScholarships || data.selectedScholarships.length === 0) newErrors.selectedScholarships = 'Please select at least one option to proceed.';
     }
-    else if (currentStep === 9) {
+    else if (currentStep === 3) {
       if (!data.fullName.trim()) newErrors.fullName = 'Required';
       if (!data.gender) newErrors.gender = 'Required';
       if (!data.phone.trim()) newErrors.phone = 'Required';
       if (!data.email.trim() || !/^\S+@\S+\.\S+$/.test(data.email)) newErrors.email = 'Valid email required';
       if (!data.telegram.trim()) newErrors.telegram = 'Required';
     }
-    else if (currentStep === 3) {
+    else if (currentStep === 4) {
       if (!data.academicLevel) newErrors.academicLevel = 'Please select your academic level.';
     }
-    else if (currentStep === 4) {
+    else if (currentStep === 5) {
       if (!data.englishProof) newErrors.englishProof = 'Please select an option.';
     }
-    else if (currentStep === 5) {
+    else if (currentStep === 6) {
       if (data.services.length === 0) newErrors.services = 'Please select at least one service.';
     }
-    else if (currentStep === 6) {
+    else if (currentStep === 7) {
       if (data.appliedBefore === 'Yes' && !data.appliedDetails.trim()) {
         newErrors.appliedDetails = 'Please briefly describe your previous application.';
       }
     }
-    else if (currentStep === 7) {
+    else if (currentStep === 8) {
       if (!data.paymentReceipt) {
         newErrors.paymentReceipt = 'Payment receipt is required to proceed.';
       }
     }
-    else if (currentStep === 8) {
+    else if (currentStep === 9) {
       if (!data.agreements.accurate || !data.agreements.noGuarantee || !data.agreements.terms) {
         newErrors.agreements = 'You must agree to all conditions to proceed.';
       }
@@ -170,7 +170,13 @@ export default function ConsultationForm() {
   };
 
   const submitApplication = async () => {
-    if (!validateStep(10)) return;
+    for (let i = 1; i <= 9; i++) {
+      if (!validateStep(i)) {
+        setStep(i);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+    }
     
     setIsSubmitting(true);
     

@@ -33,7 +33,7 @@ export const nav = [
   { label: "Services", href: "/services" },
   { label: "How it works", href: "/how-it-works" },
   { label: "Results", href: "/results" },
-  { label: "Apply with Us", href: "/apply-with-us" },
+  { label: "Apply with Us", href: "https://forms.gle/6sc564Ty5Wz3gJZM8", external: true },
   { label: "Contact", href: "/contact" },
 ];
 
