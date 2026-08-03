@@ -41,7 +41,7 @@ export default function Footer() {
           <div>
             <h4>Product</h4>
             <ul>
-              <li><Link href="/getstarted">Get Started</Link></li>
+              <li><a href="https://forms.gle/6sc564Ty5Wz3gJZM8" target="_blank" rel="noopener noreferrer">Get Started</a></li>
               <li><Link href="/services">Services</Link></li>
               <li><Link href="/services">Tutoring</Link></li>
               <li><Link href="/services">Scholarships</Link></li>

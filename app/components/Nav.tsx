@@ -48,9 +48,9 @@ export default function Nav() {
         </nav>
 
         <div className="nav-right">
-          <Link className="btn btn-primary" href="/getstarted">
+          <a className="btn btn-primary" href="https://forms.gle/6sc564Ty5Wz3gJZM8" target="_blank" rel="noopener noreferrer">
             Get Started
-          </Link>
+          </a>
           <button
             className="nav-toggle"
             aria-label="Toggle menu"
@@ -81,9 +81,9 @@ export default function Nav() {
               </Link>
             )
           )}
-          <Link className="btn btn-primary" href="/getstarted" onClick={() => setOpen(false)}>
+          <a className="btn btn-primary" href="https://forms.gle/6sc564Ty5Wz3gJZM8" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
             Get Started
-          </Link>
+          </a>
         </div>
       )}
     </header>
