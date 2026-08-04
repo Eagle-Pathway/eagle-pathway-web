@@ -142,7 +142,7 @@ export default function HowItWorksPage() {
           <h2>Ready to start?</h2>
           <p>Book a free consultation and get your roadmap within the first week.</p>
           <div className="hero-ctas">
-            <Link href="/apply-with-us" className="btn btn-light btn-lg">Book a Services</Link>
+            <a href="https://forms.gle/NL2oB6mHHUscnZo9A" target="_blank" rel="noopener noreferrer" className="btn btn-light btn-lg">Book Consultation</a>
             <Link href="/services" className="btn btn-light btn-lg">View services</Link>
           </div>
         </Reveal>

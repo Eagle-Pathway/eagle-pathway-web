@@ -71,7 +71,7 @@ export default function ResultsPage() {
           <h2>Want results like these?</h2>
           <p>Book a free consultation and we’ll map a realistic pathway for your profile.</p>
           <div className="hero-ctas">
-            <Link href="/apply-with-us" className="btn btn-light btn-lg">Book a consultation</Link>
+            <a href="https://forms.gle/NL2oB6mHHUscnZo9A" target="_blank" rel="noopener noreferrer" className="btn btn-light btn-lg">Book consultation</a>
           </div>
         </Reveal>
       </Section>
