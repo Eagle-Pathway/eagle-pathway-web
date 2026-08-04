@@ -151,8 +151,8 @@ export default function ServicesPage() {
             <h1>Your Complete Pathway to Global Education Opportunities</h1>
             <p>From university selection to scholarship applications and visa preparation, Eagle Pathway provides strategic guidance to help Ethiopian and African students achieve their international education goals.</p>
             <div className="svc-hero-ctas">
-              <a href="https://forms.gle/6sc564Ty5Wz3gJZM8" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">Book Consultation</a>
-              <a href="https://forms.gle/6sc564Ty5Wz3gJZM8" target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-lg">Start Application</a>
+              <a href="https://forms.gle/eUrPE13Gt2GL4D3y9" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">Scholarship Bootcamp</a>
+              <a href="https://forms.gle/eUrPE13Gt2GL4D3y9" target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-lg">Scholarship Bootcamp</a>
             </div>
             <div className="svc-trust-strip">
               {trustIndicators.map((indicator, i) => (
@@ -252,8 +252,8 @@ export default function ServicesPage() {
             <h2>Ready to Start Your Study Abroad Journey?</h2>
             <p>Get expert guidance and build a stronger path toward international education.</p>
             <div className="hero-ctas justify-center">
-              <a href="https://forms.gle/6sc564Ty5Wz3gJZM8" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">Book Consultation</a>
-              <a href="https://forms.gle/6sc564Ty5Wz3gJZM8" target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-lg" style={{ background: '#fff' }}>Get Started</a>
+              <a href="https://forms.gle/eUrPE13Gt2GL4D3y9" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">Scholarship Bootcamp</a>
+              <a href="https://forms.gle/eUrPE13Gt2GL4D3y9" target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-lg" style={{ background: '#fff' }}>Scholarship Bootcamp</a>
             </div>
           </Reveal>
         </div>

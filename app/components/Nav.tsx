@@ -48,8 +48,8 @@ export default function Nav() {
         </nav>
 
         <div className="nav-right">
-          <a className="btn btn-primary" href="https://forms.gle/6sc564Ty5Wz3gJZM8" target="_blank" rel="noopener noreferrer">
-            Get Started
+          <a className="btn btn-primary" href="https://forms.gle/eUrPE13Gt2GL4D3y9" target="_blank" rel="noopener noreferrer">
+            Scholarship Bootcamp
           </a>
           <button
             className="nav-toggle"
@@ -81,8 +81,8 @@ export default function Nav() {
               </Link>
             )
           )}
-          <a className="btn btn-primary" href="https://forms.gle/6sc564Ty5Wz3gJZM8" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
-            Get Started
+          <a className="btn btn-primary" href="https://forms.gle/eUrPE13Gt2GL4D3y9" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
+            Scholarship Bootcamp
           </a>
         </div>
       )}

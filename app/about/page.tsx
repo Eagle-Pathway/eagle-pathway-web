@@ -343,7 +343,7 @@ export default function AboutPage() {
               to global success.
             </p>
             <div className="hero-ctas">
-              <a href="https://forms.gle/6sc564Ty5Wz3gJZM8" target="_blank" rel="noopener noreferrer" className="btn btn-light btn-lg">Get Started</a>
+              <a href="https://forms.gle/eUrPE13Gt2GL4D3y9" target="_blank" rel="noopener noreferrer" className="btn btn-light btn-lg">Scholarship Bootcamp</a>
               <a href={`mailto:${site.email}`} className="btn btn-light btn-lg">Email us</a>
             </div>
           </Reveal>

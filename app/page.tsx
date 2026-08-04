@@ -37,8 +37,8 @@ export default function Home() {
               </Reveal>
               <Reveal delay={120}>
                 <div className="hero-ctas">
-                  <a href="https://forms.gle/6sc564Ty5Wz3gJZM8" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
-                    Start your journey
+                  <a href="https://forms.gle/eUrPE13Gt2GL4D3y9" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
+                    Scholarship Bootcamp
                   </a>
                   <Link href="/services" className="btn btn-ghost btn-lg">
                     Explore services
@@ -148,7 +148,7 @@ export default function Home() {
           <h2>Ready to write your success story?</h2>
           <p>Book a free consultation and get a structured pathway within your first week.</p>
           <div className="hero-ctas">
-            <a href="https://forms.gle/6sc564Ty5Wz3gJZM8" target="_blank" rel="noopener noreferrer" className="btn btn-light btn-lg">Start your journey</a>
+            <a href="https://forms.gle/eUrPE13Gt2GL4D3y9" target="_blank" rel="noopener noreferrer" className="btn btn-light btn-lg">Scholarship Bootcamp</a>
             <Link href="/how-it-works" className="btn btn-light btn-lg">See how it works</Link>
           </div>
         </Reveal>

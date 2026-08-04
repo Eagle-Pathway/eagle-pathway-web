@@ -32,7 +32,7 @@ export default function Footer() {
               <li><Link href="/">Home</Link></li>
               <li><Link href="/about">About</Link></li>
               <li><Link href="/contact">Contact</Link></li>
-              <li><a href="https://forms.gle/6sc564Ty5Wz3gJZM8" target="_blank" rel="noopener noreferrer">Apply with Us</a></li>
+              <li><a href="https://forms.gle/eUrPE13Gt2GL4D3y9" target="_blank" rel="noopener noreferrer">Apply with Us</a></li>
               <li><Link href="/privacy">Privacy Policy</Link></li>
               <li><a href={site.telegram.url} target="_blank" rel="noopener noreferrer">Telegram community</a></li>
             </ul>
@@ -41,7 +41,7 @@ export default function Footer() {
           <div>
             <h4>Product</h4>
             <ul>
-              <li><a href="https://forms.gle/6sc564Ty5Wz3gJZM8" target="_blank" rel="noopener noreferrer">Get Started</a></li>
+              <li><a href="https://forms.gle/eUrPE13Gt2GL4D3y9" target="_blank" rel="noopener noreferrer">Scholarship Bootcamp</a></li>
               <li><Link href="/services">Services</Link></li>
               <li><Link href="/services">Tutoring</Link></li>
               <li><Link href="/services">Scholarships</Link></li>

@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
 
 export default function ApplyPage() {
-  redirect('https://forms.gle/6sc564Ty5Wz3gJZM8');
+  redirect('https://forms.gle/eUrPE13Gt2GL4D3y9');
 }
