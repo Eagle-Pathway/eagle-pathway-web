@@ -21,7 +21,8 @@ export default function EligibilityEstimator() {
     <div className="estimator-container">
       <div className="estimator-header">
         <span className="eyebrow">
-          <Sparkles size={14} /> Instant Self-Assessment Tool
+          <Sparkles size={14} />
+          <span>Instant Self-Assessment Tool</span>
         </span>
         <h2>Check Your Scholarship Eligibility</h2>
         <p>Answer 3 quick questions to check your profile match for international scholarships and funded admissions.</p>

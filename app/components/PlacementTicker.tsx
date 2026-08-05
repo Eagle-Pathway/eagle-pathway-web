@@ -11,7 +11,8 @@ export default function PlacementTicker() {
     <div className="placement-ticker-wrapper">
       <div className="container">
         <div className="ticker-label">
-          <Award size={16} /> Target Destinations &amp; Placements
+          <Award size={16} />
+          <span>Target Destinations &amp; Placements</span>
         </div>
       </div>
 

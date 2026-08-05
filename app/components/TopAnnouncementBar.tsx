@@ -13,7 +13,8 @@ export default function TopAnnouncementBar() {
       <div className="container top-banner-inner">
         <div className="top-banner-content">
           <span className="top-banner-badge">
-            <Sparkles size={13} /> Cohort Open
+            <Sparkles size={13} />
+            <span>Cohort Open</span>
           </span>
           <span className="top-banner-text">
             <strong>Scholarship Bootcamp 2026:</strong> Limited seats available for the upcoming admissions cycle.
