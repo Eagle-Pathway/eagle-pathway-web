@@ -76,6 +76,9 @@ const jsonLd = {
   sameAs: [site.telegram.url],
 };
 
+import TopAnnouncementBar from './components/TopAnnouncementBar';
+import FloatingTelegramWidget from './components/FloatingTelegramWidget';
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -86,10 +89,11 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <TopAnnouncementBar />
         <Nav />
         <main>{children}</main>
         <Footer />
-        {/* <AiAssistantWidget /> */}
+        <FloatingTelegramWidget />
       </body>
     </html>
   );

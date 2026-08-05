@@ -8,6 +8,8 @@ import PlacementLogos from './components/PlacementLogos';
 import HeroVisual from './components/HeroVisual';
 import CaseStudyCard from './components/CaseStudyCard';
 import TrustStrip from './components/TrustStrip';
+import PlacementTicker from './components/PlacementTicker';
+import EligibilityEstimator from './components/EligibilityEstimator';
 import { stats, features, testimonials } from './content/site';
 
 export default function Home() {
@@ -59,6 +61,8 @@ export default function Home() {
         </div>
       </section>
 
+      <PlacementTicker />
+
       <Section tight>
         <Reveal>
           <div className="stats-band">
@@ -96,6 +100,12 @@ export default function Home() {
           <p className="section-cta-link">
             <Link href="/services">See all services →</Link>
           </p>
+        </Reveal>
+      </Section>
+
+      <Section tight>
+        <Reveal>
+          <EligibilityEstimator />
         </Reveal>
       </Section>
 

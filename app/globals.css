@@ -3149,3 +3149,548 @@ height: 45px;
   color: var(--muted);
   font-size: 1.05rem;
 }
+
+/* ==========================================================================
+   UI/UX ENHANCEMENTS & GLASSMORPHISM DESIGN SYSTEM
+   ========================================================================== */
+
+/* ---------- Top Announcement Banner ---------- */
+.top-banner {
+  background: linear-gradient(90deg, #132a65 0%, #1a2b5f 50%, #243b7a 100%);
+  color: #ffffff;
+  padding: 0.6rem 0;
+  font-size: 0.88rem;
+  position: relative;
+  z-index: 101;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.top-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.top-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.top-banner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(232, 146, 10, 0.25);
+  color: #fca5a5;
+  color: #ffbe6b;
+  border: 1px solid rgba(232, 146, 10, 0.4);
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.top-banner-text {
+  color: #e2e8f0;
+}
+.top-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.top-banner-btn {
+  background: var(--orange);
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.top-banner-btn:hover {
+  background: var(--orange-600);
+  transform: translateY(-1px);
+}
+.top-banner-close {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.2s ease;
+}
+.top-banner-close:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 640px) {
+  .top-banner-text {
+    font-size: 0.8rem;
+  }
+  .top-banner-badge {
+    display: none;
+  }
+}
+
+/* ---------- Glassmorphism Card Utilities ---------- */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07);
+  border-radius: var(--radius-lg);
+}
+
+/* ---------- Floating Telegram Quick-Connect ---------- */
+.floating-telegram-wrapper {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  z-index: 999;
+}
+
+.floating-telegram-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--navy);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 12px 32px rgba(26, 43, 95, 0.4);
+  position: relative;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.floating-telegram-trigger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(26, 43, 95, 0.5);
+  background: var(--navy-600);
+}
+
+.pulse-ring {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 10px;
+  height: 10px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  animation: pulseRing 2s infinite;
+}
+
+@keyframes pulseRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+.trigger-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #38bdf8;
+}
+.trigger-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.trigger-badge {
+  background: var(--orange);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+
+.floating-telegram-popup {
+  position: absolute;
+  bottom: 4.25rem;
+  right: 0;
+  width: 360px;
+  max-width: calc(100vw - 2rem);
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 24px 60px -15px rgba(15, 23, 42, 0.25);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.floating-telegram-header {
+  background: var(--navy);
+  color: #ffffff;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.floating-telegram-header-info {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+.floating-avatar {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  background: var(--orange);
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+.online-status-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 11px;
+  height: 11px;
+  background: #22c55e;
+  border: 2px solid var(--navy);
+  border-radius: 50%;
+}
+
+.floating-telegram-header h4 {
+  color: #ffffff;
+  font-size: 0.98rem;
+  margin: 0 0 2px;
+}
+.floating-telegram-header p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.78rem;
+  margin: 0;
+}
+.floating-close-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 4px;
+}
+.floating-close-btn:hover { color: #fff; }
+
+.floating-telegram-body {
+  padding: 1.25rem;
+  background: #f8fafc;
+}
+.chat-bubble {
+  background: #ffffff;
+  color: var(--ink);
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  border-top-left-radius: 4px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  border: 1px solid var(--line);
+  margin-bottom: 0.75rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+.chat-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 1rem 0 1.25rem;
+}
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--body);
+  font-weight: 500;
+}
+.check-icon {
+  color: var(--orange);
+  flex-shrink: 0;
+}
+
+.chat-action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.chat-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+.primary-chat-btn {
+  background: #0088cc;
+  color: #ffffff;
+}
+.primary-chat-btn:hover {
+  background: #0077b3;
+}
+.secondary-chat-btn {
+  background: var(--navy);
+  color: #ffffff;
+}
+.secondary-chat-btn:hover {
+  background: var(--navy-600);
+}
+
+@media (max-width: 640px) {
+  .floating-telegram-wrapper {
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+  .trigger-label {
+    display: none;
+  }
+  .floating-telegram-trigger {
+    padding: 0.85rem;
+    border-radius: 50%;
+  }
+}
+
+/* ---------- Eligibility Estimator ---------- */
+.estimator-container {
+  max-width: 900px;
+  margin: 3rem auto;
+}
+.estimator-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.estimator-header h2 {
+  font-size: 2.2rem;
+  margin: 0.5rem 0 0.75rem;
+  color: var(--navy);
+}
+.estimator-header p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.estimator-card {
+  padding: 2.5rem;
+}
+.estimator-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.estimator-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.field-label {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 1.05rem;
+}
+.estimator-options {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+.estimator-options.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.estimator-btn {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: 0.9rem 1.25rem;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+.estimator-btn:hover {
+  border-color: var(--navy);
+  background: var(--bg-soft);
+}
+.estimator-btn.active {
+  border-color: var(--orange);
+  background: rgba(232, 146, 10, 0.06);
+  color: var(--navy);
+  font-weight: 700;
+  box-shadow: 0 0 0 1px var(--orange);
+}
+
+.estimator-action {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+.btn-block {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Result Panel */
+.result-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.result-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+}
+.score-badge {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-500) 100%);
+  color: #ffffff;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  box-shadow: var(--shadow);
+}
+.score-num {
+  font-size: 2.5rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--orange);
+  line-height: 1;
+}
+.score-lbl {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 0.35rem;
+  font-weight: 600;
+}
+.result-header h3 {
+  font-size: 1.6rem;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+.result-desc {
+  color: var(--body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.result-highlights {
+  background: var(--bg-soft);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.result-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.result-footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ---------- Placement Ticker ---------- */
+.placement-ticker-wrapper {
+  background: var(--bg-soft);
+  border-y: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 1.25rem 0;
+  overflow: hidden;
+}
+.ticker-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.75px;
+  color: var(--muted);
+  margin-bottom: 0.85rem;
+}
+.ticker-track-container {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+}
+.ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  animation: tickerSlide 35s linear infinite;
+  white-space: nowrap;
+  will-change: transform;
+}
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+.ticker-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  padding: 0.6rem 1.25rem;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.ticker-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--orange);
+  border-radius: 50%;
+}
+.ticker-name {
+  font-weight: 600;
+  color: var(--navy);
+  font-size: 0.92rem;
+}
+
+@keyframes tickerSlide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
