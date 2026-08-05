@@ -78,6 +78,7 @@ const jsonLd = {
 
 import TopAnnouncementBar from './components/TopAnnouncementBar';
 import FloatingTelegramWidget from './components/FloatingTelegramWidget';
+import AnalyticsAndAds from './components/AnalyticsAndAds';
 
 export default function RootLayout({
   children,
@@ -89,6 +90,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <AnalyticsAndAds />
         <TopAnnouncementBar />
         <Nav />
         <main>{children}</main>

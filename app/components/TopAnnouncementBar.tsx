@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Sparkles } from 'lucide-react';
+import { X, Sparkles, ArrowRight } from 'lucide-react';
 
 export default function TopAnnouncementBar() {
   const [dismissed, setDismissed] = useState(false);
@@ -11,32 +11,41 @@ export default function TopAnnouncementBar() {
   return (
     <div className="top-banner">
       <div className="container top-banner-inner">
-        <div className="top-banner-content">
+        <a
+          href="https://forms.gle/eUrPE13Gt2GL4D3y9"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="top-banner-link"
+        >
           <span className="top-banner-badge">
-            <Sparkles size={13} />
-            <span>Cohort Open</span>
+            <Sparkles size={12} />
+            <span>Bootcamp</span>
           </span>
-          <span className="top-banner-text">
+
+          <span className="top-banner-text-desktop">
             <strong>Scholarship Bootcamp 2026:</strong> Limited seats available for the upcoming admissions cycle.
           </span>
-        </div>
-        <div className="top-banner-actions">
-          <a
-            href="https://forms.gle/eUrPE13Gt2GL4D3y9"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="top-banner-btn"
-          >
-            Reserve Your Slot →
-          </a>
-          <button
-            onClick={() => setDismissed(true)}
-            className="top-banner-close"
-            aria-label="Dismiss banner"
-          >
-            <X size={16} />
-          </button>
-        </div>
+
+          <span className="top-banner-text-mobile">
+            Bootcamp 2026 Open
+          </span>
+
+          <span className="top-banner-cta">
+            <span>Reserve Slot</span>
+            <ArrowRight size={13} />
+          </span>
+        </a>
+
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setDismissed(true);
+          }}
+          className="top-banner-close"
+          aria-label="Dismiss banner"
+        >
+          <X size={15} />
+        </button>
       </div>
     </div>
   );
