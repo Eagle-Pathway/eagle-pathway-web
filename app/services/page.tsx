@@ -10,9 +10,12 @@ import FAQ from '../components/services/FAQ';
 import { Check } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Services | Eagle Pathway',
+  title: 'Services | Eagle Pathway — Scholarship & Tutoring Guidance',
   description:
-    'From university selection to scholarship applications and visa preparation, Eagle Pathway provides strategic guidance to help Ethiopian and African students achieve their international education goals.',
+    'From university selection and SAT/IELTS tutoring to scholarship applications and visa preparation, Eagle Pathway provides strategic guidance to help Ethiopian and African students achieve their international education goals.',
+  alternates: {
+    canonical: '/services',
+  },
 };
 
 export default function ServicesPage() {
@@ -142,8 +145,25 @@ export default function ServicesPage() {
     'Visa Preparation',
   ];
 
+  const servicesJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
+      />
       {/* Hero Section */}
       <section className="svc-hero">
         <div className="container">

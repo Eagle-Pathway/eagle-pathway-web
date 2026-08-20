@@ -25,13 +25,39 @@ const YoutubeIcon = ({ size = 22 }: { size?: number }) => (
 );
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Eagle Pathway',
-  description: 'Get in touch with Eagle Pathway for general inquiries and support.',
+  title: 'Contact Us | Eagle Pathway — Addis Ababa, Ethiopia',
+  description:
+    'Contact Eagle Pathway for expert tutoring, SAT/IELTS preparation, and scholarship counseling in Addis Ababa, Ethiopia.',
+  alternates: {
+    canonical: '/contact',
+  },
 };
 
 export default function ContactPage() {
+  const contactJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Contact Eagle Pathway',
+    url: `${site.url}/contact`,
+    mainEntity: {
+      '@type': 'EducationalOrganization',
+      name: site.name,
+      email: site.email,
+      telephone: site.phone,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Addis Ababa',
+        addressCountry: 'ET',
+      },
+    },
+  };
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
+      />
       <section className="page-head" style={{ paddingBottom: '3rem' }}>
         <div className="container">
           <span className="eyebrow">Get in touch</span>

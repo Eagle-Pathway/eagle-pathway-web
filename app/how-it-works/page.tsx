@@ -8,14 +8,47 @@ import AppButtons from '../components/AppButtons';
 import { steps, features, faqs } from '../content/site';
 
 export const metadata: Metadata = {
-  title: 'How It Works | Eagle Pathway',
+  title: 'How It Works | Eagle Pathway — 4-Step Scholarship Guidance',
   description:
-    'A structured 4-step process — discovery, planning, execution and submission — with weekly tracking at every stage.',
+    'Discover our structured 4-step process — discovery, planning, execution and submission — with weekly tracking for Ethiopian students targeting global scholarships.',
+  alternates: {
+    canonical: '/how-it-works',
+  },
 };
 
 export default function HowItWorksPage() {
+  const howToSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to Secure International Scholarships with Eagle Pathway',
+    description: 'A structured 4-step process for Ethiopian students to apply for and secure global university admissions and scholarships.',
+    step: steps.map((s, index) => ({
+      '@type': 'HowToStep',
+      position: index + 1,
+      name: s.title,
+      text: s.description,
+    })),
+  };
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([howToSchema, faqSchema]) }}
+      />
       <section className="page-head">
         <div className="container">
           <Reveal>

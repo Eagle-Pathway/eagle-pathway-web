@@ -4,9 +4,12 @@ import Icon from '../components/Icon';
 import { stats } from '../content/site';
 
 export const metadata: Metadata = {
-  title: 'About | Eagle Pathway',
+  title: 'About Us | Eagle Pathway — EdTech & Global Mobility in Ethiopia',
   description:
-    'EaglePathway Education is an EdTech and global mobility company empowering learners from Kindergarten to global success through tutoring, AI technology, and international opportunity services.',
+    'EaglePathway Education is an EdTech and global mobility company empowering Ethiopian and African learners through academic tutoring, AI technology, and international scholarship guidance.',
+  alternates: {
+    canonical: '/about',
+  },
 };
 
 const coreValues = [

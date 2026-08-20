@@ -8,9 +8,12 @@ import PlacementLogos from '../components/PlacementLogos';
 import { stats, testimonials } from '../content/site';
 
 export const metadata: Metadata = {
-  title: 'Results | Eagle Pathway',
+  title: 'Proven Results & Admissions | Eagle Pathway',
   description:
-    'Student outcomes, university admissions and scholarship results from Eagle Pathway — 70+ students guided since 2024.',
+    'Real student outcomes, university admissions (Oxford, McGill, UBC, Edinburgh) and $1M+ scholarships secured for Ethiopian students guided by Eagle Pathway.',
+  alternates: {
+    canonical: '/results',
+  },
 };
 
 export default function ResultsPage() {

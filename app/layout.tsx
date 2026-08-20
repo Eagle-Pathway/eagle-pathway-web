@@ -21,19 +21,27 @@ const sora = Sora({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
+  alternates: {
+    canonical: '/',
+  },
   title: {
     default: 'Eagle Pathway | Scholarships & Tutoring for Ethiopian Students',
     template: '%s | Eagle Pathway',
   },
   description:
-    'From the classroom to a global scholarship. Expert tutoring and scholarship guidance helping Ethiopian students secure admissions and funding at world-class universities.',
+    'From the classroom to a global scholarship. Expert tutoring, SAT/IELTS prep, and scholarship guidance helping Ethiopian and African students secure admissions and funding at world-class universities.',
   keywords: [
     'Scholarship Ethiopia',
+    'Scholarship agency Addis Ababa',
+    'Study abroad Ethiopia',
     'Tutoring Addis Ababa',
-    'International Education',
+    'SAT prep Ethiopia',
+    'IELTS prep Addis Ababa',
+    'International Education Ethiopia',
     'Eagle Pathway',
-    'Study Abroad',
-    'SAT IELTS prep',
+    'Undergraduate scholarships for Ethiopian students',
+    'Master degree scholarships Ethiopia',
+    'Full funding study abroad Africa',
   ],
   icons: {
     icon: '/icon.png',
@@ -42,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Eagle Pathway — Secure Your Future Abroad',
     description:
-      'Expert tutoring and scholarship guidance for Ethiopian students aiming for world-class universities.',
+      'Expert tutoring, SAT/IELTS preparation, and scholarship guidance for Ethiopian students aiming for world-class universities.',
     type: 'website',
     locale: 'en_US',
     url: site.url,
@@ -58,23 +66,42 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'EducationalOrganization',
-  name: site.name,
-  url: site.url,
-  logo: `${site.url}/icon.png`,
-  description:
-    'Scholarship guidance and academic tutoring helping Ethiopian students secure admissions and funding at world-class universities.',
-  email: site.email,
-  telephone: site.phone,
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Addis Ababa',
-    addressCountry: 'ET',
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    name: site.name,
+    url: site.url,
+    logo: `${site.url}/icon.png`,
+    description:
+      'Scholarship guidance, SAT/IELTS preparation, and academic tutoring helping Ethiopian students secure admissions and funding at world-class universities.',
+    email: site.email,
+    telephone: site.phone,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Addis Ababa',
+      addressCountry: 'ET',
+    },
+    areaServed: {
+      '@type': 'Country',
+      name: 'Ethiopia',
+    },
+    sameAs: [
+      site.telegram.url,
+      site.socials.facebook,
+      site.socials.tiktok,
+      site.socials.instagram,
+      site.socials.youtube,
+    ],
   },
-  sameAs: [site.telegram.url],
-};
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: site.name,
+    url: site.url,
+    alternateName: ['Eagle Pathway Ethiopia', 'EaglePathway'],
+  },
+];
 
 import TopAnnouncementBar from './components/TopAnnouncementBar';
 import FloatingTelegramWidget from './components/FloatingTelegramWidget';

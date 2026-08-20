@@ -6,7 +6,10 @@ import { site } from '../content/site';
 export const metadata: Metadata = {
   title: 'Company Profile & Privacy | Eagle Pathway',
   description:
-    'EaglePathway Education Company Profile. Empowering Every Learner. Connecting Every Opportunity.',
+    'EaglePathway Education Company Profile & Privacy Policy. Empowering Every Learner. Connecting Every Opportunity.',
+  alternates: {
+    canonical: '/privacy',
+  },
 };
 
 export default function PrivacyPage() {
