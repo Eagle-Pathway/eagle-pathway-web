@@ -21,6 +21,9 @@ const sora = Sora({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
+  verification: {
+    google: 'googlefd8e292bf0a88074',
+  },
   alternates: {
     canonical: '/',
   },
