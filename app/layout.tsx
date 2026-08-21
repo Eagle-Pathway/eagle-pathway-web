@@ -45,15 +45,21 @@ export const metadata: Metadata = {
     'Undergraduate scholarships for Ethiopian students',
     'Master degree scholarships Ethiopia',
     'Full funding study abroad Africa',
+    'አስጠኚዎች አዲስ አበባ',
+    'የአስጠኚዎች ኤጀንሲ',
+    'ቱቶሪያል አዲስ አበባ',
+    'የስኮላርሺፕ ኤጀንሲ አዲስ አበባ',
+    'Astegniwoch Addis Ababa',
+    'Ethiopia tutors and tutorial services',
   ],
   icons: {
     icon: '/icon.png',
     apple: '/icon.png',
   },
   openGraph: {
-    title: 'Eagle Pathway — Secure Your Future Abroad',
+    title: 'Eagle Pathway — Secure Your Future Abroad | አስጠኚዎች እና የስኮላርሺፕ ኤጀንሲ',
     description:
-      'Expert tutoring, SAT/IELTS preparation, and scholarship guidance for Ethiopian students aiming for world-class universities.',
+      'Expert tutoring, SAT/IELTS preparation, and scholarship guidance helping Ethiopian students secure admissions and funding at world-class universities.',
     type: 'website',
     locale: 'en_US',
     url: site.url,
@@ -62,7 +68,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Eagle Pathway — Secure Your Future Abroad',
+    title: 'Eagle Pathway — Secure Your Future Abroad | አስጠኚዎች እና የስኮላርሺፕ ኤጀንሲ',
     description:
       'Expert tutoring and scholarship guidance for Ethiopian students aiming for world-class universities.',
     images: ['/logo.png'],
@@ -77,7 +83,7 @@ const jsonLd = [
     url: site.url,
     logo: `${site.url}/icon.png`,
     description:
-      'Scholarship guidance, SAT/IELTS preparation, and academic tutoring helping Ethiopian students secure admissions and funding at world-class universities.',
+      'Scholarship guidance, SAT/IELTS preparation, and academic tutoring (አስጠኚዎች እና ቱቶሪያል) helping Ethiopian students secure admissions and funding at world-class universities.',
     email: site.email,
     telephone: site.phone,
     address: {
@@ -102,7 +108,7 @@ const jsonLd = [
     '@type': 'WebSite',
     name: site.name,
     url: site.url,
-    alternateName: ['Eagle Pathway Ethiopia', 'EaglePathway'],
+    alternateName: ['Eagle Pathway Ethiopia', 'EaglePathway', 'ኢግል ፓዝዌይ', 'አስጠኚዎች አዲስ አበባ'],
   },
 ];
 
