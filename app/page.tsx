@@ -10,7 +10,9 @@ import CaseStudyCard from './components/CaseStudyCard';
 import TrustStrip from './components/TrustStrip';
 import PlacementTicker from './components/PlacementTicker';
 import EligibilityEstimator from './components/EligibilityEstimator';
-import { stats, features, testimonials } from './content/site';
+import TutoringShowcase from './components/TutoringShowcase';
+import { Phone, Send } from 'lucide-react';
+import { stats, features, testimonials, site } from './content/site';
 
 export default function Home() {
   const topFeatures = features.slice(0, 3);
@@ -22,6 +24,28 @@ export default function Home() {
           <div className="hero-layout">
             <div className="hero-content">
               <Reveal>
+                <div className="hero-parents-call-box">
+                  <div className="parents-call-row-1">
+                    <span className="parents-call-badge">
+                      <Phone size={12} />
+                      <span>Parents Hotline</span>
+                    </span>
+                    <span className="parents-call-text">
+                      <strong>Need a tutor fast?</strong> Call{' '}
+                      <a href={`tel:${site.tutoring.phone1}`} className="parents-call-num">{site.tutoring.phone1Display}</a>
+                      {' / '}
+                      <a href={`tel:${site.tutoring.phone2}`} className="parents-call-num">{site.tutoring.phone2Display}</a>
+                    </span>
+                  </div>
+                  <div className="parents-call-row-2">
+                    <a href={site.tutoring.telegram} target="_blank" rel="noopener noreferrer" className="parents-call-tg">
+                      <Send size={12} /> Telegram: {site.tutoring.handle}
+                    </a>
+                  </div>
+                </div>
+              </Reveal>
+
+              <Reveal delay={20}>
                 <span className="pill">
                   <span className="pill-dot" /> Trusted by students across Ethiopia
                 </span>
@@ -108,6 +132,8 @@ export default function Home() {
           <EligibilityEstimator />
         </Reveal>
       </Section>
+
+      <TutoringShowcase />
 
       <Section>
         <Reveal className="section-head">

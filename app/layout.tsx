@@ -127,8 +127,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <AnalyticsAndAds />
-        <TopAnnouncementBar />
-        <Nav />
+        <div className="sticky-header-wrapper">
+          <TopAnnouncementBar />
+          <Nav />
+        </div>
         <main>{children}</main>
         <Footer />
         <FloatingTelegramWidget />

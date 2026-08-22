@@ -13,6 +13,14 @@ export const site = {
     handle: "@Tegegnpathway",
     members: "20,000+",
   },
+  tutoring: {
+    telegram: "https://t.me/EagleTutorialsServices",
+    handle: "@EagleTutorialsServices",
+    phone1: "+251985705712",
+    phone1Display: "+251 985 705 712",
+    phone2: "+251970402044",
+    phone2Display: "+251 970 402 044",
+  },
   socials: {
     facebook: "https://www.facebook.com/tegegnpathway",
     tiktok: "https://www.tiktok.com/@tegegnpathway",

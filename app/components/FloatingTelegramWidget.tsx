@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Send, X, MessageSquare, ExternalLink, CheckCircle } from 'lucide-react';
+import { Send, X, ExternalLink, CheckCircle, Phone } from 'lucide-react';
 import { site } from '@/app/content/site';
 
 export default function FloatingTelegramWidget() {
@@ -15,12 +15,12 @@ export default function FloatingTelegramWidget() {
           <div className="floating-telegram-header">
             <div className="floating-telegram-header-info">
               <div className="floating-avatar">
-                <span>TT</span>
+                <span>EP</span>
                 <span className="online-status-dot" />
               </div>
               <div>
-                <h4>Eagle Pathway Consultation</h4>
-                <p>Online • Replies quickly on Telegram</p>
+                <h4>Eagle Pathway Direct Support</h4>
+                <p>Online • Quick support for parents & students</p>
               </div>
             </div>
             <button
@@ -34,31 +34,36 @@ export default function FloatingTelegramWidget() {
 
           <div className="floating-telegram-body">
             <div className="chat-bubble left">
-              👋 Hi there! Looking for scholarship guidance or application assistance?
-            </div>
-            <div className="chat-bubble left">
-              Join our <strong>20,000+ member Telegram community</strong> or speak directly with our lead advisor.
+              👋 Welcome! Whether you need an <strong>Astegni / Tutor fast</strong> or <strong>Scholarship Guidance</strong>, we are here to help:
             </div>
 
             <div className="chat-highlights">
               <div className="highlight-item">
                 <CheckCircle size={14} className="check-icon" />
-                <span>Fully Funded Scholarship Shortlists</span>
+                <span>Tutoring: KG–12, Languages, SAT & IELTS</span>
               </div>
               <div className="highlight-item">
                 <CheckCircle size={14} className="check-icon" />
-                <span>1-on-1 Academic & Visa Counseling</span>
+                <span>Scholarships: Admissions & Visa Counseling</span>
               </div>
             </div>
 
             <div className="chat-action-buttons">
               <a
-                href={site.telegram.url}
+                href={`tel:${site.tutoring.phone1}`}
+                className="chat-btn"
+                style={{ background: '#f59e0b', color: '#0f172a', fontWeight: 700 }}
+              >
+                <Phone size={16} /> Call Tutoring Hotline ({site.tutoring.phone1Display})
+              </a>
+
+              <a
+                href={site.tutoring.telegram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="chat-btn primary-chat-btn"
               >
-                <Send size={16} /> Open Telegram Chat (@Tegegnpathway)
+                <Send size={16} /> Tutoring Telegram (@EagleTutorialsServices)
               </a>
 
               <a
@@ -67,7 +72,7 @@ export default function FloatingTelegramWidget() {
                 rel="noopener noreferrer"
                 className="chat-btn secondary-chat-btn"
               >
-                <ExternalLink size={16} /> Book Scholarship Bootcamp
+                <ExternalLink size={16} /> Scholarship Bootcamp 2026
               </a>
             </div>
           </div>
