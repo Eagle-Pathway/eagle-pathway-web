@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 interface DestinationCardProps {
   country: string;
   flag: string;
@@ -7,7 +5,12 @@ interface DestinationCardProps {
   link?: string;
 }
 
-export default function DestinationCard({ country, flag, description, link = '/apply-with-us' }: DestinationCardProps) {
+export default function DestinationCard({
+  country,
+  flag,
+  description,
+  link = 'https://forms.gle/NL2oB6mHHUscnZo9A',
+}: DestinationCardProps) {
   return (
     <div className="dest-card">
       <div className="dest-header">
@@ -15,9 +18,14 @@ export default function DestinationCard({ country, flag, description, link = '/a
         <h3>{country}</h3>
       </div>
       <p>{description}</p>
-      <Link href={link} className="dest-link">
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="dest-link"
+      >
         Learn More &rarr;
-      </Link>
+      </a>
     </div>
   );
 }

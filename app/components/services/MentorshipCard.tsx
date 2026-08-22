@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Check } from 'lucide-react';
 
 interface MentorshipCardProps {
@@ -15,7 +14,7 @@ export default function MentorshipCard({
   description,
   includes,
   ctaText,
-  ctaLink = '/getstarted',
+  ctaLink = 'https://forms.gle/eUrPE13Gt2GL4D3y9',
   isPopular = false,
 }: MentorshipCardProps) {
   return (
@@ -36,9 +35,14 @@ export default function MentorshipCard({
             </li>
           ))}
         </ul>
-        <Link href={ctaLink} className={`btn btn-block ${isPopular ? 'btn-primary' : 'btn-ghost'}`}>
+        <a
+          href={ctaLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`btn btn-block ${isPopular ? 'btn-primary' : 'btn-ghost'}`}
+        >
           {ctaText}
-        </Link>
+        </a>
       </div>
     </div>
   );
