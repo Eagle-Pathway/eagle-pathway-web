@@ -131,7 +131,7 @@ export default function RootLayout({
           <TopAnnouncementBar />
           <Nav />
         </div>
-        <main>{children}</main>
+        <main className="main-content-offset">{children}</main>
         <Footer />
         <FloatingTelegramWidget />
       </body>
