@@ -9,24 +9,24 @@ export default function Footer() {
     <footer className="footer">
       <div className="container">
         <div className="footer-grid">
-          <div>
+          <div className="footer-brand">
             <Link href="/" className="brand">
               <Image
                 src="/logo.png"
                 alt={site.name}
                 width={200}
                 height={64}
-                className="brand-logo brand-logo-footer"
+                className="brand-logo-footer"
                 priority
               />
             </Link>
-            <p>
+            <p className="footer-desc">
               Scholarship guidance and academic tutoring helping Ethiopian students
               secure admissions and funding at world-class universities.
             </p>
           </div>
 
-          <div>
+          <div className="footer-col">
             <h4>Company</h4>
             <ul>
               <li><Link href="/">Home</Link></li>
@@ -38,7 +38,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="footer-col">
             <h4>Product</h4>
             <ul>
               <li><a href="https://forms.gle/eUrPE13Gt2GL4D3y9" target="_blank" rel="noopener noreferrer">Scholarship Bootcamp</a></li>
@@ -50,15 +50,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="footer-col">
             <h4>Contact</h4>
-            <ul>
+            <ul className="footer-contact">
               <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
               <li><a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a></li>
               <li>{site.location}</li>
             </ul>
-            <div style={{ marginTop: '1.5rem' }}>
-              <h4 style={{ marginBottom: '1rem' }}>Follow Us</h4>
+            <div className="footer-socials">
+              <h4>Follow Us</h4>
               <div className="social-links">
                 <a 
                   href={site.socials.facebook} 
@@ -117,7 +117,7 @@ export default function Footer() {
                 </a>
               </div>
             </div>
-            <div style={{ marginTop: '1.5rem' }}>
+            <div className="footer-app-buttons">
               <AppButtons />
             </div>
           </div>
@@ -125,10 +125,10 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} {site.name}. All rights reserved.</span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <Link href="/privacy" style={{ fontSize: '0.85rem', color: 'var(--muted)' }}>Privacy Policy</Link>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-              Made with <Heart size={14} fill="#ef4444" stroke="#ef4444" /> by Eagle Pathway Tech
+          <div className="footer-legal">
+            <Link href="/privacy">Privacy Policy</Link>
+            <span className="made-with">
+              Made with <Heart size={14} className="heart-icon" /> by Eagle Pathway Tech
             </span>
           </div>
         </div>
