@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Sparkles, ArrowRight } from 'lucide-react';
+import { Sparkles, ArrowRight, X } from 'lucide-react';
 
 export default function TopAnnouncementBar() {
   const [dismissed, setDismissed] = useState(false);
@@ -21,30 +21,22 @@ export default function TopAnnouncementBar() {
             <Sparkles size={12} />
             <span>Bootcamp</span>
           </span>
-
           <span className="top-banner-text-desktop">
             <strong>Scholarship Bootcamp 2026:</strong> Limited seats available for the upcoming admissions cycle.
           </span>
-
           <span className="top-banner-text-mobile">
-            Bootcamp 2026 Open
+            Scholarship Bootcamp 2026
           </span>
-
           <span className="top-banner-cta">
-            <span>Reserve Slot</span>
-            <ArrowRight size={13} />
+            Reserve Slot <ArrowRight size={13} />
           </span>
         </a>
-
         <button
-          onClick={(e) => {
-            e.stopPropagation();
-            setDismissed(true);
-          }}
+          onClick={() => setDismissed(true)}
           className="top-banner-close"
           aria-label="Dismiss banner"
         >
-          <X size={15} />
+          <X size={14} />
         </button>
       </div>
     </div>
