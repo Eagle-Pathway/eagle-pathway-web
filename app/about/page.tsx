@@ -335,23 +335,6 @@ export default function AboutPage() {
           </Reveal>
         </div>
       </section>
-
-      {/* CTA */}
-      {/* <section className="section" style={{ paddingTop: 0 }}>
-        <div className="container">
-          <Reveal className="cta">
-            <h2>Ready to begin your journey?</h2>
-            <p>
-              Join thousands of learners who trust EaglePathway to guide them from the classroom
-              to global success.
-            </p>
-            <div className="hero-ctas">
-              <a href="https://forms.gle/eUrPE13Gt2GL4D3y9" target="_blank" rel="noopener noreferrer" className="btn btn-light btn-lg">Scholarship Bootcamp</a>
-              <a href={`mailto:${site.email}`} className="btn btn-light btn-lg">Email us</a>
-            </div>
-          </Reveal>
-        </div>
-      </section> */}
     </>
   );
 }
