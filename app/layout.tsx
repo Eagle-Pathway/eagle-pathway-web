@@ -24,9 +24,6 @@ export const metadata: Metadata = {
   verification: {
     google: 'googlefd8e292bf0a88074',
   },
-  alternates: {
-    canonical: '/',
-  },
   title: {
     default: 'Eagle Pathway | Scholarships & Tutoring for Ethiopian Students',
     template: '%s | Eagle Pathway',

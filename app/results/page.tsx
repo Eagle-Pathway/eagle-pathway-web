@@ -5,14 +5,14 @@ import Section from '../components/Section';
 import SectionHeader from '../components/SectionHeader';
 import CaseStudyCard from '../components/CaseStudyCard';
 import PlacementLogos from '../components/PlacementLogos';
-import { stats, testimonials } from '../content/site';
+import { stats, testimonials, site } from '../content/site';
 
 export const metadata: Metadata = {
   title: 'Proven Results & Admissions | Eagle Pathway',
   description:
     'Real student outcomes, university admissions (Oxford, McGill, UBC, Edinburgh) and $1M+ scholarships secured for Ethiopian students guided by Eagle Pathway.',
   alternates: {
-    canonical: '/results',
+    canonical: `${site.url}/results`,
   },
 };
 

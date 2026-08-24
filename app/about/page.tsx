@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import Reveal from '../components/Reveal';
 import Icon from '../components/Icon';
-import { stats } from '../content/site';
+import { stats, site } from '../content/site';
 
 export const metadata: Metadata = {
   title: 'About Us | Eagle Pathway — EdTech & Global Mobility in Ethiopia',
   description:
     'EaglePathway Education is an EdTech and global mobility company empowering Ethiopian and African learners through academic tutoring, AI technology, and international scholarship guidance.',
   alternates: {
-    canonical: '/about',
+    canonical: `${site.url}/about`,
   },
 };
 

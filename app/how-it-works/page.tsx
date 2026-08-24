@@ -5,14 +5,14 @@ import Icon from '../components/Icon';
 import Section from '../components/Section';
 import SectionHeader from '../components/SectionHeader';
 import AppButtons from '../components/AppButtons';
-import { steps, features, faqs } from '../content/site';
+import { steps, features, faqs, site } from '../content/site';
 
 export const metadata: Metadata = {
   title: 'How It Works | Eagle Pathway — 4-Step Scholarship Guidance',
   description:
     'Discover our structured 4-step process — discovery, planning, execution and submission — with weekly tracking for Ethiopian students targeting global scholarships.',
   alternates: {
-    canonical: '/how-it-works',
+    canonical: `${site.url}/how-it-works`,
   },
 };
 

@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   description:
     'Contact Eagle Pathway for expert tutoring, SAT/IELTS preparation, and scholarship counseling in Addis Ababa, Ethiopia.',
   alternates: {
-    canonical: '/contact',
+    canonical: `${site.url}/contact`,
   },
 };
 

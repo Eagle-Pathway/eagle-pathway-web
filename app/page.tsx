@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Reveal from './components/Reveal';
 import Icon from './components/Icon';
@@ -13,6 +14,15 @@ import EligibilityEstimator from './components/EligibilityEstimator';
 import TutoringShowcase from './components/TutoringShowcase';
 import { Phone, Send } from 'lucide-react';
 import { stats, features, testimonials, site } from './content/site';
+
+export const metadata: Metadata = {
+  title: 'Eagle Pathway | Scholarships & Tutoring for Ethiopian Students',
+  description:
+    'From the classroom to a global scholarship. Expert tutoring, SAT/IELTS prep, and scholarship guidance helping Ethiopian and African students secure admissions and funding at world-class universities.',
+  alternates: {
+    canonical: site.url,
+  },
+};
 
 export default function Home() {
   const topFeatures = features.slice(0, 3);

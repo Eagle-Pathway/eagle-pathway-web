@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'EaglePathway Education Company Profile & Privacy Policy. Empowering Every Learner. Connecting Every Opportunity.',
   alternates: {
-    canonical: '/privacy',
+    canonical: `${site.url}/privacy`,
   },
 };
 
