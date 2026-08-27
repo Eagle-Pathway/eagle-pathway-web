@@ -34,6 +34,7 @@ export default function Footer() {
               <li><Link href="/contact">Contact</Link></li>
               <li><a href="https://forms.gle/NL2oB6mHHUscnZo9A" target="_blank" rel="noopener noreferrer">Apply with Us</a></li>
               <li><Link href="/privacy">Privacy Policy</Link></li>
+              <li><Link href="/terms">Terms & Policy</Link></li>
               <li><a href={site.telegram.url} target="_blank" rel="noopener noreferrer">Telegram community</a></li>
             </ul>
           </div>
