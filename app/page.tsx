@@ -56,13 +56,30 @@ export default function Home() {
               </Reveal>
 
               <Reveal delay={20}>
-                <span className="pill">
-                  <span className="pill-dot" /> Trusted by students across Ethiopia
-                </span>
+                <div className="hero-trust-badge">
+                  <span className="badge-sparkle">✨</span>
+                  <span>Trusted by <strong className="highlight-num">Students</strong> Across Ethiopia</span>
+                </div>
               </Reveal>
               <Reveal delay={40}>
-                <h1>
-                  From the classroom to a <span className="accent-text">global scholarship</span>
+                <h1 className="hero-main-title">
+                  From the classroom <br className="hidden sm:inline" />
+                  <span className="inline-block whitespace-nowrap">
+                    to a{' '}
+                    <span className="highlight-text">
+                      global scholarship
+                      <svg className="highlight-svg" viewBox="0 0 280 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 14C65 4 175 4 276 12" stroke="url(#hero-stroke-grad)" strokeWidth="6" strokeLinecap="round" />
+                        <defs>
+                          <linearGradient id="hero-stroke-grad" x1="0" y1="0" x2="280" y2="0" gradientUnits="userSpaceOnUse">
+                            <stop stopColor="#e8920a" />
+                            <stop offset="0.5" stopColor="#f59e0b" />
+                            <stop offset="1" stopColor="#ea580c" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </span>
+                  </span>
                 </h1>
               </Reveal>
               <Reveal delay={80}>

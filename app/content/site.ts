@@ -46,7 +46,7 @@ export const nav = [
 ];
 
 export const stats = [
-  { value: "70+", label: "Students guided", detail: "Since 2024" },
+  { value: "1000+", label: "Students guided", detail: "Since 2024" },
   { value: "$1M+", label: "Scholarships secured", detail: "Across 4 continents" },
   { value: "20k+", label: "Telegram community", detail: "Daily opportunity alerts" },
   { value: "94%", label: "On-time submissions", detail: "Tracked weekly" },
