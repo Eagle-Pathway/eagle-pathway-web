@@ -29,9 +29,11 @@ export const site = {
     telegram: "https://t.me/Tegegnpathway",
   },
   app: {
-    available: false,
+    available: true,
+    androidAvailable: true,
+    iosAvailable: false,
     ios: "#",
-    android: "#",
+    android: "https://play.google.com/store/apps/details?id=com.eaglepathway.app",
   },
 };
 

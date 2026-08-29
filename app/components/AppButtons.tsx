@@ -22,22 +22,34 @@ function PlayLogo({ size = 18 }: { size?: number }) {
 type Props = { variant?: 'dark' | 'light'; center?: boolean };
 
 export default function AppButtons({ variant = 'dark', center = false }: Props) {
-  const soon = !site.app.available;
-
   const stores = [
-    { key: 'apple', top: 'Download on the', name: 'App Store', href: site.app.ios, logo: <AppleLogo /> },
-    { key: 'google', top: 'Get it on', name: 'Google Play', href: site.app.android, logo: <PlayLogo /> },
+    {
+      key: 'apple',
+      top: 'Download on the',
+      name: 'App Store',
+      href: site.app.ios,
+      logo: <AppleLogo />,
+      available: false,
+    },
+    {
+      key: 'google',
+      top: 'Get it on',
+      name: 'Google Play',
+      href: 'https://play.google.com/store/apps/details?id=com.eaglepathway.app',
+      logo: <PlayLogo />,
+      available: true,
+    },
   ];
 
   return (
     <div className={`app-area ${center ? 'center' : ''}`} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: 'auto', flexWrap: 'wrap', gap: '1rem' }}>
       <span className={`app-soon ${variant === 'light' ? 'on-dark' : ''}`} style={{ whiteSpace: 'nowrap', marginBottom: 0 }}>
-        <span className="app-soon-dot" /> Mobile apps launching soon
+        <span className="app-soon-dot" style={{ background: '#10b981' }} /> Mobile app live on Android · iOS coming soon
       </span>
       <div className="app-btns" style={{ display: 'flex', flexDirection: 'row', gap: '0.75rem' }}>
         {stores.map((s) =>
-          soon ? (
-            <span key={s.key} className={`store-btn ${variant} is-soon`} aria-disabled title="Coming soon">
+          !s.available ? (
+            <span key={s.key} className={`store-btn ${variant} is-soon`} aria-disabled title="Coming soon to App Store">
               {s.logo}
               <span className="store-btn-text">
                 <small>{s.top}</small>
@@ -45,7 +57,13 @@ export default function AppButtons({ variant = 'dark', center = false }: Props) 
               </span>
             </span>
           ) : (
-            <a key={s.key} className={`store-btn ${variant}`} href={s.href} target="_blank" rel="noopener noreferrer">
+            <a
+              key={s.key}
+              className={`store-btn ${variant}`}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {s.logo}
               <span className="store-btn-text">
                 <small>{s.top}</small>
