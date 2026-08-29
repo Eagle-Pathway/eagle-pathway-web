@@ -8,7 +8,7 @@ function AppleLogo({ size = 18 }: { size?: number }) {
   );
 }
 
-function PlayLogo({ size = 18 }: { size?: number }) {
+export function PlayLogo({ size = 18 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden>
       <path d="M3.6 2.3c-.3.3-.5.7-.5 1.3v16.8c0 .6.2 1 .5 1.3l.1.1L13 12.1v-.2L3.7 2.2l-.1.1z" fill="#34a853" />

@@ -12,6 +12,7 @@ import TrustStrip from './components/TrustStrip';
 import PlacementTicker from './components/PlacementTicker';
 import EligibilityEstimator from './components/EligibilityEstimator';
 import TutoringShowcase from './components/TutoringShowcase';
+import AppButtons, { PlayLogo } from './components/AppButtons';
 import { Phone, Send } from 'lucide-react';
 import { stats, features, testimonials, site } from './content/site';
 
@@ -90,14 +91,24 @@ export default function Home() {
               </Reveal>
               <Reveal delay={120}>
                 <div className="hero-ctas">
-                  <a href="https://forms.gle/eUrPE13Gt2GL4D3y9" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
-                    Scholarship Bootcamp
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.eaglepathway.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary btn-lg"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '0.65rem' }}
+                  >
+                    <PlayLogo size={22} />
+                    <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', lineHeight: 1.15 }}>
+                      <small style={{ fontSize: '0.68rem', opacity: 0.88, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Get it on</small>
+                      <span style={{ fontSize: '1rem', fontWeight: 800 }}>Google Play</span>
+                    </span>
                   </a>
                   <Link href="/services" className="btn btn-ghost btn-lg">
                     Explore services
                   </Link>
                 </div>
-                <p className="hero-note">Free first consultation · No obligation</p>
+                <p className="hero-note">Official Android App · Free first consultation</p>
               </Reveal>
             </div>
 
@@ -186,6 +197,33 @@ export default function Home() {
           <p className="section-cta-link">
             <Link href="/results">View all results →</Link>
           </p>
+        </Reveal>
+      </Section>
+
+      <Section tight>
+        <Reveal>
+          <div className="card" style={{ background: 'linear-gradient(135deg, rgba(26, 43, 95, 0.04) 0%, rgba(232, 146, 10, 0.04) 100%)', borderRadius: '24px', padding: '2.5rem 2rem', border: '1px solid rgba(26, 43, 95, 0.08)' }}>
+            <div className="split" style={{ alignItems: 'center' }}>
+              <div>
+                <SectionHeader
+                  eyebrow="Mobile App"
+                  title="Take your learning & application progress anywhere"
+                  description="Track scholarship milestones, review tutor feedback, practice exams, and get live updates directly on your phone."
+                  align="left"
+                />
+                <div style={{ marginTop: '1.5rem' }}>
+                  <AppButtons variant="dark" />
+                </div>
+              </div>
+              <div style={{ textAlign: 'center', padding: '1.5rem', background: '#ffffff', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.04)' }}>
+                <span style={{ fontSize: '0.8rem', color: 'var(--orange)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', display: 'block', marginBottom: '0.35rem' }}>Now Live on Google Play</span>
+                <h3 style={{ fontSize: '1.35rem', color: 'var(--navy)', margin: '0 0 0.5rem 0' }}>Get the Eagle Pathway App</h3>
+                <p style={{ color: 'var(--muted)', fontSize: '0.9rem', lineHeight: 1.5, margin: 0 }}>
+                  Manage 1-on-1 tutoring, scholarship deadlines, and university application progress on the go.
+                </p>
+              </div>
+            </div>
+          </div>
         </Reveal>
       </Section>
 
