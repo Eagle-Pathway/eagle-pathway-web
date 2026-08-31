@@ -37,10 +37,6 @@ export default function Home() {
               <Reveal>
                 <div className="hero-parents-call-box">
                   <div className="parents-call-row-1">
-                    <span className="parents-call-badge">
-                      <Phone size={12} />
-                      <span>Parents Hotline</span>
-                    </span>
                     <span className="parents-call-text">
                       <strong>Need a tutor fast?</strong> Call{' '}
                       <a href={`tel:${site.tutoring.phone1}`} className="parents-call-num">{site.tutoring.phone1Display}</a>
