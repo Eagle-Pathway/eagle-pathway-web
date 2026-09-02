@@ -4,6 +4,7 @@ import { site } from './content/site';
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     { path: '', priority: 1.0, changeFreq: 'daily' as const },
+    { path: '/tutoring', priority: 1.0, changeFreq: 'weekly' as const },
     { path: '/services', priority: 0.9, changeFreq: 'weekly' as const },
     { path: '/how-it-works', priority: 0.9, changeFreq: 'weekly' as const },
     { path: '/results', priority: 0.8, changeFreq: 'weekly' as const },

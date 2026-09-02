@@ -41,6 +41,7 @@ export const nav = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
+  { label: "Tutoring", href: "/tutoring" },
   { label: "How it works", href: "/how-it-works" },
   { label: "Results", href: "/results" },
   { label: "Apply with Us", href: "https://forms.gle/NL2oB6mHHUscnZo9A", external: true },

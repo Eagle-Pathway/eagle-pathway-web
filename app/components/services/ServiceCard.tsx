@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
 
 interface ServiceCardProps {
@@ -19,6 +20,8 @@ export default function ServiceCard({
   ctaText = 'Book Consultation',
   ctaLink = 'https://forms.gle/NL2oB6mHHUscnZo9A',
 }: ServiceCardProps) {
+  const isInternal = ctaLink.startsWith('/');
+
   return (
     <div className="svc-card">
       <div className="svc-icon-wrapper">{icon}</div>
@@ -43,15 +46,22 @@ export default function ServiceCard({
         </div>
       )}
 
-      <a
-        href={ctaLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="svc-btn"
-      >
-        <span>{ctaText}</span>
-        <ArrowRight size={16} />
-      </a>
+      {isInternal ? (
+        <Link href={ctaLink} className="svc-btn">
+          <span>{ctaText}</span>
+          <ArrowRight size={16} />
+        </Link>
+      ) : (
+        <a
+          href={ctaLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="svc-btn"
+        >
+          <span>{ctaText}</span>
+          <ArrowRight size={16} />
+        </a>
+      )}
     </div>
   );
 }

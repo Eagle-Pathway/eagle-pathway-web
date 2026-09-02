@@ -43,9 +43,8 @@ export default function Footer() {
             <h4>Product</h4>
             <ul>
               <li><a href="https://forms.gle/eUrPE13Gt2GL4D3y9" target="_blank" rel="noopener noreferrer">Scholarship Bootcamp</a></li>
-              <li><Link href="/services">Services</Link></li>
-              <li><Link href="/services">Tutoring</Link></li>
-              <li><Link href="/services">Scholarships</Link></li>
+              <li><Link href="/tutoring">Tutoring & Tutors</Link></li>
+              <li><Link href="/services">Services & Scholarships</Link></li>
               <li><Link href="/how-it-works">How it works</Link></li>
               <li><Link href="/results">Results</Link></li>
             </ul>

@@ -22,6 +22,15 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   const services = [
     {
+      title: '1-on-1 Academic Tutoring & Home Tutors',
+      icon: 'graduation',
+      description: 'Personalized private tutoring in Addis Ababa and online for KG–12, National Exams, Cambridge IGCSE, SAT, and IELTS.',
+      includes: ['48h tutor matching', 'Vetted subject specialists', 'Weekly parent progress reports', 'In-person home & online'],
+      bestFor: 'Students wanting higher grades and exam mastery.',
+      ctaText: 'Explore Tutoring',
+      ctaLink: '/tutoring',
+    },
+    {
       title: 'University & Scholarship Strategy Consultation',
       icon: 'target',
       description: 'A personalized consultation where we analyze your academic background, goals, and opportunities to create a clear study-abroad strategy.',
