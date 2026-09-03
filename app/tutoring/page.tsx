@@ -321,26 +321,206 @@ export default function TutoringPage() {
         </div>
       </section>
 
-      {/* Amharic Local Banner */}
-      <section style={{ background: 'var(--navy)', color: '#ffffff', padding: '2rem 0' }}>
+      {/* Amharic Local Feature Card */}
+      <section style={{ padding: '1.5rem 0 3rem' }}>
         <div className="container">
-          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1.5rem', textAlign: 'center' }}>
-            <div>
-              <h3 style={{ color: '#ffffff', fontSize: '1.35rem', marginBottom: '0.4rem', fontWeight: 700 }}>
-                የታመኑ እና ብቁ የቤት አስጠኚዎች ይፈልጋሉ?
-              </h3>
-              <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.98rem', maxWidth: '750px', margin: 0 }}>
-                ከኬጂ እስከ 12ኛ ክፍል፣ ብሔራዊ ፈተናዎች፣ ካምብሪጅ እና SAT/IELTS በአዲስ አበባ ባሉበት ቦታ ድረስ እንዲሁም በየትኛውም የዓለም ክፍል በኦንላይን ብቁ አስጠኚዎችን በ48 ሰዓት ውስጥ እናቀርባለን።
-              </p>
-            </div>
-            <a
-              href="#"
-              className="btn btn-primary btn-lg"
-              style={{ whiteSpace: 'nowrap' }}
+          <Reveal>
+            <div
+              style={{
+                background: 'linear-gradient(135deg, rgba(26, 43, 95, 0.03) 0%, rgba(232, 146, 10, 0.04) 50%, #ffffff 100%)',
+                borderRadius: '24px',
+                padding: '2.5rem 2.25rem',
+                border: '1.5px solid rgba(26, 43, 95, 0.08)',
+                boxShadow: '0 12px 35px -8px rgba(26, 43, 95, 0.07)',
+                position: 'relative',
+                overflow: 'hidden',
+              }}
             >
-              አስጠኚ ይመዝገቡ (Request Tutor)
-            </a>
-          </div>
+              {/* Subtle ambient accent glow */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  top: '-30%',
+                  right: '-10%',
+                  width: '320px',
+                  height: '320px',
+                  borderRadius: '50%',
+                  background: 'radial-gradient(circle, rgba(232, 146, 10, 0.08) 0%, transparent 70%)',
+                  pointerEvents: 'none',
+                }}
+              />
+
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '1.75rem',
+                  position: 'relative',
+                  zIndex: 1,
+                }}
+              >
+                {/* Top Content Row */}
+                <div
+                  style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '2rem',
+                  }}
+                >
+                  <div style={{ flex: '1 1 500px', maxWidth: '750px' }}>
+                    <div
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.45rem',
+                        background: 'rgba(234, 88, 12, 0.1)',
+                        border: '1px solid rgba(234, 88, 12, 0.25)',
+                        padding: '0.35rem 0.95rem',
+                        borderRadius: '999px',
+                        marginBottom: '1rem',
+                        fontSize: '0.84rem',
+                        fontWeight: 700,
+                        color: 'var(--orange)',
+                      }}
+                    >
+                      <Sparkles size={15} />
+                      <span>ፈጣን አስጠኚ ማገናኛ · አዲስ አበባ እና ኦንላይን በዓለም ዙሪያ</span>
+                    </div>
+
+                    <h2
+                      style={{
+                        color: 'var(--navy)',
+                        fontSize: 'clamp(1.5rem, 3.2vw, 2.15rem)',
+                        fontWeight: 800,
+                        lineHeight: 1.25,
+                        marginBottom: '0.85rem',
+                      }}
+                    >
+                      የታመኑ እና ብቁ የቤት አስጠኚዎች ይፈልጋሉ?
+                    </h2>
+
+                    <p
+                      style={{
+                        color: 'var(--body)',
+                        fontSize: '1.02rem',
+                        lineHeight: 1.65,
+                        margin: 0,
+                      }}
+                    >
+                      ከኬጂ እስከ 12ኛ ክፍል፣ ብሔራዊ ፈተናዎች፣ ካምብሪጅ (IGCSE/A-Levels) እና SAT/IELTS በአዲስ አበባ ባሉበት ቦታ ድረስ እንዲሁም በየትኛውም የዓለም ክፍል በኦንላይን ብቁ አስጠኚዎችን በ48 ሰዓት ውስጥ እናቀርባለን።
+                    </p>
+                  </div>
+
+                  {/* Action Buttons Box */}
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.85rem',
+                      minWidth: '270px',
+                      flex: '1 1 270px',
+                    }}
+                  >
+                    <a
+                      href={`tel:${site.tutoring.phone1}`}
+                      className="btn btn-primary btn-lg"
+                      style={{
+                        justifyContent: 'center',
+                        fontSize: '1rem',
+                        fontWeight: 700,
+                        boxShadow: '0 8px 20px -4px rgba(234, 88, 12, 0.4)',
+                        width: '100%',
+                        padding: '0.95rem 1.4rem',
+                      }}
+                    >
+                      <Phone size={18} /> ደውለው ያስመዝግቡ
+                    </a>
+                    <a
+                      href={site.tutoring.telegram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-ghost btn-lg"
+                      style={{
+                        justifyContent: 'center',
+                        fontSize: '0.98rem',
+                        fontWeight: 700,
+                        borderColor: 'rgba(2, 132, 199, 0.3)',
+                        color: '#0284c7',
+                        background: 'rgba(2, 132, 199, 0.06)',
+                        width: '100%',
+                        padding: '0.95rem 1.4rem',
+                      }}
+                    >
+                      <Send size={18} /> በቴሌግራም ያናግሩን
+                    </a>
+                  </div>
+                </div>
+
+                {/* Bottom Trust Chips */}
+                <div
+                  style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '0.75rem',
+                    paddingTop: '1.25rem',
+                    borderTop: '1px solid var(--line)',
+                    fontSize: '0.88rem',
+                    color: 'var(--navy)',
+                    fontWeight: 600,
+                  }}
+                >
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.45rem',
+                      background: '#f0fdf4',
+                      border: '1px solid #bbf7d0',
+                      padding: '0.35rem 0.85rem',
+                      borderRadius: '999px',
+                      color: '#15803d',
+                    }}
+                  >
+                    <CheckCircle2 size={15} />
+                    <span>በአዲስ አበባ የቤት አስጠኚዎች (In-Person)</span>
+                  </div>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.45rem',
+                      background: '#f0fdf4',
+                      border: '1px solid #bbf7d0',
+                      padding: '0.35rem 0.85rem',
+                      borderRadius: '999px',
+                      color: '#15803d',
+                    }}
+                  >
+                    <CheckCircle2 size={15} />
+                    <span>ኦንላይን በዓለም ዙሪያ (Online Worldwide)</span>
+                  </div>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.45rem',
+                      background: '#f0fdf4',
+                      border: '1px solid #bbf7d0',
+                      padding: '0.35rem 0.85rem',
+                      borderRadius: '999px',
+                      color: '#15803d',
+                    }}
+                  >
+                    <CheckCircle2 size={15} />
+                    <span>በ48 ሰዓት ውስጥ ፈጣን ምደባ (48h Match)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
