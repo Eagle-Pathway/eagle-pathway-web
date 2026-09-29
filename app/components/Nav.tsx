@@ -43,8 +43,8 @@ export default function Nav() {
           <Image
             src="/logo.png"
             alt={site.name}
-            width={200}
-            height={64}
+            width={260}
+            height={84}
             className="brand-logo"
             priority
           />

@@ -13,7 +13,7 @@ import PlacementTicker from './components/PlacementTicker';
 import EligibilityEstimator from './components/EligibilityEstimator';
 import TutoringShowcase from './components/TutoringShowcase';
 import AppButtons, { PlayLogo } from './components/AppButtons';
-import { Phone, Send } from 'lucide-react';
+import { Phone, Send, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { stats, features, testimonials, site } from './content/site';
 
 export const metadata: Metadata = {
@@ -98,20 +98,33 @@ export default function Home() {
                     href="https://play.google.com/store/apps/details?id=com.eaglepathway.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-primary btn-lg"
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '0.65rem' }}
+                    className="hero-play-btn"
                   >
-                    <PlayLogo size={22} />
-                    <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', lineHeight: 1.15 }}>
-                      <small style={{ fontSize: '0.68rem', opacity: 0.88, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Get it on</small>
-                      <span style={{ fontSize: '1rem', fontWeight: 800 }}>Google Play</span>
-                    </span>
+                    <div className="play-logo-wrapper">
+                      <PlayLogo size={24} />
+                    </div>
+                    <div className="play-btn-text">
+                      <span className="play-btn-sub">GET IT ON</span>
+                      <span className="play-btn-title">Google Play</span>
+                    </div>
                   </a>
-                  <Link href="/services" className="btn btn-ghost btn-lg">
-                    Explore services
+                  <Link href="/services" className="hero-explore-btn">
+                    <span>Explore services</span>
+                    <ArrowRight size={18} className="explore-btn-arrow" />
                   </Link>
                 </div>
-                <p className="hero-note">Official Android App · Free first consultation</p>
+
+                <div className="hero-trust-pills">
+                  <span className="hero-pill-item">
+                    <span className="hero-pill-dot green-dot" />
+                    Official Android App
+                  </span>
+                  <span className="hero-pill-divider" aria-hidden="true">•</span>
+                  <span className="hero-pill-item">
+                    <CheckCircle2 size={15} className="hero-pill-icon" />
+                    Free First Consultation
+                  </span>
+                </div>
               </Reveal>
             </div>
 
