@@ -101,7 +101,7 @@ export default function Home() {
                     className="hero-play-btn"
                   >
                     <div className="play-logo-wrapper">
-                      <PlayLogo size={24} />
+                      <PlayLogo size={28} />
                     </div>
                     <div className="play-btn-text">
                       <span className="play-btn-sub">GET IT ON</span>
@@ -109,20 +109,27 @@ export default function Home() {
                     </div>
                   </a>
                   <Link href="/services" className="hero-explore-btn">
-                    <span>Explore services</span>
-                    <ArrowRight size={18} className="explore-btn-arrow" />
+                    Explore services
                   </Link>
                 </div>
 
                 <div className="hero-trust-pills">
                   <span className="hero-pill-item">
-                    <span className="hero-pill-dot green-dot" />
-                    Official Android App
+                    <span className="green-check-badge">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
+                    <span>Official Android App</span>
                   </span>
-                  <span className="hero-pill-divider" aria-hidden="true">•</span>
+                  <span className="hero-pill-dot-sep" aria-hidden="true" />
                   <span className="hero-pill-item">
-                    <CheckCircle2 size={15} className="hero-pill-icon" />
-                    Free First Consultation
+                    <span className="green-check-badge">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
+                    <span>Free first consultation</span>
                   </span>
                 </div>
               </Reveal>
