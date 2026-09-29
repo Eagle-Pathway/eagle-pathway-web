@@ -20,7 +20,7 @@ import {
 export const metadata: Metadata = {
   title: 'Terms & Operating Policy | Eagle Tutorials Services',
   description:
-    'Comprehensive operating guidelines, parent payment structure, tutor commission terms (25% upfront commitment + 20% monthly commission), and quality standards for Eagle Tutorials Services.',
+    'Comprehensive operating guidelines, parent payment structure, tutor commission terms (25% upfront commitment + 20% monthly commission), refund & replacement policy, and quality standards for Eagle Tutorials Services.',
   alternates: {
     canonical: `${site.url}/terms`,
   },
@@ -128,6 +128,61 @@ const policyFaqs = [
   {
     q: 'Can tutors work online outside Addis Ababa?',
     a: 'Yes! We support both in-person tutoring across Addis Ababa and live online tutoring for students across Ethiopia and internationally.',
+  },
+];
+
+const refundPolicies = [
+  {
+    num: '1',
+    title: 'Parent-Initiated Termination',
+    text: 'If a parent discontinues the tutoring service within the first month of the tutor’s placement, Eagle Pathway will provide one of the following:',
+    options: [
+      'A full refund of the commission paid, or',
+      'A replacement tutoring opportunity with equivalent monthly pay.',
+    ],
+  },
+  {
+    num: '2',
+    title: 'Tutor-Initiated Termination',
+    text: 'If a tutor voluntarily ends the tutoring engagement before completing the agreed period:',
+    options: [
+      'No refund will normally be issued.',
+      'A refund may be considered if the tutor has a valid and verifiable reason beyond their control, such as a serious health issue or family emergency.',
+    ],
+  },
+  {
+    num: '3',
+    title: 'Mutual Agreement Termination',
+    text: 'If the parent and tutor mutually agree to end the tutoring arrangement, Eagle Pathway will assess the circumstances individually and may provide:',
+    options: [
+      'A partial refund, or',
+      'A replacement tutoring opportunity,',
+    ],
+    tail: 'depending on the circumstances of the termination.',
+  },
+  {
+    num: '4',
+    title: 'Performance or Misconduct Issues',
+    text: 'If a tutor is removed from a tutoring placement because of:',
+    options: [
+      'Misconduct;',
+      'Repeated lateness or failure to attend sessions;',
+      'Unprofessional behavior; or',
+      'Poor or consistently unsatisfactory performance,',
+    ],
+    tail: 'the commission will not be refunded. Tutors are expected to maintain professionalism, punctuality, reliability, and appropriate teaching standards throughout the engagement.',
+  },
+  {
+    num: '5',
+    title: 'Replacement Guarantee Period',
+    text: 'Any refund or replacement eligibility under this policy must generally be requested within 30 days of the termination of the tutoring engagement.',
+    tail: 'After this 30-day period, Eagle Pathway may determine that the refund or replacement eligibility has expired.',
+  },
+  {
+    num: '6',
+    title: 'Refund Processing',
+    text: 'Where a refund is approved, Eagle Pathway will communicate the applicable refund amount and payment process to the eligible party. Refunds will generally be returned through the original or an agreed payment method, subject to applicable payment-processing requirements.',
+    tail: 'Eagle Pathway reserves the right to review individual cases where circumstances fall outside the situations described above.',
   },
 ];
 
@@ -287,8 +342,83 @@ export default function TermsPage() {
         </div>
       </section>
 
-      {/* Step-by-Step How It Works for Both */}
+      {/* Refund & Replacement Policy */}
       <section className="section">
+        <div className="container">
+          <Reveal className="section-head">
+            <span className="eyebrow">Fairness & Transparency</span>
+            <h2>Refund & Replacement Policy</h2>
+            <p>
+              At Eagle Pathway, we aim to ensure a fair and transparent experience for both parents and tutors. Our refund and replacement policy applies to tutoring placements under the following conditions:
+            </p>
+          </Reveal>
+
+          <div className="grid-2" style={{ gap: '1.5rem' }}>
+            {refundPolicies.map((policy, idx) => (
+              <Reveal key={policy.num} delay={idx * 60}>
+                <div
+                  className="card"
+                  style={{
+                    height: '100%',
+                    borderRadius: '16px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'flex-start',
+                    background: '#ffffff',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.75rem' }}>
+                    <span
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '28px',
+                        height: '28px',
+                        borderRadius: '8px',
+                        background: 'rgba(232, 146, 10, 0.12)',
+                        color: 'var(--orange)',
+                        fontSize: '0.85rem',
+                        fontWeight: 800,
+                        flexShrink: 0,
+                      }}
+                    >
+                      {policy.num}
+                    </span>
+                    <h3 style={{ fontSize: '1.15rem', color: 'var(--navy)', margin: 0 }}>
+                      {policy.title}
+                    </h3>
+                  </div>
+
+                  <p style={{ color: 'var(--muted)', fontSize: '0.92rem', lineHeight: 1.65, margin: 0, marginBottom: policy.options ? '0.75rem' : '0.5rem' }}>
+                    {policy.text}
+                  </p>
+
+                  {policy.options && (
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: policy.tail ? '0.75rem' : '0' }}>
+                      {policy.options.map((opt, oIdx) => (
+                        <li key={oIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.9rem', color: 'var(--ink)', lineHeight: 1.5 }}>
+                          <CheckCircle2 size={16} style={{ color: 'var(--orange)', flexShrink: 0, marginTop: '3px' }} />
+                          <span>{opt}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {policy.tail && (
+                    <p style={{ color: 'var(--muted)', fontSize: '0.9rem', lineHeight: 1.6, margin: 0 }}>
+                      {policy.tail}
+                    </p>
+                  )}
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Step-by-Step How It Works for Both */}
+      <section className="section section-soft">
         <div className="container">
           <Reveal className="section-head">
             <span className="eyebrow">Step-by-Step Journey</span>
@@ -341,7 +471,7 @@ export default function TermsPage() {
       </section>
 
       {/* Code of Conduct Section */}
-      <section className="section section-soft">
+      <section className="section">
         <div className="container">
           <Reveal className="section-head">
             <span className="eyebrow">Excellence & Ethics</span>
@@ -366,7 +496,7 @@ export default function TermsPage() {
       </section>
 
       {/* FAQ Accordion */}
-      <section className="section">
+      <section className="section section-soft">
         <div className="container">
           <Reveal className="section-head">
             <span className="eyebrow">Common Questions</span>
