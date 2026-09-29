@@ -135,7 +135,13 @@ img { max-width: 100%; display: block; }
 }
 
 .main-content-offset {
-  padding-top: calc(var(--nav-h) + 38px);
+  padding-top: calc(var(--nav-h) + 70px);
+}
+
+@media (max-width: 640px) {
+  .main-content-offset {
+    padding-top: calc(var(--nav-h) + 64px);
+  }
 }
 
 .navbar {
@@ -4437,5 +4443,109 @@ height: 45px;
     width: 100%;
   }
 }
+
+/* ---------- Contact Announcement Ticker ---------- */
+.announcement-ticker-wrapper {
+  background: #09132e;
+  color: #e2e8f0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.38rem 0;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 102;
+}
+
+.announcement-ticker-container {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  width: 100%;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%);
+}
+
+.announcement-ticker-track {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  animation: announcementTickerSlide 32s linear infinite;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.announcement-ticker-track:hover {
+  animation-play-state: paused;
+}
+
+.announcement-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.83rem;
+  color: #cbd5e1;
+  font-weight: 500;
+  padding: 0 0.5rem;
+}
+
+.announcement-ticker-msg {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.announcement-ticker-strong {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.announcement-ticker-link {
+  color: #ffbe6b;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.announcement-ticker-link:hover {
+  color: #fef08a;
+  text-decoration: underline;
+}
+
+.announcement-ticker-separator {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--orange);
+  margin: 0 1.5rem;
+  opacity: 0.8;
+}
+
+@keyframes announcementTickerSlide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 640px) {
+  .announcement-ticker-wrapper {
+    padding: 0.32rem 0;
+  }
+  .announcement-ticker-item {
+    font-size: 0.78rem;
+  }
+  .announcement-ticker-separator {
+    margin: 0 1rem;
+    width: 4px;
+    height: 4px;
+  }
+}
+
 
 

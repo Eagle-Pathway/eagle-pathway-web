@@ -110,6 +110,7 @@ const jsonLd = [
 ];
 
 import TopAnnouncementBar from './components/TopAnnouncementBar';
+import AnnouncementTicker from './components/AnnouncementTicker';
 import FloatingTelegramWidget from './components/FloatingTelegramWidget';
 import AnalyticsAndAds from './components/AnalyticsAndAds';
 
@@ -125,6 +126,7 @@ export default function RootLayout({
         />
         <AnalyticsAndAds />
         <div className="sticky-header-wrapper">
+          <AnnouncementTicker />
           <TopAnnouncementBar />
           <Nav />
         </div>
