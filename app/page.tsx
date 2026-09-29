@@ -37,16 +37,17 @@ export default function Home() {
               <Reveal>
                 <div className="hero-parents-call-box">
                   <div className="parents-call-row-1">
-                    <span className="parents-call-text">
-                      <strong>Need a tutor fast?</strong> Call{' '}
+                    <span className="parents-call-label">Need a tutor fast? Call:</span>{' '}
+                    <span className="parents-call-numbers">
                       <a href={`tel:${site.tutoring.phone1}`} className="parents-call-num">{site.tutoring.phone1Display}</a>
-                      {' / '}
+                      <span className="parents-call-slash"> / </span>
                       <a href={`tel:${site.tutoring.phone2}`} className="parents-call-num">{site.tutoring.phone2Display}</a>
                     </span>
                   </div>
                   <div className="parents-call-row-2">
-                    <a href={site.tutoring.telegram} target="_blank" rel="noopener noreferrer" className="parents-call-tg">
-                      <Send size={12} /> Telegram: {site.tutoring.handle}
+                    <span className="parents-call-label">Telegram:</span>{' '}
+                    <a href={site.tutoring.telegram} target="_blank" rel="noopener noreferrer" className="parents-call-tg-link">
+                      {site.tutoring.handle}
                     </a>
                   </div>
                 </div>
@@ -54,8 +55,14 @@ export default function Home() {
 
               <Reveal delay={20}>
                 <div className="hero-trust-badge">
-                  <span className="badge-sparkle">✨</span>
-                  <span>Trusted by <strong className="highlight-num">Students</strong> Across Ethiopia</span>
+                  <div className="trust-dots" aria-hidden="true">
+                    <span className="trust-dot dot-purple" />
+                    <span className="trust-dot dot-yellow" />
+                    <span className="trust-dot dot-green" />
+                  </div>
+                  <span className="trust-text">
+                    Trusted by <strong>Students</strong> Across Ethiopia
+                  </span>
                 </div>
               </Reveal>
               <Reveal delay={40}>
