@@ -12,23 +12,24 @@ export default function TopAnnouncementBar() {
     <div className="top-banner">
       <div className="container top-banner-inner">
         <a
-          href="https://forms.gle/eUrPE13Gt2GL4D3y9"
+          href="https://forms.gle/Fpcrq4bimki647M16"
           target="_blank"
           rel="noopener noreferrer"
           className="top-banner-link"
         >
           <span className="top-banner-badge">
-            <Sparkles size={12} />
-            <span>Bootcamp</span>
+            <Sparkles size={13} className="top-banner-badge-icon" />
+            <span>2027 Intake</span>
           </span>
           <span className="top-banner-text-desktop">
-            <strong>Scholarship Bootcamp 2026:</strong> Limited seats available for the upcoming admissions cycle.
+            <strong className="top-banner-highlight">Book Package to 2027 Intake:</strong> Accepting applications for March & September 2027 in <span className="top-banner-destinations">China, Italy & Germany</span>.
           </span>
           <span className="top-banner-text-mobile">
-            Scholarship Bootcamp 2026
+            <strong>2027 Intake:</strong> China, Italy & Germany
           </span>
           <span className="top-banner-cta">
-            Reserve Slot <ArrowRight size={13} />
+            <span>Book Package</span>
+            <ArrowRight size={14} className="top-banner-arrow" />
           </span>
         </a>
         <button
@@ -36,7 +37,7 @@ export default function TopAnnouncementBar() {
           className="top-banner-close"
           aria-label="Dismiss banner"
         >
-          <X size={14} />
+          <X size={15} />
         </button>
       </div>
     </div>

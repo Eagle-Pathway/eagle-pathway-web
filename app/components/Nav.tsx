@@ -80,12 +80,12 @@ export default function Nav() {
         {/* Desktop CTA */}
         <div className="nav-ctas">
           <a
-            href="https://forms.gle/eUrPE13Gt2GL4D3y9"
+            href="https://forms.gle/Fpcrq4bimki647M16"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-primary"
           >
-            Scholarship Bootcamp
+            Book Package to 2027 Intake
           </a>
         </div>
 
@@ -141,13 +141,13 @@ export default function Nav() {
               );
             })}
             <a
-              href="https://forms.gle/eUrPE13Gt2GL4D3y9"
+              href="https://forms.gle/Fpcrq4bimki647M16"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}
               className="btn btn-primary"
             >
-              Scholarship Bootcamp
+              Book Package to 2027 Intake
             </a>
           </div>
         </>
