@@ -1721,6 +1721,31 @@ img { max-width: 100%; display: block; }
   margin-bottom: 2.5rem;
 }
 .footer-grid p { color: var(--muted); font-size: 0.92rem; margin-top: 0.9rem; max-width: 280px; }
+.footer-office-box {
+  margin-top: 1.15rem;
+  padding: 0.75rem 0.95rem;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  max-width: 280px;
+}
+.footer-office-header {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.footer-office-text {
+  font-size: 0.83rem !important;
+  color: var(--muted) !important;
+  line-height: 1.45 !important;
+  margin-top: 0.35rem !important;
+}
 .footer h4 {
   font-size: 0.8rem;
   text-transform: uppercase;

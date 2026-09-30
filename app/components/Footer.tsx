@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Heart } from 'lucide-react';
+import { Heart, MapPin } from 'lucide-react';
 import { nav, site } from '@/app/content/site';
 import AppButtons from './AppButtons';
 
@@ -24,6 +24,16 @@ export default function Footer() {
               Scholarship guidance and academic tutoring helping Ethiopian students
               secure admissions and funding at world-class universities.
             </p>
+            <div className="footer-office-box">
+              <div className="footer-office-header">
+                <MapPin size={15} className="text-orange" />
+                <span>Office Location</span>
+              </div>
+              <p className="footer-office-text">
+                City Square Mall, 7th Floor, Office No. 702<br />
+                Addis Ababa, Ethiopia
+              </p>
+            </div>
           </div>
 
           <div className="footer-col">
@@ -42,7 +52,7 @@ export default function Footer() {
           <div className="footer-col">
             <h4>Product</h4>
             <ul>
-              <li><a href="https://forms.gle/eUrPE13Gt2GL4D3y9" target="_blank" rel="noopener noreferrer">Scholarship Bootcamp</a></li>
+              <li><a href="https://forms.gle/Fpcrq4bimki647M16" target="_blank" rel="noopener noreferrer">Book Package (2027 Intake)</a></li>
               <li><Link href="/tutoring">Tutoring & Tutors</Link></li>
               <li><Link href="/services">Services & Scholarships</Link></li>
               <li><Link href="/how-it-works">How it works</Link></li>
@@ -54,7 +64,11 @@ export default function Footer() {
             <h4>Contact</h4>
             <ul className="footer-contact">
               <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
-              <li><a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a></li>
+              <li>
+                <a href={`tel:${site.phoneEth}`}>{site.phoneEthDisplay}</a>
+                <span style={{ margin: '0 0.35rem', color: 'var(--line)' }}>|</span>
+                <a href={`tel:${site.phoneIntl}`}>{site.phoneIntlDisplay}</a>
+              </li>
               <li>{site.location}</li>
             </ul>
             <div className="footer-socials">

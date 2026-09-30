@@ -46,6 +46,7 @@ export default function ContactPage() {
       telephone: site.phone,
       address: {
         '@type': 'PostalAddress',
+        streetAddress: 'City Square Mall, 7th Floor, Office No. 702',
         addressLocality: 'Addis Ababa',
         addressCountry: 'ET',
       },
@@ -93,8 +94,12 @@ export default function ContactPage() {
                     <Phone size={26} />
                   </div>
                   <div className="contact-details">
-                    <h4>Phone Number</h4>
-                    <a href={`tel:${site.phone}`}>{site.phone}</a>
+                    <h4>Phone Numbers</h4>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.4rem' }}>
+                      <a href={`tel:${site.phoneEth}`}>{site.phoneEthDisplay}</a>
+                      <span style={{ color: 'var(--muted)', opacity: 0.5 }}>|</span>
+                      <a href={`tel:${site.phoneIntl}`}>{site.phoneIntlDisplay}</a>
+                    </div>
                   </div>
                 </div>
 

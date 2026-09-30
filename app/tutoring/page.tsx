@@ -110,6 +110,7 @@ export default function TutoringPage() {
       priceRange: '$$',
       address: {
         '@type': 'PostalAddress',
+        streetAddress: 'City Square Mall, 7th Floor, Office No. 702',
         addressLocality: 'Addis Ababa',
         addressRegion: 'Addis Ababa',
         addressCountry: 'ET',
