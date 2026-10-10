@@ -56,6 +56,14 @@ export const metadata: Metadata = {
       'Expert 1-on-1 private home tutoring in Addis Ababa and online tutoring worldwide for Ethiopian and international students. Background-checked tutors for KG–12, SAT, IELTS, and National Exams.',
     url: `${site.url}/tutoring`,
     type: 'website',
+    images: [{ url: '/og.png?v=2', width: 1200, height: 630, alt: 'Eagle Pathway Tutoring' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Top Tutoring Services in Ethiopia & Addis Ababa | Eagle Pathway',
+    description:
+      'Expert 1-on-1 private home tutoring in Addis Ababa and online tutoring worldwide for Ethiopian and international students.',
+    images: ['/og.png?v=2'],
   },
 };
 

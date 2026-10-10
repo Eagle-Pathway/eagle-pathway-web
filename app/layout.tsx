@@ -50,9 +50,17 @@ export const metadata: Metadata = {
     'Ethiopia tutors and tutorial services',
   ],
   icons: {
-    icon: '/icon.png',
-    apple: '/icon.png',
+    icon: [
+      { url: '/favicon.svg?v=2', type: 'image/svg+xml' },
+      { url: '/favicon.ico?v=2', sizes: 'any' },
+      { url: '/favicon-32x32.png?v=2', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png?v=2', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png?v=2', sizes: '180x180', type: 'image/png' },
+    ],
   },
+  manifest: '/site.webmanifest',
   openGraph: {
     title: 'Eagle Pathway — Secure Your Future Abroad | አስጠኚዎች እና የስኮላርሺፕ ኤጀንሲ',
     description:
@@ -61,14 +69,14 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: site.url,
     siteName: site.name,
-    images: [{ url: '/logo.png', width: 1200, height: 630, alt: site.name }],
+    images: [{ url: '/og.png?v=2', width: 1200, height: 630, alt: 'Eagle Pathway' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Eagle Pathway — Secure Your Future Abroad | አስጠኚዎች እና የስኮላርሺፕ ኤጀንሲ',
     description:
       'Expert tutoring and scholarship guidance for Ethiopian students aiming for world-class universities.',
-    images: ['/logo.png'],
+    images: ['/og.png?v=2'],
   },
 };
 
@@ -78,7 +86,7 @@ const jsonLd = [
     '@type': 'EducationalOrganization',
     name: site.name,
     url: site.url,
-    logo: `${site.url}/icon.png`,
+    logo: `${site.url}/icon-512.png?v=2`,
     description:
       'Scholarship guidance, SAT/IELTS preparation, and academic tutoring (አስጠኚዎች እና ቱቶሪያል) helping Ethiopian students secure admissions and funding at world-class universities.',
     email: site.email,

@@ -96,7 +96,7 @@
 //         <div className="assistant-panel">
 //           <div className="assistant-header">
 //             <div className="assistant-title">
-//               <Image src="/icon.png" alt="" width={22} height={22} className="assistant-logo" />
+//               <Image src="/brand/icon-light.svg" alt="" width={22} height={22} className="assistant-logo" unoptimized />
 //               Pathway Advisor
 //             </div>
 //             <button
@@ -112,7 +112,7 @@
 //           <div className="assistant-messages">
 //             {messages.length === 0 && (
 //               <div className="assistant-empty">
-//                 <Image src="/icon.png" alt="" width={40} height={40} className="assistant-empty-icon" />
+//                 <Image src="/brand/icon-light.svg" alt="" width={40} height={40} className="assistant-empty-icon" unoptimized />
 //                 <p>Ask about scholarships, tutoring or how Eagle Pathway works.</p>
 //               </div>
 //             )}

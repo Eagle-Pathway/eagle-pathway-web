@@ -41,12 +41,13 @@ export default function Nav() {
       <div className="container nav-inner relative flex items-center justify-between">
         <Link href="/" className="brand" aria-label={site.name}>
           <Image
-            src="/logo.png"
-            alt={site.name}
-            width={260}
-            height={84}
+            src="/brand/logo-light-no-global.svg"
+            alt="Eagle Pathway"
+            width={110}
+            height={48}
             className="brand-logo"
             priority
+            unoptimized
           />
         </Link>
 

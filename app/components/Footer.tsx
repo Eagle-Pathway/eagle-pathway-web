@@ -12,12 +12,13 @@ export default function Footer() {
           <div className="footer-brand">
             <Link href="/" className="brand">
               <Image
-                src="/logo.png"
-                alt={site.name}
-                width={200}
-                height={64}
+                src="/brand/logo-light-no-global.svg"
+                alt="Eagle Pathway"
+                width={120}
+                height={52}
                 className="brand-logo-footer"
                 priority
+                unoptimized
               />
             </Link>
             <p className="footer-desc">
