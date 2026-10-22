@@ -139,11 +139,11 @@ export default function Home() {
               <HeroVisual />
             </Reveal>
           </div>
-
-          <Reveal delay={160}>
-            <PlacementLogos />
-          </Reveal>
         </div>
+
+        <Reveal delay={160}>
+          <PlacementLogos />
+        </Reveal>
       </section>
 
       <PlacementTicker />

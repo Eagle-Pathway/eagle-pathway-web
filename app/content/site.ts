@@ -69,14 +69,13 @@ export const stats = [
 ];
 
 export const placements = [
+  { name: "Erasmus Mundus", short: "Erasmus Mundus" },
   { name: "University of Oxford", short: "Oxford" },
   { name: "McGill University", short: "McGill" },
   { name: "University of British Columbia", short: "UBC" },
   { name: "University of Edinburgh", short: "Edinburgh" },
   { name: "EPFL", short: "EPFL" },
   { name: "TU Munich", short: "TU Munich" },
-  { name: "Italy", short: "IYT" },
-  { name: "Erasmus Mundus", short: "Erasmus" },
 ];
 
 export const trustPoints = [

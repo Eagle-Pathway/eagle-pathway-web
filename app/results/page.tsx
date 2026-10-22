@@ -46,11 +46,9 @@ export default function ResultsPage() {
         </Reveal>
       </Section>
 
-      <Section>
-        <Reveal>
-          <PlacementLogos />
-        </Reveal>
-      </Section>
+      <Reveal>
+        <PlacementLogos />
+      </Reveal>
 
       <Section soft>
         <Reveal className="section-head">
