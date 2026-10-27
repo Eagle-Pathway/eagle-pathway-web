@@ -30,7 +30,7 @@
 ---
 
 ## 5. Contact Hotlines & Channels Separation
-- **Tutoring Hotline**: `+251 985 705 712` / `+251 970 402 044`
+- **Tutoring Hotline**: `+251 985 705 712`
 - **Tutoring Telegram**: `@EagleTutorialsServices` (`https://t.me/EagleTutorialsServices`)
 - **Main / Scholarship Telegram**: `@Tegegnpathway` (`https://t.me/Tegegnpathway`)
 - **Main Phone / Email**: As configured in `app/content/site.ts`.

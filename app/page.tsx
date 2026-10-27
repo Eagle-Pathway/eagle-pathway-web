@@ -40,8 +40,6 @@ export default function Home() {
                     <span className="parents-call-label">Need a tutor fast? Call:</span>{' '}
                     <span className="parents-call-numbers">
                       <a href={`tel:${site.tutoring.phone1}`} className="parents-call-num">{site.tutoring.phone1Display}</a>
-                      <span className="parents-call-slash"> / </span>
-                      <a href={`tel:${site.tutoring.phone2}`} className="parents-call-num">{site.tutoring.phone2Display}</a>
                     </span>
                   </div>
                   <div className="parents-call-row-2">

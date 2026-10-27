@@ -285,16 +285,9 @@ export default function TutoringPage() {
                     <a
                       href={`tel:${site.tutoring.phone1}`}
                       className="btn btn-primary btn-lg"
-                      style={{ flex: '1 1 240px', justifyContent: 'center', fontSize: '1.02rem', fontWeight: 700 }}
+                      style={{ maxWidth: '340px', width: '100%', justifyContent: 'center', fontSize: '1.02rem', fontWeight: 700 }}
                     >
                       <Phone size={18} /> Call {site.tutoring.phone1Display}
-                    </a>
-                    <a
-                      href={`tel:${site.tutoring.phone2}`}
-                      className="btn btn-ghost btn-lg"
-                      style={{ flex: '1 1 240px', justifyContent: 'center', fontSize: '1.02rem', fontWeight: 700, borderColor: 'var(--navy)', color: 'var(--navy)' }}
-                    >
-                      <Phone size={18} /> Call {site.tutoring.phone2Display}
                     </a>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.92rem', color: 'var(--muted)' }}>

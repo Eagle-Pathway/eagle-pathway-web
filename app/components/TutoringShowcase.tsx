@@ -177,7 +177,7 @@ export default function TutoringShowcase() {
               <h3>Parents: Need a tutor right now?</h3>
               <p style={{ marginBottom: '0.75rem' }}>Call our direct hotline or message our Tutoring Telegram for immediate tutor matching.</p>
               <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', fontSize: '0.95rem', fontWeight: 600 }}>
-                <span>📞 Call: <a href={`tel:${site.tutoring.phone1}`} style={{ color: '#fbbf24', textDecoration: 'underline' }}>{site.tutoring.phone1Display}</a> / <a href={`tel:${site.tutoring.phone2}`} style={{ color: '#fbbf24', textDecoration: 'underline' }}>{site.tutoring.phone2Display}</a></span>
+                <span>📞 Call: <a href={`tel:${site.tutoring.phone1}`} style={{ color: '#fbbf24', textDecoration: 'underline' }}>{site.tutoring.phone1Display}</a></span>
                 <span>📩 Telegram: <a href={site.tutoring.telegram} target="_blank" rel="noreferrer" style={{ color: '#38bdf8', textDecoration: 'underline' }}>{site.tutoring.handle}</a></span>
               </div>
             </div>

@@ -17,6 +17,6 @@
 - Online: Ethiopian and diaspora students in any country abroad (USA, Canada, Europe, Middle East, etc.) as well as within Ethiopia.
 
 ## 5. Contact Channels Separation
-- Tutoring Hotline: `+251 985 705 712` / `+251 970 402 044`
+- Tutoring Hotline: `+251 985 705 712`
 - Tutoring Telegram: `@EagleTutorialsServices`
 - Study Abroad / Community Telegram: `@Tegegnpathway`
