@@ -106,9 +106,15 @@ export default function Home() {
                       <span className="play-btn-title">Google Play</span>
                     </div>
                   </a>
-                  <Link href="/services" className="hero-explore-btn">
-                    Explore services
-                  </Link>
+                  <a
+                    href="https://web.eaglespathway.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hero-explore-btn"
+                  >
+                    Launch Web App
+                    <ArrowRight size={18} />
+                  </a>
                 </div>
 
                 <div className="hero-trust-pills">
@@ -118,7 +124,7 @@ export default function Home() {
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
                     </span>
-                    <span>Official Android App</span>
+                    <span>Android & Web App Live</span>
                   </span>
                   <span className="hero-pill-dot-sep" aria-hidden="true" />
                   <span className="hero-pill-item">
@@ -227,21 +233,39 @@ export default function Home() {
             <div className="split" style={{ alignItems: 'center' }}>
               <div>
                 <SectionHeader
-                  eyebrow="Mobile App"
+                  eyebrow="Mobile & Web App"
                   title="Take your learning & application progress anywhere"
-                  description="Track scholarship milestones, review tutor feedback, practice exams, and get live updates directly on your phone."
+                  description="Track scholarship milestones, review tutor feedback, practice exams, and get live updates directly on your phone or web browser."
                   align="left"
                 />
-                <div style={{ marginTop: '1.5rem' }}>
+                <div style={{ marginTop: '1.5rem', display: 'flex', flexWrap: 'wrap', gap: '0.85rem', alignItems: 'center' }}>
                   <AppButtons variant="dark" />
+                  <a
+                    href="https://web.eaglespathway.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary"
+                    style={{ padding: '0.78rem 1.4rem' }}
+                  >
+                    Launch Web App <ArrowRight size={16} />
+                  </a>
                 </div>
               </div>
               <div style={{ textAlign: 'center', padding: '1.5rem', background: '#ffffff', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.04)' }}>
-                <span style={{ fontSize: '0.8rem', color: 'var(--orange)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', display: 'block', marginBottom: '0.35rem' }}>Now Live on Google Play</span>
+                <span style={{ fontSize: '0.8rem', color: 'var(--orange)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', display: 'block', marginBottom: '0.35rem' }}>Now Live on Mobile & Web</span>
                 <h3 style={{ fontSize: '1.35rem', color: 'var(--navy)', margin: '0 0 0.5rem 0' }}>Get the Eagle Pathway App</h3>
-                <p style={{ color: 'var(--muted)', fontSize: '0.9rem', lineHeight: 1.5, margin: 0 }}>
-                  Manage 1-on-1 tutoring, scholarship deadlines, and university application progress on the go.
+                <p style={{ color: 'var(--muted)', fontSize: '0.9rem', lineHeight: 1.5, margin: '0 0 1rem 0' }}>
+                  Manage 1-on-1 tutoring, scholarship deadlines, and university application progress on any device.
                 </p>
+                <a
+                  href="https://web.eaglespathway.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                  style={{ width: '100%', justifyContent: 'center' }}
+                >
+                  Launch Web App <ArrowRight size={16} />
+                </a>
               </div>
             </div>
           </div>

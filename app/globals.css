@@ -596,6 +596,7 @@ img { max-width: 100%; display: block; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.55rem;
   background: #ffffff;
   color: #0f172a;
   padding: 0.95rem 1.85rem;
@@ -610,10 +611,10 @@ img { max-width: 100%; display: block; }
 
 .hero-explore-btn:hover {
   background: #ffffff;
-  border-color: #94a3b8;
-  color: #0f172a;
+  border-color: var(--navy);
+  color: var(--navy);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 20px rgba(26, 43, 95, 0.12);
 }
 
 .hero-trust-pills {

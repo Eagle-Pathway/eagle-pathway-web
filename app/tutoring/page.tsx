@@ -289,6 +289,15 @@ export default function TutoringPage() {
                     >
                       <Phone size={18} /> Call {site.tutoring.phone1Display}
                     </a>
+                    <a
+                      href="https://web.eaglespathway.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-ghost btn-lg"
+                      style={{ maxWidth: '340px', width: '100%', justifyContent: 'center', fontSize: '1.02rem', fontWeight: 700, borderColor: 'var(--navy)', color: 'var(--navy)', background: '#fff' }}
+                    >
+                      Find a Tutor on Web App <ArrowRight size={18} />
+                    </a>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.92rem', color: 'var(--muted)' }}>
                     <Send size={15} style={{ color: '#0088cc' }} />
@@ -757,11 +766,13 @@ export default function TutoringPage() {
                 📞 Call {site.tutoring.phone1Display}
               </a>
               <a
-                href="#"
+                href="https://web.eaglespathway.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn btn-ghost btn-lg"
                 style={{ background: '#fff' }}
               >
-                Request a Tutor Online
+                Find a Tutor on Web App <ArrowRight size={16} />
               </a>
             </div>
           </Reveal>

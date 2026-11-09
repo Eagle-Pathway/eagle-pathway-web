@@ -122,12 +122,12 @@ export default function TutoringShowcase() {
 
                 <div className="tutoring-card-footer">
                   <a
-                    href="https://forms.gle/NL2oB6mHHUscnZo9A"
+                    href="https://web.eaglespathway.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-primary btn-full"
                   >
-                    Request a Tutor <ArrowRight size={16} style={{ marginLeft: '6px' }} />
+                    Find a Tutor <ArrowRight size={16} style={{ marginLeft: '6px' }} />
                   </a>
                 </div>
               </Reveal>

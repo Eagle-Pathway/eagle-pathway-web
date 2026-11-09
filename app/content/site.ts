@@ -45,7 +45,9 @@ export const site = {
     iosAvailable: false,
     ios: "#",
     android: "https://play.google.com/store/apps/details?id=com.eaglepathway.app",
+    portal: "https://web.eaglespathway.com",
   },
+  portal: "https://web.eaglespathway.com",
 };
 
 export const nav = [

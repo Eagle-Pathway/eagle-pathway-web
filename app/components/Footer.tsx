@@ -51,8 +51,18 @@ export default function Footer() {
           </div>
 
           <div className="footer-col">
-            <h4>Product</h4>
+            <h4>Quick Links</h4>
             <ul>
+              <li>
+                <a
+                  href="https://web.eaglespathway.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontWeight: 600, color: 'var(--orange)' }}
+                >
+                  Student & Parent Portal ↗
+                </a>
+              </li>
               <li><a href="https://forms.gle/Fpcrq4bimki647M16" target="_blank" rel="noopener noreferrer">Book Package (2027 Intake)</a></li>
               <li><Link href="/tutoring">Tutoring & Tutors</Link></li>
               <li><Link href="/services">Services & Scholarships</Link></li>
