@@ -18,6 +18,38 @@ export interface Career {
 
 export const fallbackCareers: Career[] = [
   {
+    id: 'b35c1a9b-274f-42c8-9914-81d65958bb90',
+    title: 'Developer',
+    slug: 'developer',
+    department: 'Engineering & Product',
+    location: 'Addis Ababa / Hybrid',
+    employment_type: 'Full-time',
+    deadline: 'Nov 26, 2026',
+    summary: 'Build and scale the core software platforms, student-tutor matching engines, and educational technology powering Eagle Pathway across Africa and globally.',
+    description: "Eagle Pathway is building Africa's premier technology and advisory ecosystem connecting students to world-class education, fully funded scholarships, and verified academic tutoring. With an operational mobile application, web portal, and established physical advisory centers in Addis Ababa, we are scaling technology to transform education across Ethiopia and the diaspora worldwide.\n\nAs a Developer at Eagle Pathway, you will drive core platform architecture across our web applications, mobile ecosystem, and student-tutor matching engines. You will work directly with leadership to build high-throughput matching workflows, diagnostic assessment tools, and scalable digital services that power life-changing educational opportunities for thousands of students.",
+    responsibilities: [
+      'Architect, build, and scale high-performance web applications and backend APIs using Next.js, TypeScript, and modern database systems.',
+      'Develop and refine intelligent student-to-tutor matching algorithms and scheduling workflows that minimize turnaround time.',
+      'Build intuitive, mobile-first interfaces and interactive dashboards for students, parents, and academic mentors.',
+      'Implement reliable authentication, secure file and resume intake pipelines, and automated test coverage.',
+      'Collaborate directly with academic and admissions leadership to rapidly turn operational requirements into production software.',
+    ],
+    requirements: [
+      'Proven experience building and maintaining modern full-stack web or mobile applications using JavaScript / TypeScript, React / Next.js, and relational databases.',
+      'Demonstrated track record of writing clean, maintainable, and well-tested code.',
+      'Strong understanding of API design, responsive UI implementation, and database architecture.',
+      'High agency, problem-solving mindset, and ability to take ownership of features from conception to deployment.',
+      'Passion for educational equity, technology innovation, and building high-impact products for students.',
+    ],
+    benefits: [
+      'Competitive compensation package with performance milestones',
+      'Flexible hybrid work model (Addis Ababa office + remote flexibility)',
+      'Direct ownership over technical architecture and product roadmap decisions',
+      'Continuous learning, tech allowances, and rapid career acceleration opportunities',
+    ],
+    is_active: true,
+  },
+  {
     id: 'c1-operations-coordinator',
     title: 'Operations Coordinator',
     slug: 'operations-coordinator',
@@ -166,7 +198,10 @@ export async function getCareerByIdOrSlug(idOrSlug: string): Promise<Career | nu
       c.id.toLowerCase() === decoded ||
       (c.slug && c.slug.toLowerCase() === decoded) ||
       c.title.toLowerCase().replace(/[^a-z0-9]+/g, '-') === decoded ||
-      c.title.toLowerCase() === decoded.replace(/-/g, ' ')
+      c.title.toLowerCase() === decoded.replace(/-/g, ' ') ||
+      (c.slug && (c.slug.includes(decoded) || decoded.includes(c.slug))) ||
+      c.title.toLowerCase().includes(decoded.replace(/-/g, ' ')) ||
+      decoded.replace(/-/g, ' ').includes(c.title.toLowerCase())
   );
 
   return fallback || null;

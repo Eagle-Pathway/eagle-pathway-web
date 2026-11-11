@@ -3,6 +3,9 @@ import CareersClient from './CareersClient';
 import { getCareers } from './careersData';
 import { site } from '../content/site';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: 'Careers | Eagle Pathway',
   description:
