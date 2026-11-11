@@ -144,6 +144,17 @@ export async function getCareerByIdOrSlug(idOrSlug: string): Promise<Career | nu
         .single();
 
       if (byTitle) return byTitle as Career;
+
+      // Try partial slug or partial title match
+      const { data: partialMatch } = await supabase
+        .from('careers')
+        .select('*')
+        .or(`slug.ilike.%${decoded}%,title.ilike.%${decoded.replace(/-/g, ' ')}%`)
+        .limit(1);
+
+      if (partialMatch && partialMatch.length > 0) {
+        return partialMatch[0] as Career;
+      }
     }
   } catch (e) {
     // Continue to fallback check
