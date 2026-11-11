@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { Resend } from 'resend';
 
-const TO = process.env.CONTACT_TO_EMAIL || 'info@eaglespathway.com';
+const TO = process.env.CAREERS_TO_EMAIL || 'career@eaglespathway.com';
 const FROM = process.env.CONTACT_FROM_EMAIL || 'Eagle Pathway <onboarding@resend.dev>';
 
 function escapeHtml(value: string = '') {
