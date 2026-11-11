@@ -617,6 +617,16 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 8px 20px rgba(26, 43, 95, 0.12);
 }
 
+.career-item-row:hover {
+  background: rgba(26, 43, 95, 0.02);
+}
+
+.career-item-row:hover div:last-child div {
+  background: var(--navy);
+  color: #ffffff;
+  border-color: var(--navy);
+}
+
 .hero-trust-pills {
   display: flex;
   align-items: center;
