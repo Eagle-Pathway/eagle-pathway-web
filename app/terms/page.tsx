@@ -20,7 +20,7 @@ import {
 export const metadata: Metadata = {
   title: 'Terms & Operating Policy | Eagle Tutorials Services',
   description:
-    'Comprehensive operating guidelines, parent payment structure, tutor commission terms (25% upfront commitment + 20% monthly commission), refund & replacement policy, and quality standards for Eagle Tutorials Services.',
+    'Comprehensive operating guidelines, parent payment structure, tutor commission options (25% upfront commitment + 20% monthly commission, or a one-time only 50% fee), refund & replacement policy, and quality standards for Eagle Tutorials Services.',
   alternates: {
     canonical: `${site.url}/terms`,
   },
@@ -34,8 +34,8 @@ const parentHighlights = [
 ];
 
 const tutorHighlights = [
-  '25% upfront commitment fee (based on monthly tutoring rate) paid when position is confirmed',
-  '20% monthly service commission from monthly income for as long as the active relationship continues',
+  'Flexible commission choice: Option A (25% upfront + 20% monthly) OR Option B (One-time only 50% fee)',
+  'Either option chosen works — select what best fits your cash flow and teaching preferences',
   'Reliable monthly earnings paid directly to you by Eagle Tutorials Services',
   'Continuous student matching, relationship support, and administrative management',
 ];
@@ -54,13 +54,14 @@ const policyCards = [
   },
   {
     icon: HeartHandshake,
-    title: 'Tutor Commitment & Monthly Commission',
+    title: 'Tutor Commission & Flexible Plans',
     tag: 'For Tutors',
     color: 'var(--navy)',
     bg: 'rgba(26, 43, 95, 0.08)',
     points: [
-      'Tutors pay a **25% upfront commitment fee** (based on the agreed monthly tutoring amount) when confirming a position placement.',
-      'Thereafter, a **20% monthly service commission** applies from the tutor’s monthly income for as long as the Eagle-referred tutoring relationship remains active.',
+      'Tutors have the freedom to select either of two clear commission models upon placement confirmation — either option works:',
+      '• **Plan 1 (Split Plan)**: 25% upfront commitment fee (based on agreed monthly tutoring rate) upon placement confirmation, followed by a 20% monthly service commission from monthly earnings.',
+      '• **Plan 2 (One-Time 50% Settlement)**: A single one-time only 50% fee (half of the first month’s rate) upon placement confirmation, with 0% ongoing monthly commission thereafter.',
     ],
   },
   {
@@ -81,7 +82,8 @@ const policyCards = [
     color: '#7c3aed',
     bg: 'rgba(124, 58, 237, 0.08)',
     points: [
-      'The 20% monthly service commission remains active for the full duration of any tutoring engagement initiated through Eagle Tutorials Services.',
+      'For tutors on Plan 1, the 20% monthly service commission applies for the duration of the active Eagle-referred tutoring engagement.',
+      'For tutors on Plan 2 (one-time 50%), ongoing monthly payouts are disbursed at 100% net earnings with zero monthly deductions.',
       'If a tutoring arrangement ends or requires replacement, Eagle Tutorials Services coordinates the transition smoothly.',
     ],
   },
@@ -97,8 +99,8 @@ const parentProcess = [
 const tutorProcess = [
   { step: '01', title: 'Apply & Verify', desc: 'Submit academic credentials, teaching experience, and location preferences.' },
   { step: '02', title: 'Interview & Match', desc: 'Complete diagnostic verification and receive matching tutoring opportunities.' },
-  { step: '03', title: '25% Upfront Fee', desc: 'Pay the 25% upfront commitment fee upon position confirmation to secure the job.' },
-  { step: '04', title: 'Teach & 20% Monthly', desc: 'Receive monthly payouts from Eagle Tutorials net of the 20% service commission.' },
+  { step: '03', title: 'Choose Commission Option', desc: 'Select 25% upfront commitment or a single one-time 50% placement fee upon confirmation.' },
+  { step: '04', title: 'Teach & Receive Earnings', desc: 'Receive prompt monthly payouts: net of 20% for Plan 1, or 100% full net earnings with Plan 2.' },
 ];
 
 const codeOfConduct = [
@@ -115,7 +117,7 @@ const policyFaqs = [
   },
   {
     q: 'What is the commission structure for tutors?',
-    a: 'Tutors pay a 25% upfront commitment fee (based on the agreed monthly tutoring rate) upon position confirmation, followed by a 20% monthly service commission from monthly income for as long as the Eagle-referred relationship continues.',
+    a: 'Tutors can choose between two flexible options upon placement confirmation (either choice works): (1) Split Plan: A 25% upfront commitment fee followed by a 20% monthly service commission, OR (2) One-Time Plan: A single one-time only 50% fee with 0% ongoing monthly deductions thereafter.',
   },
   {
     q: 'What happens if a parent wants to change tutors?',
@@ -273,7 +275,7 @@ export default function TermsPage() {
                   </div>
                   <div>
                     <h3 style={{ fontSize: '1.3rem', margin: 0 }}>For Educators & Tutors</h3>
-                    <span style={{ fontSize: '0.8rem', color: 'var(--muted)', fontWeight: 600 }}>25% Upfront · 20% Monthly Commission</span>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--muted)', fontWeight: 600 }}>25% Upfront + 20% Monthly · OR One-Time 50%</span>
                   </div>
                 </div>
                 <p style={{ color: 'var(--muted)', fontSize: '0.95rem', marginBottom: '1.25rem', lineHeight: 1.6 }}>
