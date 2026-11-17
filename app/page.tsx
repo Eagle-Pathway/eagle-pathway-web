@@ -231,17 +231,8 @@ export default function Home() {
                   description="Track scholarship milestones, review tutor feedback, practice exams, and get live updates directly on your phone or web browser."
                   align="left"
                 />
-                <div style={{ marginTop: '1.5rem', display: 'flex', flexWrap: 'wrap', gap: '0.85rem', alignItems: 'center' }}>
+                <div style={{ marginTop: '1.5rem' }}>
                   <AppButtons variant="dark" />
-                  <a
-                    href="https://web.eaglespathway.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary"
-                    style={{ padding: '0.78rem 1.4rem' }}
-                  >
-                    Launch Web App <ArrowRight size={16} />
-                  </a>
                 </div>
               </div>
               <div style={{ textAlign: 'center', padding: '1.5rem', background: '#ffffff', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.04)' }}>
