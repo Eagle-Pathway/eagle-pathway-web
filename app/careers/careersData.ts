@@ -14,6 +14,16 @@ export interface Career {
   requirements?: string[];
   benefits?: string[];
   is_active?: boolean;
+  status?: string;
+}
+
+export function isCareerOpen(job?: Career | null): boolean {
+  if (!job) return false;
+  if (job.is_active === false) return false;
+  if (job.status && ['closed', 'inactive', 'archived', 'filled'].includes(job.status.toLowerCase())) {
+    return false;
+  }
+  return true;
 }
 
 export const fallbackCareers: Career[] = [
@@ -131,13 +141,13 @@ export async function getCareers(): Promise<Career[]> {
         .order('created_at', { ascending: false });
 
       if (!error && data && data.length > 0) {
-        return data as Career[];
+        return (data as Career[]).filter((c) => isCareerOpen(c));
       }
     }
   } catch (e) {
     // Return fallback if table not yet populated or network unavailable
   }
-  return fallbackCareers;
+  return fallbackCareers.filter((c) => isCareerOpen(c));
 }
 
 export async function getCareerByIdOrSlug(idOrSlug: string): Promise<Career | null> {

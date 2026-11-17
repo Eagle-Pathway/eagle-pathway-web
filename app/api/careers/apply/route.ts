@@ -65,10 +65,31 @@ export async function POST(request: Request) {
     let insertedId: string | null = null;
     let storedResumeUrl = resume_url;
 
-    // 1. Try uploading to Supabase Storage if file is provided
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
+    // 0. Verify that the job posting is active and not closed
+    if (career_id && supabaseUrl && supabaseKey) {
+      try {
+        const supabase = createClient(supabaseUrl, supabaseKey);
+        const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(career_id);
+        const query = isUuid
+          ? supabase.from('careers').select('id, title, is_active').eq('id', career_id).single()
+          : supabase.from('careers').select('id, title, is_active').eq('slug', career_id).single();
+
+        const { data: jobRecord } = await query;
+        if (jobRecord && jobRecord.is_active === false) {
+          return NextResponse.json(
+            { error: 'Applications for this position are closed. No new submissions are being accepted.' },
+            { status: 400 }
+          );
+        }
+      } catch (checkErr) {
+        console.warn('Career active check warning:', checkErr);
+      }
+    }
+
+    // 1. Try uploading to Supabase Storage if file is provided
     if (supabaseUrl && supabaseKey) {
       try {
         const supabase = createClient(supabaseUrl, supabaseKey);

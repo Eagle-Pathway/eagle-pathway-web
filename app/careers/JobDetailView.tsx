@@ -2,8 +2,8 @@
 
 import { useState, useRef } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, CheckCircle2, Send, Loader2, UploadCloud, FileText, X, Share2, Check } from 'lucide-react';
-import { Career } from './careersData';
+import { ArrowLeft, CheckCircle2, Send, Loader2, UploadCloud, FileText, X, Share2, Check, Lock } from 'lucide-react';
+import { Career, isCareerOpen } from './careersData';
 
 interface Props {
   job: Career;
@@ -184,14 +184,37 @@ export default function JobDetailView({ job }: Props) {
           color: '#64748b',
           fontWeight: 500,
           marginBottom: '1.75rem',
+          display: 'flex',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '0.4rem',
         }}
       >
-        {job.department} · {job.employment_type} · {job.location}
-        {job.deadline && (
-          <span style={{ color: 'var(--orange)', fontWeight: 700, marginLeft: '0.5rem' }}>
+        <span>{job.department} · {job.employment_type} · {job.location}</span>
+        {!isCareerOpen(job) ? (
+          <span
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.3rem',
+              background: '#fee2e2',
+              color: '#b91c1c',
+              padding: '0.2rem 0.65rem',
+              borderRadius: '999px',
+              fontSize: '0.78rem',
+              fontWeight: 700,
+              marginLeft: '0.25rem',
+              letterSpacing: '0.04em',
+              textTransform: 'uppercase',
+            }}
+          >
+            <Lock size={12} /> Closed
+          </span>
+        ) : job.deadline ? (
+          <span style={{ color: 'var(--orange)', fontWeight: 700 }}>
             · Apply by {job.deadline}
           </span>
-        )}
+        ) : null}
       </div>
 
       {/* Divider Line */}
@@ -235,7 +258,7 @@ export default function JobDetailView({ job }: Props) {
         </div>
       )}
 
-      {/* In-Page Application Form */}
+      {/* In-Page Application Form or Closed Notice */}
       <div
         style={{
           borderTop: '1.5px solid var(--line)',
@@ -243,40 +266,80 @@ export default function JobDetailView({ job }: Props) {
           marginTop: '2rem',
         }}
       >
-        <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--navy)', margin: '0 0 0.4rem' }}>
-          Apply for this position
-        </h3>
-        <p style={{ fontSize: '0.92rem', color: '#64748b', margin: '0 0 1.5rem' }}>
-          Fill in your details and upload your CV/Resume below.
-        </p>
-
-        {submitSuccess ? (
+        {!isCareerOpen(job) ? (
           <div
             style={{
-              background: '#f0fdf4',
-              border: '1px solid #bbf7d0',
-              borderRadius: '12px',
-              padding: '1.75rem',
+              background: '#f8fafc',
+              border: '1.5px solid #e2e8f0',
+              borderRadius: '16px',
+              padding: '3rem 2rem',
               textAlign: 'center',
             }}
           >
-            <CheckCircle2 size={36} style={{ color: '#16a34a', margin: '0 auto 0.5rem' }} />
-            <h4 style={{ color: '#166534', margin: '0 0 0.35rem', fontWeight: 700, fontSize: '1.1rem' }}>
-              Application Submitted!
-            </h4>
-            <p style={{ color: '#15803d', fontSize: '0.92rem', margin: 0 }}>
-              Thank you. We have received your application for &ldquo;{job.title}&rdquo; and will be in touch.
+            <div
+              style={{
+                width: '52px',
+                height: '52px',
+                borderRadius: '50%',
+                background: '#fee2e2',
+                color: '#dc2626',
+                display: 'grid',
+                placeItems: 'center',
+                margin: '0 auto 1.25rem',
+              }}
+            >
+              <Lock size={24} />
+            </div>
+            <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--navy)', margin: '0 0 0.5rem' }}>
+              Applications are Closed
+            </h3>
+            <p style={{ color: '#64748b', fontSize: '0.96rem', margin: '0 auto 1.75rem', maxWidth: '480px', lineHeight: 1.6 }}>
+              This position is no longer accepting new applications as candidate review or hiring is currently underway. Thank you for your interest in Eagle Pathway!
             </p>
             <Link
               href="/careers"
               className="btn btn-primary"
-              style={{ display: 'inline-flex', marginTop: '1.25rem', padding: '0.65rem 1.25rem', textDecoration: 'none' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', textDecoration: 'none' }}
             >
-              Back to all roles
+              <ArrowLeft size={16} /> View Other Open Positions
             </Link>
           </div>
         ) : (
-          <form onSubmit={handleApplySubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+          <>
+            <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--navy)', margin: '0 0 0.4rem' }}>
+              Apply for this position
+            </h3>
+            <p style={{ fontSize: '0.92rem', color: '#64748b', margin: '0 0 1.5rem' }}>
+              Fill in your details and upload your CV/Resume below.
+            </p>
+
+            {submitSuccess ? (
+              <div
+                style={{
+                  background: '#f0fdf4',
+                  border: '1px solid #bbf7d0',
+                  borderRadius: '12px',
+                  padding: '1.75rem',
+                  textAlign: 'center',
+                }}
+              >
+                <CheckCircle2 size={36} style={{ color: '#16a34a', margin: '0 auto 0.5rem' }} />
+                <h4 style={{ color: '#166534', margin: '0 0 0.35rem', fontWeight: 700, fontSize: '1.1rem' }}>
+                  Application Submitted!
+                </h4>
+                <p style={{ color: '#15803d', fontSize: '0.92rem', margin: 0 }}>
+                  Thank you. We have received your application for &ldquo;{job.title}&rdquo; and will be in touch.
+                </p>
+                <Link
+                  href="/careers"
+                  className="btn btn-primary"
+                  style={{ display: 'inline-flex', marginTop: '1.25rem', padding: '0.65rem 1.25rem', textDecoration: 'none' }}
+                >
+                  Back to all roles
+                </Link>
+              </div>
+            ) : (
+              <form onSubmit={handleApplySubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             {submitError && (
               <div
                 style={{
@@ -517,8 +580,10 @@ export default function JobDetailView({ job }: Props) {
             </div>
           </form>
         )}
-      </div>
-    </div>
+      </>
+    )}
+  </div>
+</div>
   );
 }
 

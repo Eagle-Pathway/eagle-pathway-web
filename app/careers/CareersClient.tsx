@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import { Career } from './careersData';
+import { ArrowRight, Lock } from 'lucide-react';
+import { Career, isCareerOpen } from './careersData';
 
 interface Props {
   initialCareers: Career[];
@@ -101,16 +101,37 @@ export default function CareersClient({ initialCareers }: Props) {
               >
                 {/* Left: Title & Meta */}
                 <div style={{ paddingRight: '1rem' }}>
-                  <h3
-                    style={{
-                      fontSize: '1.25rem',
-                      fontWeight: 700,
-                      color: 'var(--navy)',
-                      margin: '0 0 0.35rem',
-                    }}
-                  >
-                    {job.title}
-                  </h3>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.35rem', flexWrap: 'wrap' }}>
+                    <h3
+                      style={{
+                        fontSize: '1.25rem',
+                        fontWeight: 700,
+                        color: 'var(--navy)',
+                        margin: 0,
+                      }}
+                    >
+                      {job.title}
+                    </h3>
+                    {!isCareerOpen(job) && (
+                      <span
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '0.25rem',
+                          background: '#fee2e2',
+                          color: '#b91c1c',
+                          padding: '0.15rem 0.55rem',
+                          borderRadius: '999px',
+                          fontSize: '0.72rem',
+                          fontWeight: 700,
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.04em',
+                        }}
+                      >
+                        <Lock size={10} /> Closed
+                      </span>
+                    )}
+                  </div>
                   <div style={{ fontSize: '0.9rem', color: 'var(--muted)', fontWeight: 500 }}>
                     {job.department} · {job.employment_type} · {job.location}
                   </div>
@@ -118,8 +139,8 @@ export default function CareersClient({ initialCareers }: Props) {
 
                 {/* Right: Deadline & Circular Arrow Button */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexShrink: 0 }}>
-                  <span style={{ fontSize: '0.88rem', color: 'var(--muted)', whiteSpace: 'nowrap' }}>
-                    {job.deadline ? `Apply by ${job.deadline}` : 'Open'}
+                  <span style={{ fontSize: '0.88rem', color: !isCareerOpen(job) ? '#b91c1c' : 'var(--muted)', fontWeight: !isCareerOpen(job) ? 600 : 400, whiteSpace: 'nowrap' }}>
+                    {!isCareerOpen(job) ? 'Closed' : job.deadline ? `Apply by ${job.deadline}` : 'Open'}
                   </span>
                   <div
                     style={{
