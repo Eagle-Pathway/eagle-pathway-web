@@ -10,7 +10,6 @@ import HeroVisual from './components/HeroVisual';
 import CaseStudyCard from './components/CaseStudyCard';
 import TrustStrip from './components/TrustStrip';
 import PlacementTicker from './components/PlacementTicker';
-import EligibilityEstimator from './components/EligibilityEstimator';
 import TutoringShowcase from './components/TutoringShowcase';
 import AppButtons, { PlayLogo } from './components/AppButtons';
 import { Phone, Send, ArrowRight, CheckCircle2 } from 'lucide-react';
@@ -189,12 +188,6 @@ export default function Home() {
           <p className="section-cta-link">
             <Link href="/services">See all services →</Link>
           </p>
-        </Reveal>
-      </Section>
-
-      <Section tight>
-        <Reveal>
-          <EligibilityEstimator />
         </Reveal>
       </Section>
 
