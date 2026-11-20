@@ -341,7 +341,7 @@ export default function ApplicationForm() {
             <div className="field">
               <label>What is your main goal? (Optional)</label>
               <textarea
-                placeholder="e.g. I want to secure a fully funded master's scholarship in Italy by September 2025..."
+                placeholder="e.g. I want to secure a fully funded master's scholarship in Italy by September 2027..."
                 rows={5}
                 style={{ width: '100%', padding: '0.9rem 1rem', border: '1px solid var(--line)', borderRadius: 'var(--radius)', fontSize: '0.95rem', resize: 'vertical', fontFamily: 'inherit' }}
               />
