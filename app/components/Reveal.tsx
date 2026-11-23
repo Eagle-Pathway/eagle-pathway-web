@@ -16,6 +16,22 @@ export default function Reveal({ children, className = '', delay = 0, as = 'div'
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    // Immediately reveal elements that are already within or near the viewport
+    const rect = el.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top <= windowHeight + 100) {
+      requestAnimationFrame(() => {
+        setShown(true);
+      });
+      return;
+    }
+
+    if (typeof IntersectionObserver === 'undefined') {
+      setShown(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -25,7 +41,7 @@ export default function Reveal({ children, className = '', delay = 0, as = 'div'
           }
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+      { threshold: 0.01, rootMargin: '0px 0px 80px 0px' }
     );
     observer.observe(el);
     return () => observer.disconnect();
