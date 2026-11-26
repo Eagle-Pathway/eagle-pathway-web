@@ -15,12 +15,13 @@ import {
   Award,
   CreditCard,
   Clock,
+  AlertTriangle,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Terms & Operating Policy | Eagle Tutorials Services',
   description:
-    'Comprehensive operating guidelines, parent payment structure, tutor commission options (25% upfront commitment + 20% monthly commission, or a one-time only 50% fee), refund & replacement policy, and quality standards for Eagle Tutorials Services.',
+    'Comprehensive operating guidelines, parent payment structure, tutor commission structure (Eagle-determined: 25% upfront commitment + 20% monthly commission, or a one-time only 50% fee), strict refund & replacement policy, and quality standards for Eagle Tutorials Services.',
   alternates: {
     canonical: `${site.url}/terms`,
   },
@@ -34,8 +35,8 @@ const parentHighlights = [
 ];
 
 const tutorHighlights = [
-  'Flexible commission choice: Option A (25% upfront + 20% monthly) OR Option B (One-time only 50% fee)',
-  'Either option chosen works — select what best fits your cash flow and teaching preferences',
+  'Transparent Commission Models: Plan 1 (25% upfront + 20% monthly) OR Plan 2 (One-time only 50% fee)',
+  'Eagle Tutorials Services reserves the right to decide the commission structure (Plan 1 or Plan 2) for each job',
   'Reliable monthly earnings paid directly to you by Eagle Tutorials Services',
   'Continuous student matching, relationship support, and administrative management',
 ];
@@ -54,14 +55,15 @@ const policyCards = [
   },
   {
     icon: HeartHandshake,
-    title: 'Tutor Commission & Flexible Plans',
+    title: 'Tutor Commission & Job Structure',
     tag: 'For Tutors',
     color: 'var(--navy)',
     bg: 'rgba(26, 43, 95, 0.08)',
     points: [
-      'Tutors have the freedom to select either of two clear commission models upon placement confirmation — either option works:',
+      'Eagle Tutorials Services reserves the right to decide the applicable commission model for each tutoring placement or job:',
       '• **Plan 1 (Split Plan)**: 25% upfront commitment fee (based on agreed monthly tutoring rate) upon placement confirmation, followed by a 20% monthly service commission from monthly earnings.',
       '• **Plan 2 (One-Time 50% Settlement)**: A single one-time only 50% fee (half of the first month’s rate) upon placement confirmation, with 0% ongoing monthly commission thereafter.',
+      '• The commission option (Plan 1 or Plan 2) is determined by Eagle on a per-job basis prior to placement confirmation.',
     ],
   },
   {
@@ -99,7 +101,7 @@ const parentProcess = [
 const tutorProcess = [
   { step: '01', title: 'Apply & Verify', desc: 'Submit academic credentials, teaching experience, and location preferences.' },
   { step: '02', title: 'Interview & Match', desc: 'Complete diagnostic verification and receive matching tutoring opportunities.' },
-  { step: '03', title: 'Choose Commission Option', desc: 'Select 25% upfront commitment or a single one-time 50% placement fee upon confirmation.' },
+  { step: '03', title: 'Commission Assignment', desc: 'Eagle determines the commission option for each job (Plan 1: 25% + 20% monthly, or Plan 2: 50% one-time).' },
   { step: '04', title: 'Teach & Receive Earnings', desc: 'Receive prompt monthly payouts: net of 20% for Plan 1, or 100% full net earnings with Plan 2.' },
 ];
 
@@ -116,75 +118,75 @@ const policyFaqs = [
     a: 'Parents pay Eagle Tutorials Services directly every month. Tutors are paid by Eagle Tutorials Services. Tutors do not collect payments directly from families.',
   },
   {
-    q: 'What is the commission structure for tutors?',
-    a: 'Tutors can choose between two flexible options upon placement confirmation (either choice works): (1) Split Plan: A 25% upfront commitment fee followed by a 20% monthly service commission, OR (2) One-Time Plan: A single one-time only 50% fee with 0% ongoing monthly deductions thereafter.',
+    q: 'Who decides the commission structure for each tutoring job?',
+    a: 'Eagle Tutorials Services reserves the sole right to decide the commission structure for each specific job. Depending on the arrangement, Eagle assigns either Plan 1 (25% upfront commitment fee + 20% monthly service commission) or Plan 2 (a single one-time only 50% placement fee with 0% ongoing monthly deductions thereafter).',
   },
   {
-    q: 'What happens if a parent wants to change tutors?',
-    a: 'If a parent requests a new tutor, Eagle Tutorials Services will provide a qualified replacement tutor to ensure the student’s learning continues smoothly.',
+    q: 'Can tutors get a refund after receiving parent contact information?',
+    a: 'No. There is strictly no refund once the parent’s phone number has been sent to the tutor and communication with the parents has taken place. The referral service is considered fully rendered once contact details are provided and discussions occur.',
+  },
+  {
+    q: 'What happens if a parent wants to change tutors or discontinue?',
+    a: 'If a parent requests a new tutor, Eagle Tutorials Services provides a qualified replacement tutor for the family. For tutors, in eligible situations where a parent discontinues through no fault of the tutor, Eagle Pathway provides replacement tutoring opportunities rather than cash refunds.',
   },
   {
     q: 'How quickly can a tutor be matched?',
-    a: 'We typically match parents with qualified tutors within 24 to 48 hours depending on subject requirements, schedule, and location (onsite in Addis Ababa or online across Ethiopia).',
+    a: 'We typically match parents with qualified tutors within 24 to 48 hours depending on subject requirements, schedule, and location (onsite in Addis Ababa or online across Ethiopia and worldwide).',
   },
   {
     q: 'Can tutors work online outside Addis Ababa?',
-    a: 'Yes! We support both in-person tutoring across Addis Ababa and live online tutoring for students across Ethiopia and internationally.',
+    a: 'Yes! We support both in-person tutoring across Addis Ababa and live online tutoring for Ethiopian students across Ethiopia and worldwide in any country.',
   },
 ];
 
 const refundPolicies = [
   {
     num: '1',
-    title: 'Parent-Initiated Termination',
-    text: 'If a parent discontinues the tutoring service within the first month of the tutor’s placement, Eagle Pathway will provide one of the following:',
-    options: [
-      'A full refund of the commission paid, or',
-      'A replacement tutoring opportunity with equivalent monthly pay.',
-    ],
+    title: 'Strict No-Refund Rule (Contact Established)',
+    text: 'No refund will be issued under any circumstances once the parent’s phone number has been sent to the tutor and communication with the parents has taken place.',
+    tail: 'The referral and placement service is deemed completed once contact details have been transferred and initial discussion between tutor and parents has commenced.',
   },
   {
     num: '2',
-    title: 'Tutor-Initiated Termination',
-    text: 'If a tutor voluntarily ends the tutoring engagement before completing the agreed period:',
+    title: 'Parent Discontinuation & Replacement Support',
+    text: 'If a parent discontinues or requests a schedule change after communication has occurred, no cash refund is provided. Instead, Eagle Pathway will support the tutor with:',
     options: [
-      'No refund will normally be issued.',
-      'A refund may be considered if the tutor has a valid and verifiable reason beyond their control, such as a serious health issue or family emergency.',
+      'A priority replacement tutoring placement with equivalent monthly earning potential, or',
+      'Reassignment to another matching student family at the discretion of Eagle Pathway.',
     ],
+    tail: 'Replacement opportunities are offered provided the tutor has maintained full professionalism, punctuality, and compliance with our operating standards.',
   },
   {
     num: '3',
-    title: 'Mutual Agreement Termination',
-    text: 'If the parent and tutor mutually agree to end the tutoring arrangement, Eagle Pathway will assess the circumstances individually and may provide:',
+    title: 'Tutor-Initiated Termination',
+    text: 'If a tutor voluntarily ends or withdraws from a tutoring engagement before completing the agreed placement period:',
     options: [
-      'A partial refund, or',
-      'A replacement tutoring opportunity,',
+      'No refund will be issued.',
+      'A replacement placement may only be reviewed in verifiable extenuating circumstances beyond the tutor’s control (such as documented serious health issues), subject to administrative approval.',
     ],
-    tail: 'depending on the circumstances of the termination.',
   },
   {
     num: '4',
-    title: 'Performance or Misconduct Issues',
-    text: 'If a tutor is removed from a tutoring placement because of:',
+    title: 'Misconduct, Bypass or Performance Issues',
+    text: 'Commission or placement fees will strictly NOT be refunded if a tutor:',
     options: [
-      'Misconduct;',
-      'Repeated lateness or failure to attend sessions;',
-      'Unprofessional behavior; or',
-      'Poor or consistently unsatisfactory performance,',
+      'Attempts to bypass Eagle Tutorials Services or negotiate private payment arrangements directly with parents;',
+      'Engages in misconduct, dishonesty, or unprofessional behavior;',
+      'Demonstrates repeated lateness or failure to attend scheduled sessions; or',
+      'Delivers consistently unsatisfactory or unverified teaching performance.',
     ],
-    tail: 'the commission will not be refunded. Tutors are expected to maintain professionalism, punctuality, reliability, and appropriate teaching standards throughout the engagement.',
+    tail: 'Tutors are required to uphold strict professional ethics, punctuality, and quality teaching standards throughout the placement.',
   },
   {
     num: '5',
-    title: 'Replacement Guarantee Period',
-    text: 'Any refund or replacement eligibility under this policy must generally be requested within 30 days of the termination of the tutoring engagement.',
-    tail: 'After this 30-day period, Eagle Pathway may determine that the refund or replacement eligibility has expired.',
+    title: 'Replacement Request Window',
+    text: 'Any replacement request eligible under this policy must be communicated to Eagle Pathway administration within 14 days of the affected placement event.',
+    tail: 'After this 14-day window, placement files are finalized and eligibility for reassignment expires.',
   },
   {
     num: '6',
-    title: 'Refund Processing',
-    text: 'Where a refund is approved, Eagle Pathway will communicate the applicable refund amount and payment process to the eligible party. Refunds will generally be returned through the original or an agreed payment method, subject to applicable payment-processing requirements.',
-    tail: 'Eagle Pathway reserves the right to review individual cases where circumstances fall outside the situations described above.',
+    title: 'Administrative Discretion',
+    text: 'Eagle Pathway reserves the sole right to review all placement communications, verify parent feedback, and make final binding determinations regarding replacement eligibility.',
   },
 ];
 
@@ -275,7 +277,7 @@ export default function TermsPage() {
                   </div>
                   <div>
                     <h3 style={{ fontSize: '1.3rem', margin: 0 }}>For Educators & Tutors</h3>
-                    <span style={{ fontSize: '0.8rem', color: 'var(--muted)', fontWeight: 600 }}>25% Upfront + 20% Monthly · OR One-Time 50%</span>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--muted)', fontWeight: 600 }}>Eagle-Determined Structure · 25% + 20% Monthly OR One-Time 50%</span>
                   </div>
                 </div>
                 <p style={{ color: 'var(--muted)', fontSize: '0.95rem', marginBottom: '1.25rem', lineHeight: 1.6 }}>
@@ -353,6 +355,32 @@ export default function TermsPage() {
             <p>
               At Eagle Pathway, we aim to ensure a fair and transparent experience for both parents and tutors. Our refund and replacement policy applies to tutoring placements under the following conditions:
             </p>
+          </Reveal>
+
+          {/* Prominent No-Refund Notice */}
+          <Reveal delay={20}>
+            <div
+              style={{
+                background: 'rgba(239, 68, 68, 0.06)',
+                border: '1.5px solid rgba(239, 68, 68, 0.25)',
+                borderRadius: '14px',
+                padding: '1.25rem 1.5rem',
+                marginBottom: '2rem',
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '0.85rem',
+              }}
+            >
+              <AlertTriangle size={22} style={{ color: '#dc2626', flexShrink: 0, marginTop: '2px' }} />
+              <div>
+                <strong style={{ color: '#b91c1c', display: 'block', fontSize: '1rem', marginBottom: '0.35rem' }}>
+                  Important Rule: No Refund After Contact Is Established
+                </strong>
+                <p style={{ margin: 0, fontSize: '0.92rem', color: '#7f1d1d', lineHeight: 1.6 }}>
+                  <strong>No refund will be issued once the parent’s phone number has been sent to the tutor and communication with the parents has taken place.</strong> Referral services are considered fully delivered upon contact exchange and discussion. In qualified cases where a parent discontinues through no fault of the tutor, Eagle Pathway provides replacement tutoring opportunities.
+                </p>
+              </div>
+            </div>
           </Reveal>
 
           <div className="grid-2" style={{ gap: '1.5rem' }}>
