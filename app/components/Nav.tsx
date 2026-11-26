@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { X } from 'lucide-react';
+import { X, ArrowRight } from 'lucide-react';
 import { nav, site } from '@/app/content/site';
 
 export default function Nav() {
@@ -56,23 +56,25 @@ export default function Nav() {
           {nav.map((item) => {
             const active = pathname === item.href;
             const isExternal = item.href.startsWith('http') || item.href === '/apply-with-us';
+            const isApply = item.label === 'Apply with Us';
+            const applyClass = isApply ? 'nav-link-apply' : '';
             return isExternal ? (
               <a
                 key={item.href}
                 href="https://forms.gle/NL2oB6mHHUscnZo9A"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="nav-link"
+                className={`nav-link ${applyClass}`}
               >
-                {item.label}
+                <span>{item.label}</span>
               </a>
             ) : (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`nav-link ${active ? 'active' : ''}`}
+                className={`nav-link ${applyClass} ${active ? 'active' : ''}`}
               >
-                {item.label}
+                <span>{item.label}</span>
               </Link>
             );
           })}
@@ -84,9 +86,10 @@ export default function Nav() {
             href="https://forms.gle/Fpcrq4bimki647M16"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-primary"
+            className="btn btn-primary nav-cta-btn"
           >
-            Book Package to 2027 Intake
+            <span>Book Package to 2027 Intake</span>
+            <ArrowRight size={17} className="nav-cta-arrow transition-transform group-hover:translate-x-1" />
           </a>
         </div>
 
@@ -120,6 +123,8 @@ export default function Nav() {
             {nav.map((item) => {
               const isExternal = item.href.startsWith('http') || item.href === '/apply-with-us';
               const active = pathname === item.href;
+              const isApply = item.label === 'Apply with Us';
+              const applyClass = isApply ? 'mobile-nav-apply' : '';
               return isExternal ? (
                 <a
                   key={item.href}
@@ -127,6 +132,7 @@ export default function Nav() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
+                  className={applyClass}
                 >
                   <span>{item.label}</span>
                 </a>
@@ -135,7 +141,7 @@ export default function Nav() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className={active ? 'active' : ''}
+                  className={`${active ? 'active' : ''} ${applyClass}`.trim()}
                 >
                   <span>{item.label}</span>
                 </Link>
@@ -146,9 +152,10 @@ export default function Nav() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}
-              className="btn btn-primary"
+              className="btn btn-primary flex items-center justify-center gap-2 py-3.5 text-base font-bold"
             >
-              Book Package to 2027 Intake
+              <span>Book Package to 2027 Intake</span>
+              <ArrowRight size={17} />
             </a>
           </div>
         </>

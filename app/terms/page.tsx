@@ -15,13 +15,12 @@ import {
   Award,
   CreditCard,
   Clock,
-  AlertTriangle,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Terms & Operating Policy | Eagle Tutorials Services',
   description:
-    'Comprehensive operating guidelines, parent payment structure, tutor commission structure (Eagle-determined: 25% upfront commitment + 20% monthly commission, or a one-time only 50% fee), strict refund & replacement policy, and quality standards for Eagle Tutorials Services.',
+    'Comprehensive operating guidelines, parent payment structure, tutor commission structure (Eagle-determined: 25% upfront commitment + 20% monthly commission, or a one-time only 50% fee), refund & replacement policy, and quality standards for Eagle Tutorials Services.',
   alternates: {
     canonical: `${site.url}/terms`,
   },
@@ -123,7 +122,7 @@ const policyFaqs = [
   },
   {
     q: 'Can tutors get a refund after receiving parent contact information?',
-    a: 'No. There is strictly no refund once the parent’s phone number has been sent to the tutor and communication with the parents has taken place. The referral service is considered fully rendered once contact details are provided and discussions occur.',
+    a: 'No cash refund is issued once the parent’s phone number has been sent to the tutor and communication with the parents has taken place. However, another tutoring job will be provided by Eagle Tutorials Services for that paid commission.',
   },
   {
     q: 'What happens if a parent wants to change tutors or discontinue?',
@@ -142,9 +141,9 @@ const policyFaqs = [
 const refundPolicies = [
   {
     num: '1',
-    title: 'Strict No-Refund Rule (Contact Established)',
-    text: 'No refund will be issued under any circumstances once the parent’s phone number has been sent to the tutor and communication with the parents has taken place.',
-    tail: 'The referral and placement service is deemed completed once contact details have been transferred and initial discussion between tutor and parents has commenced.',
+    title: 'Replacement Job Guarantee (Contact Established)',
+    text: 'Once the parent’s phone number has been provided to the tutor and communication between the tutor and parent has taken place, no cash refund will be issued.',
+    tail: 'However, another tutoring job will be provided by Eagle Tutorials Services for that paid commission, ensuring the tutor receives an equivalent placement opportunity.',
   },
   {
     num: '2',
@@ -355,32 +354,6 @@ export default function TermsPage() {
             <p>
               At Eagle Pathway, we aim to ensure a fair and transparent experience for both parents and tutors. Our refund and replacement policy applies to tutoring placements under the following conditions:
             </p>
-          </Reveal>
-
-          {/* Prominent No-Refund Notice */}
-          <Reveal delay={20}>
-            <div
-              style={{
-                background: 'rgba(239, 68, 68, 0.06)',
-                border: '1.5px solid rgba(239, 68, 68, 0.25)',
-                borderRadius: '14px',
-                padding: '1.25rem 1.5rem',
-                marginBottom: '2rem',
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '0.85rem',
-              }}
-            >
-              <AlertTriangle size={22} style={{ color: '#dc2626', flexShrink: 0, marginTop: '2px' }} />
-              <div>
-                <strong style={{ color: '#b91c1c', display: 'block', fontSize: '1rem', marginBottom: '0.35rem' }}>
-                  Important Rule: No Refund After Contact Is Established
-                </strong>
-                <p style={{ margin: 0, fontSize: '0.92rem', color: '#7f1d1d', lineHeight: 1.6 }}>
-                  <strong>No refund will be issued once the parent’s phone number has been sent to the tutor and communication with the parents has taken place.</strong> Referral services are considered fully delivered upon contact exchange and discussion. In qualified cases where a parent discontinues through no fault of the tutor, Eagle Pathway provides replacement tutoring opportunities.
-                </p>
-              </div>
-            </div>
           </Reveal>
 
           <div className="grid-2" style={{ gap: '1.5rem' }}>
